@@ -9,6 +9,7 @@ library (dplyr)
 
 edu <- read_excel(paste(inp, "culturales_educativas.xlsx", sep = "/"), range = "a4:ad2676")
 colnames(edu) <- c("Clave", "Municipio", "mayor6_leer_esc_1995", "may5_asistencia_1995", "may5_nivel_1995", "may18_prof_1995", "may18_posg_1995", "may15_escol_mean_1995", "may5_indigena_1995", "mayor6_leer_esc_2000", "may5_asistencia_2000", "may5_nivel_2000", "may18_prof_2000", "may18_posg_2000", "may15_escol_mean_2000", "may5_indigena_2000", "mayor6_leer_esc_2005", "may5_asistencia_2005", "may5_nivel_2005", "may18_prof_2005", "may18_posg_2005", "may15_escol_mean_2005", "may5_indigena_2005", "mayor6_leer_esc_2010", "may5_asistencia_2010", "may5_nivel_2010", "may18_prof_2010", "may18_posg_2010", "may15_escol_mean_2010", "may5_indigena_2010")
+edu <- edu %>% select(c("Clave", "Municipio", "mayor6_leer_esc_1995", "may5_asistencia_1995","mayor6_leer_esc_2000", "may5_asistencia_2000","mayor6_leer_esc_2005", "may5_asistencia_2005","mayor6_leer_esc_2010", "may5_asistencia_2010"))
 
 #edu90 <- read.delim(paste(inp, "ITER_NALTXT90.txt", sep = "/"))
 #[1] "entidad"    "nom_ent"    "mun"        "nom_mun"    "loc"       
@@ -83,152 +84,151 @@ edu <- edu %>% mutate(
     may5_asistencia_2008 = round(may5_asistencia_2005 * exp(tasa05_10 * 3)),
     may5_asistencia_2009 = round(may5_asistencia_2005 * exp(tasa05_10 * 4)),
     
-    #esto me lo estoy inventando, necesito revisar si esto se puede
     may5_asistencia_2011 = round(may5_asistencia_2005 * exp(tasa05_10 * 6)),
     may5_asistencia_2012 = round(may5_asistencia_2005 * exp(tasa05_10 * 7)),
     may5_asistencia_2013 = round(may5_asistencia_2005 * exp(tasa05_10 * 8)),
     may5_asistencia_2014 = round(may5_asistencia_2005 * exp(tasa05_10 * 9)),
-    may5_asistencia_2015 = round(may5_asistencia_2005 * exp(tasa05_10 * 10)),
+    may5_asistencia_2015 = round(may5_asistencia_2005 * exp(tasa05_10 * 10))#,
     
-    tasa95_00 = ((log(may5_nivel_2000 / may5_nivel_1995)) / 5),
+    #tasa95_00 = ((log(may5_nivel_2000 / may5_nivel_1995)) / 5),
     
-    may5_nivel_1996 = round(may5_nivel_1995 * exp(tasa95_00 * 1)),
-    may5_nivel_1997 = round(may5_nivel_1995 * exp(tasa95_00 * 2)),
-    may5_nivel_1998 = round(may5_nivel_1995 * exp(tasa95_00 * 3)),
-    may5_nivel_1999 = round(may5_nivel_1995 * exp(tasa95_00 * 4)),
+    #may5_nivel_1996 = round(may5_nivel_1995 * exp(tasa95_00 * 1)),
+    #may5_nivel_1997 = round(may5_nivel_1995 * exp(tasa95_00 * 2)),
+    #may5_nivel_1998 = round(may5_nivel_1995 * exp(tasa95_00 * 3)),
+    #may5_nivel_1999 = round(may5_nivel_1995 * exp(tasa95_00 * 4)),
     
-    tasa00_05 = ((log(may5_nivel_2005 / may5_nivel_2000)) / 5),
+    #tasa00_05 = ((log(may5_nivel_2005 / may5_nivel_2000)) / 5),
     
-    may5_nivel_2001 = round(may5_nivel_2000 * exp(tasa00_05 * 1)),
-    may5_nivel_2002 = round(may5_nivel_2000 * exp(tasa00_05 * 2)),
-    may5_nivel_2003 = round(may5_nivel_2000 * exp(tasa00_05 * 3)),
-    may5_nivel_2004 = round(may5_nivel_2000 * exp(tasa00_05 * 4)),
+    #may5_nivel_2001 = round(may5_nivel_2000 * exp(tasa00_05 * 1)),
+    #may5_nivel_2002 = round(may5_nivel_2000 * exp(tasa00_05 * 2)),
+    #may5_nivel_2003 = round(may5_nivel_2000 * exp(tasa00_05 * 3)),
+    #may5_nivel_2004 = round(may5_nivel_2000 * exp(tasa00_05 * 4)),
     
-    tasa05_10 = ((log(may5_nivel_2010 / may5_nivel_2005)) / 5),
+    #tasa05_10 = ((log(may5_nivel_2010 / may5_nivel_2005)) / 5),
     
-    may5_nivel_2006 = round(may5_nivel_2005 * exp(tasa05_10 * 1)),
-    may5_nivel_2007 = round(may5_nivel_2005 * exp(tasa05_10 * 2)),
-    may5_nivel_2008 = round(may5_nivel_2005 * exp(tasa05_10 * 3)),
-    may5_nivel_2009 = round(may5_nivel_2005 * exp(tasa05_10 * 4)),
-    
-    #esto me lo estoy inventando, necesito revisar si esto se puede
-    may5_nivel_2011 = round(may5_nivel_2005 * exp(tasa05_10 * 6)),
-    may5_nivel_2012 = round(may5_nivel_2005 * exp(tasa05_10 * 7)),
-    may5_nivel_2013 = round(may5_nivel_2005 * exp(tasa05_10 * 8)),
-    may5_nivel_2014 = round(may5_nivel_2005 * exp(tasa05_10 * 9)),
-    may5_nivel_2015 = round(may5_nivel_2005 * exp(tasa05_10 * 10)),
-    
-    tasa95_00 = ((log(may18_prof_2000 / may18_prof_1995)) / 5),
-    
-    may18_prof_1996 = round(may18_prof_1995 * exp(tasa95_00 * 1)),
-    may18_prof_1997 = round(may18_prof_1995 * exp(tasa95_00 * 2)),
-    may18_prof_1998 = round(may18_prof_1995 * exp(tasa95_00 * 3)),
-    may18_prof_1999 = round(may18_prof_1995 * exp(tasa95_00 * 4)),
-    
-    tasa00_05 = ((log(may18_prof_2005 / may18_prof_2000)) / 5),
-    
-    may18_prof_2001 = round(may18_prof_2000 * exp(tasa00_05 * 1)),
-    may18_prof_2002 = round(may18_prof_2000 * exp(tasa00_05 * 2)),
-    may18_prof_2003 = round(may18_prof_2000 * exp(tasa00_05 * 3)),
-    may18_prof_2004 = round(may18_prof_2000 * exp(tasa00_05 * 4)),
-    
-    tasa05_10 = ((log(may18_prof_2010 / may18_prof_2005)) / 5),
-    
-    may18_prof_2006 = round(may18_prof_2005 * exp(tasa05_10 * 1)),
-    may18_prof_2007 = round(may18_prof_2005 * exp(tasa05_10 * 2)),
-    may18_prof_2008 = round(may18_prof_2005 * exp(tasa05_10 * 3)),
-    may18_prof_2009 = round(may18_prof_2005 * exp(tasa05_10 * 4)),
+    #may5_nivel_2006 = round(may5_nivel_2005 * exp(tasa05_10 * 1)),
+    #may5_nivel_2007 = round(may5_nivel_2005 * exp(tasa05_10 * 2)),
+    #may5_nivel_2008 = round(may5_nivel_2005 * exp(tasa05_10 * 3)),
+    #may5_nivel_2009 = round(may5_nivel_2005 * exp(tasa05_10 * 4)),
     
     #esto me lo estoy inventando, necesito revisar si esto se puede
-    may18_prof_2011 = round(may18_prof_2005 * exp(tasa05_10 * 6)),
-    may18_prof_2012 = round(may18_prof_2005 * exp(tasa05_10 * 7)),
-    may18_prof_2013 = round(may18_prof_2005 * exp(tasa05_10 * 8)),
-    may18_prof_2014 = round(may18_prof_2005 * exp(tasa05_10 * 9)),
-    may18_prof_2015 = round(may18_prof_2005 * exp(tasa05_10 * 10)),
+    #may5_nivel_2011 = round(may5_nivel_2005 * exp(tasa05_10 * 6)),
+    #may5_nivel_2012 = round(may5_nivel_2005 * exp(tasa05_10 * 7)),
+    #may5_nivel_2013 = round(may5_nivel_2005 * exp(tasa05_10 * 8)),
+    #may5_nivel_2014 = round(may5_nivel_2005 * exp(tasa05_10 * 9)),
+    #may5_nivel_2015 = round(may5_nivel_2005 * exp(tasa05_10 * 10)),
     
-    tasa95_00 = ((log(may18_posg_2000 / may18_posg_1995)) / 5),
+    #tasa95_00 = ((log(may18_prof_2000 / may18_prof_1995)) / 5),
     
-    may18_posg_1996 = round(may18_posg_1995 * exp(tasa95_00 * 1)),
-    may18_posg_1997 = round(may18_posg_1995 * exp(tasa95_00 * 2)),
-    may18_posg_1998 = round(may18_posg_1995 * exp(tasa95_00 * 3)),
-    may18_posg_1999 = round(may18_posg_1995 * exp(tasa95_00 * 4)),
+    #may18_prof_1996 = round(may18_prof_1995 * exp(tasa95_00 * 1)),
+    #may18_prof_1997 = round(may18_prof_1995 * exp(tasa95_00 * 2)),
+    #may18_prof_1998 = round(may18_prof_1995 * exp(tasa95_00 * 3)),
+    #may18_prof_1999 = round(may18_prof_1995 * exp(tasa95_00 * 4)),
     
-    tasa00_05 = ((log(may18_posg_2005 / may18_posg_2000)) / 5),
+    #tasa00_05 = ((log(may18_prof_2005 / may18_prof_2000)) / 5),
     
-    may18_posg_2001 = round(may18_posg_2000 * exp(tasa00_05 * 1)),
-    may18_posg_2002 = round(may18_posg_2000 * exp(tasa00_05 * 2)),
-    may18_posg_2003 = round(may18_posg_2000 * exp(tasa00_05 * 3)),
-    may18_posg_2004 = round(may18_posg_2000 * exp(tasa00_05 * 4)),
+    #may18_prof_2001 = round(may18_prof_2000 * exp(tasa00_05 * 1)),
+    #may18_prof_2002 = round(may18_prof_2000 * exp(tasa00_05 * 2)),
+    #may18_prof_2003 = round(may18_prof_2000 * exp(tasa00_05 * 3)),
+    #may18_prof_2004 = round(may18_prof_2000 * exp(tasa00_05 * 4)),
     
-    tasa05_10 = ((log(may18_posg_2010 / may18_posg_2005)) / 5),
+    #tasa05_10 = ((log(may18_prof_2010 / may18_prof_2005)) / 5),
     
-    may18_posg_2006 = round(may18_posg_2005 * exp(tasa05_10 * 1)),
-    may18_posg_2007 = round(may18_posg_2005 * exp(tasa05_10 * 2)),
-    may18_posg_2008 = round(may18_posg_2005 * exp(tasa05_10 * 3)),
-    may18_posg_2009 = round(may18_posg_2005 * exp(tasa05_10 * 4)),
-    
-    #esto me lo estoy inventando, necesito revisar si esto se puede
-    may18_posg_2011 = round(may18_posg_2005 * exp(tasa05_10 * 6)),
-    may18_posg_2012 = round(may18_posg_2005 * exp(tasa05_10 * 7)),
-    may18_posg_2013 = round(may18_posg_2005 * exp(tasa05_10 * 8)),
-    may18_posg_2014 = round(may18_posg_2005 * exp(tasa05_10 * 9)),
-    may18_posg_2015 = round(may18_posg_2005 * exp(tasa05_10 * 10)),
-    
-    tasa95_00 = ((log(may15_escol_mean_2000 / may15_escol_mean_1995)) / 5),
-    
-    may15_escol_mean_1996 = round(may15_escol_mean_1995 * exp(tasa95_00 * 1)),
-    may15_escol_mean_1997 = round(may15_escol_mean_1995 * exp(tasa95_00 * 2)),
-    may15_escol_mean_1998 = round(may15_escol_mean_1995 * exp(tasa95_00 * 3)),
-    may15_escol_mean_1999 = round(may15_escol_mean_1995 * exp(tasa95_00 * 4)),
-    
-    tasa00_05 = ((log(may15_escol_mean_2005 / may15_escol_mean_2000)) / 5),
-    
-    may15_escol_mean_2001 = round(may15_escol_mean_2000 * exp(tasa00_05 * 1)),
-    may15_escol_mean_2002 = round(may15_escol_mean_2000 * exp(tasa00_05 * 2)),
-    may15_escol_mean_2003 = round(may15_escol_mean_2000 * exp(tasa00_05 * 3)),
-    may15_escol_mean_2004 = round(may15_escol_mean_2000 * exp(tasa00_05 * 4)),
-    
-    tasa05_10 = ((log(may15_escol_mean_2010 / may15_escol_mean_2005)) / 5),
-    
-    may15_escol_mean_2006 = round(may15_escol_mean_2005 * exp(tasa05_10 * 1)),
-    may15_escol_mean_2007 = round(may15_escol_mean_2005 * exp(tasa05_10 * 2)),
-    may15_escol_mean_2008 = round(may15_escol_mean_2005 * exp(tasa05_10 * 3)),
-    may15_escol_mean_2009 = round(may15_escol_mean_2005 * exp(tasa05_10 * 4)),
+    #may18_prof_2006 = round(may18_prof_2005 * exp(tasa05_10 * 1)),
+    #may18_prof_2007 = round(may18_prof_2005 * exp(tasa05_10 * 2)),
+    #may18_prof_2008 = round(may18_prof_2005 * exp(tasa05_10 * 3)),
+    #may18_prof_2009 = round(may18_prof_2005 * exp(tasa05_10 * 4)),
     
     #esto me lo estoy inventando, necesito revisar si esto se puede
-    may15_escol_mean_2011 = round(may15_escol_mean_2005 * exp(tasa05_10 * 6)),
-    may15_escol_mean_2012 = round(may15_escol_mean_2005 * exp(tasa05_10 * 7)),
-    may15_escol_mean_2013 = round(may15_escol_mean_2005 * exp(tasa05_10 * 8)),
-    may15_escol_mean_2014 = round(may15_escol_mean_2005 * exp(tasa05_10 * 9)),
-    may15_escol_mean_2015 = round(may15_escol_mean_2005 * exp(tasa05_10 * 10)),
+    #may18_prof_2011 = round(may18_prof_2005 * exp(tasa05_10 * 6)),
+    #may18_prof_2012 = round(may18_prof_2005 * exp(tasa05_10 * 7)),
+    #may18_prof_2013 = round(may18_prof_2005 * exp(tasa05_10 * 8)),
+    #may18_prof_2014 = round(may18_prof_2005 * exp(tasa05_10 * 9)),
+    #may18_prof_2015 = round(may18_prof_2005 * exp(tasa05_10 * 10)),
     
-    tasa95_00 = ((log(may5_indigena_2000 / may5_indigena_1995)) / 5),
+    #tasa95_00 = ((log(may18_posg_2000 / may18_posg_1995)) / 5),
     
-    may5_indigena_1996 = round(may5_indigena_1995 * exp(tasa95_00 * 1)),
-    may5_indigena_1997 = round(may5_indigena_1995 * exp(tasa95_00 * 2)),
-    may5_indigena_1998 = round(may5_indigena_1995 * exp(tasa95_00 * 3)),
-    may5_indigena_1999 = round(may5_indigena_1995 * exp(tasa95_00 * 4)),
+    #may18_posg_1996 = round(may18_posg_1995 * exp(tasa95_00 * 1)),
+    #may18_posg_1997 = round(may18_posg_1995 * exp(tasa95_00 * 2)),
+    #may18_posg_1998 = round(may18_posg_1995 * exp(tasa95_00 * 3)),
+    #may18_posg_1999 = round(may18_posg_1995 * exp(tasa95_00 * 4)),
     
-    tasa00_05 = ((log(may5_indigena_2005 / may5_indigena_2000)) / 5),
+    #tasa00_05 = ((log(may18_posg_2005 / may18_posg_2000)) / 5),
     
-    may5_indigena_2001 = round(may5_indigena_2000 * exp(tasa00_05 * 1)),
-    may5_indigena_2002 = round(may5_indigena_2000 * exp(tasa00_05 * 2)),
-    may5_indigena_2003 = round(may5_indigena_2000 * exp(tasa00_05 * 3)),
-    may5_indigena_2004 = round(may5_indigena_2000 * exp(tasa00_05 * 4)),
+    #may18_posg_2001 = round(may18_posg_2000 * exp(tasa00_05 * 1)),
+    #may18_posg_2002 = round(may18_posg_2000 * exp(tasa00_05 * 2)),
+    #may18_posg_2003 = round(may18_posg_2000 * exp(tasa00_05 * 3)),
+    #may18_posg_2004 = round(may18_posg_2000 * exp(tasa00_05 * 4)),
     
-    tasa05_10 = ((log(may5_indigena_2010 / may5_indigena_2005)) / 5),
+    #tasa05_10 = ((log(may18_posg_2010 / may18_posg_2005)) / 5),
     
-    may5_indigena_2006 = round(may5_indigena_2005 * exp(tasa05_10 * 1)),
-    may5_indigena_2007 = round(may5_indigena_2005 * exp(tasa05_10 * 2)),
-    may5_indigena_2008 = round(may5_indigena_2005 * exp(tasa05_10 * 3)),
-    may5_indigena_2009 = round(may5_indigena_2005 * exp(tasa05_10 * 4)),
+    #may18_posg_2006 = round(may18_posg_2005 * exp(tasa05_10 * 1)),
+    #may18_posg_2007 = round(may18_posg_2005 * exp(tasa05_10 * 2)),
+    #may18_posg_2008 = round(may18_posg_2005 * exp(tasa05_10 * 3)),
+    #may18_posg_2009 = round(may18_posg_2005 * exp(tasa05_10 * 4)),
     
     #esto me lo estoy inventando, necesito revisar si esto se puede
-    may5_indigena_2011 = round(may5_indigena_2005 * exp(tasa05_10 * 6)),
-    may5_indigena_2012 = round(may5_indigena_2005 * exp(tasa05_10 * 7)),
-    may5_indigena_2013 = round(may5_indigena_2005 * exp(tasa05_10 * 8)),
-    may5_indigena_2014 = round(may5_indigena_2005 * exp(tasa05_10 * 9)),
-    may5_indigena_2015 = round(may5_indigena_2005 * exp(tasa05_10 * 10))
+    #may18_posg_2011 = round(may18_posg_2005 * exp(tasa05_10 * 6)),
+    #may18_posg_2012 = round(may18_posg_2005 * exp(tasa05_10 * 7)),
+    #may18_posg_2013 = round(may18_posg_2005 * exp(tasa05_10 * 8)),
+    #may18_posg_2014 = round(may18_posg_2005 * exp(tasa05_10 * 9)),
+    #may18_posg_2015 = round(may18_posg_2005 * exp(tasa05_10 * 10)),
+    
+    #tasa95_00 = ((log(may15_escol_mean_2000 / may15_escol_mean_1995)) / 5),
+    
+    #may15_escol_mean_1996 = round(may15_escol_mean_1995 * exp(tasa95_00 * 1)),
+    #may15_escol_mean_1997 = round(may15_escol_mean_1995 * exp(tasa95_00 * 2)),
+    #may15_escol_mean_1998 = round(may15_escol_mean_1995 * exp(tasa95_00 * 3)),
+    #may15_escol_mean_1999 = round(may15_escol_mean_1995 * exp(tasa95_00 * 4)),
+    
+    #tasa00_05 = ((log(may15_escol_mean_2005 / may15_escol_mean_2000)) / 5),
+    
+    #may15_escol_mean_2001 = round(may15_escol_mean_2000 * exp(tasa00_05 * 1)),
+    #may15_escol_mean_2002 = round(may15_escol_mean_2000 * exp(tasa00_05 * 2)),
+    #may15_escol_mean_2003 = round(may15_escol_mean_2000 * exp(tasa00_05 * 3)),
+    #may15_escol_mean_2004 = round(may15_escol_mean_2000 * exp(tasa00_05 * 4)),
+    
+    #tasa05_10 = ((log(may15_escol_mean_2010 / may15_escol_mean_2005)) / 5),
+    
+    #may15_escol_mean_2006 = round(may15_escol_mean_2005 * exp(tasa05_10 * 1)),
+    #may15_escol_mean_2007 = round(may15_escol_mean_2005 * exp(tasa05_10 * 2)),
+    #may15_escol_mean_2008 = round(may15_escol_mean_2005 * exp(tasa05_10 * 3)),
+    #may15_escol_mean_2009 = round(may15_escol_mean_2005 * exp(tasa05_10 * 4)),
+    
+    #esto me lo estoy inventando, necesito revisar si esto se puede
+    #may15_escol_mean_2011 = round(may15_escol_mean_2005 * exp(tasa05_10 * 6)),
+    #may15_escol_mean_2012 = round(may15_escol_mean_2005 * exp(tasa05_10 * 7)),
+    #may15_escol_mean_2013 = round(may15_escol_mean_2005 * exp(tasa05_10 * 8)),
+    #may15_escol_mean_2014 = round(may15_escol_mean_2005 * exp(tasa05_10 * 9)),
+    #may15_escol_mean_2015 = round(may15_escol_mean_2005 * exp(tasa05_10 * 10)),
+    
+    #tasa95_00 = ((log(may5_indigena_2000 / may5_indigena_1995)) / 5),
+    
+    #may5_indigena_1996 = round(may5_indigena_1995 * exp(tasa95_00 * 1)),
+    #may5_indigena_1997 = round(may5_indigena_1995 * exp(tasa95_00 * 2)),
+    #may5_indigena_1998 = round(may5_indigena_1995 * exp(tasa95_00 * 3)),
+    #may5_indigena_1999 = round(may5_indigena_1995 * exp(tasa95_00 * 4)),
+    
+    #tasa00_05 = ((log(may5_indigena_2005 / may5_indigena_2000)) / 5),
+    
+    #may5_indigena_2001 = round(may5_indigena_2000 * exp(tasa00_05 * 1)),
+    #may5_indigena_2002 = round(may5_indigena_2000 * exp(tasa00_05 * 2)),
+    #may5_indigena_2003 = round(may5_indigena_2000 * exp(tasa00_05 * 3)),
+    #may5_indigena_2004 = round(may5_indigena_2000 * exp(tasa00_05 * 4)),
+    
+    #tasa05_10 = ((log(may5_indigena_2010 / may5_indigena_2005)) / 5),
+    
+    #may5_indigena_2006 = round(may5_indigena_2005 * exp(tasa05_10 * 1)),
+    #may5_indigena_2007 = round(may5_indigena_2005 * exp(tasa05_10 * 2)),
+    #may5_indigena_2008 = round(may5_indigena_2005 * exp(tasa05_10 * 3)),
+    #may5_indigena_2009 = round(may5_indigena_2005 * exp(tasa05_10 * 4)),
+    
+    #esto me lo estoy inventando, necesito revisar si esto se puede
+    #may5_indigena_2011 = round(may5_indigena_2005 * exp(tasa05_10 * 6)),
+    #may5_indigena_2012 = round(may5_indigena_2005 * exp(tasa05_10 * 7)),
+    #may5_indigena_2013 = round(may5_indigena_2005 * exp(tasa05_10 * 8)),
+    #may5_indigena_2014 = round(may5_indigena_2005 * exp(tasa05_10 * 9)),
+    #may5_indigena_2015 = round(may5_indigena_2005 * exp(tasa05_10 * 10))
   )
 
 educacion <- data.frame()
@@ -246,7 +246,7 @@ for(x in 1:length(nombres)) {
   
   tempo$Clave = formatC(tempo$Clave, width=5, format="d", flag = "0") 
   
-  names(tempo) = c("Clave", "mayor6_leer_esc", "may5_asistencia", "may5_nivel", "may18_prof", "may18_posg", "may15_escol_mean", "may5_indigena", "year")
+  names(tempo) = c("Clave", "mayor6_leer_esc", "may5_asistencia", "year")#, "may5_nivel", "may18_prof", "may18_posg", "may15_escol_mean", "may5_indigena", "year")
   
   educacion = bind_rows(educacion, tempo)
   
