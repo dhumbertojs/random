@@ -71,7 +71,8 @@ for(x in 1:length(nombres)) {
 
 rm(vivienda, nombres, x)
 
-viv <- select(viv, muniYear, muni, year, tomas_dom_agua, tomas_elec, jardines, parques, sist_dren)
+viv <- select(viv, muniYear, muni, year, tomas_dom_agua, tomas_elec, #jardines, parques, 
+              sist_dren)
 
 summary(viv)
 as.data.frame(viv, row.names = NULL)
