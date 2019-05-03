@@ -1012,16 +1012,31 @@ yuc15 <- bind_cols(yuc15, Winner2)
 rm(yuc, clave, gana, Winner2)
 
 ####Data Lucardi####
-
 act <- bind_rows(list(nay14, bcs15, camp15, cdmx15, chis15, col15, gro15, gto15, jal15, mex15, mich15, mor15, nl15, qro15, slp15, son15, tab15, yuc15)) 
-suma <- act %>% select(-c("state", "year", "muni", "Winner2")) %>% 
-  mutate(
-    total = rowSums(suma[2:105], na.rm = T)#,
-    #PAN = ifelse(colnames(starts_with("PAN")) & str_detect("PRD") | str_detect("PRI"), starts_with("PAN"), NA)
-    ) #%>% select(muniYear, total)
-##Necesito un criterio para tratar a todas las coaliciones de 2015...sort(names(act))
+suma <- act %>% select(-c("state", "year", "muni", "Winner2")) 
+suma <- suma %>% 
+  mutate(total = rowSums(suma[2:105], na.rm = T)) 
 
-#suma$PAN = which.max(PAN, PAN_Humanista, PAN_MC, PAN_PCP, PAN_PMC, PAN_PRI_PRD_PNA_Humanista_PES, PAN_PRI_PVEM, PAN_PT, PAN_PT_PMC, PAN_PVEM_PNA)
+sum_pan <- suma %>% select(muniYear, starts_with("PAN")) 
+sum_pan <- sum_pan %>% 
+  mutate(
+    s_PAN_PRD = rowSums(sum_pan[c("PAN_PRD", "PAN_PRI_PRD_PNA_Humanista_PES", "PAN_PRD_PT", "PAN_PRD_PT_PVEM_PMC_PNA", "PAN_PRD_PT_PMC")], na.rm = T),
+    s_PAN = rowSums(sum_pan[c("PAN", "PAN_PT", "PAN_PRI_PVEM", "PAN_MC", "PAN_Humanista", "PAN_PT_PMC", "PAN_PMC", "PAN_PCP", "PAN_PVEM_PNA")], na.rm = T)
+  ) %>% 
+  select(muniYear, s_PAN_PRD, s_PAN)
+colnames(sum_pan)[2] <- "PAN_PRD"
+colnames(sum_pan)[3] <- "PAN"
+
+sum_pri <- suma %>% select(muniYear, starts_with("PRI")) 
+sum_pri <- sum_pri %>% 
+  mutate(s_PRI = rowSums(sum_pri[c("PRI_PVEM_PNA", "PRI_PVEM", "PRI", "PRI_PVEM_PNA_PD", "PRI_PVEM_PD","PRI_PNA_PD", "PRI_PNA", "PRI_PD", "PRI_PT", "PRI_PNA_PVEM", "PRI_PVEM_PT")], na.rm = T)) %>% 
+  select(muniYear, s_PRI)
+
+sums <- full_join(sum_pan, sum_pri, by = "muniYear")
+rm(sum_pan, sum_pri)
+suma <- suma %>% 
+  select(muniYear, total) %>% full_join(sums, by = "muniYear")
+
 act <- act %>% 
   select(muniYear, state, muni, year, Winner2, PAN, PRI, PRD, nulos, noreg) %>% 
   right_join(suma)
@@ -1072,7 +1087,6 @@ gober <- gober %>% mutate(
 
 data <- data %>% 
   mutate(gub = paste(state, year, sep = "_")
-    #gober = ifelse(state == gober$INEGI & year == gober$year, gober$win, NA)
   ) %>% inner_join(gober, by = "gub") %>% select(-c(gub, INEGI, year.y))
 colnames(data)[4] <- "year"
 ####Subset de partidos####
@@ -1105,22 +1119,9 @@ data <- data %>%
                                                         ifelse(inc == "PRD", "PRD", "Otros")))#))))
   )
 
-
 levels(as.factor(data$Winner2))
 levels(as.factor(data$win))
 summary(data)
-
-#gober <- read.csv(paste(inp, "Gobernadores.csv", sep = "/"))
-#gober <- gober %>% filter(!is.na(win))
-#gober$win <- as.character(gober$win)
-
-#data <- data %>% 
-  #mutate(
-    #gob_1 = ifelse(year + 1 == gober$year & state == gober$INEGI, gober$win, NA),
-    #gob_2 = ifelse(year + 2 == gober$year & state == gober$INEGI, gober$win, NA),
-    #gober = ifelse(gob_1 == gob_2, gob_1, NA), 
-    #conco = ifelse(!is.na(win_top) & win_top == gober, 1, 0)
-  #)
 
 as.data.frame(data, row.names = NULL)
 write.csv(data, paste(out, "data.csv", sep = "/"), row.names = F, fileEncoding ="UTF-8")
