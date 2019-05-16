@@ -1139,8 +1139,9 @@ data <- data %>%
     PAN_PRD_ofi = ifelse(substr(Winner2, 1, 7) == "PAN_PRD" & substr(win_state, 1, 7) == "PAN_PRD", 1, 0),
     PRI_opo = ifelse(win == "PRI" & wintop_state != "PRI", 1, 0),
     PAN_opo = ifelse(win == "PAN" & wintop_state != "PAN", 1, 0),
-    PRD_ofpo= ifelse(win == "PRD" & wintop_state != "PRD", 1, 0),
-    PAN_PRD_opo = ifelse(substr(Winner2, 1, 7) == "PAN_PRD" & substr(win_state, 1, 7) != "PAN_PRD", 1, 0)
+    PRD_opo= ifelse(win == "PRD" & wintop_state != "PRD", 1, 0),
+    PAN_PRD_opo = ifelse(substr(Winner2, 1, 7) == "PAN_PRD" & substr(win_state, 1, 7) != "PAN_PRD", 1, 0),
+    edo_year = paste(state, year, sep = "")
   )
 
 levels(as.factor(data$Winner2))
