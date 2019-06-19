@@ -1,0 +1,895 @@
+"estado","municipio","Total_15"
+"Aguascalientes","Aguascalientes",877190
+"Aguascalientes","Asientos",46464
+"Aguascalientes","Calvillo",56048
+"Aguascalientes","Cosío",15577
+"Aguascalientes","El Llano",20245
+"Aguascalientes","Jesús María",120405
+"Aguascalientes","Pabellón de Arteaga",46473
+"Aguascalientes","Rincón de Romos",53866
+"Aguascalientes","San Francisco de los Romo",46454
+"Aguascalientes","San José de Gracia",8896
+"Aguascalientes","Tepezalá",20926
+"Baja California","Ensenada",486639
+"Baja California","Mexicali",988417
+"Baja California","Playas de Rosarito",96734
+"Baja California","Tecate",102406
+"Baja California","Tijuana",1641570
+"Baja California Sur","Comondú",72564
+"Baja California Sur","La Paz",272711
+"Baja California Sur","Loreto",18912
+"Baja California Sur","Los Cabos",287671
+"Baja California Sur","Mulegé",60171
+"Campeche","Calakmul",28424
+"Campeche","Calkiní",56537
+"Campeche","Campeche",283025
+"Campeche","Candelaria",43879
+"Campeche","Carmen",248303
+"Campeche","Champotón",90244
+"Campeche","Escárcega",58553
+"Campeche","Hecelchakán",31230
+"Campeche","Hopelchén",40100
+"Campeche","Palizada",8971
+"Campeche","Tenabo",10665
+"Ciudad de México","Álvaro Obregón",749982
+"Ciudad de México","Azcapotzalco",400161
+"Ciudad de México","Benito Juárez",417416
+"Ciudad de México","Coyoacán",608479
+"Ciudad de México","Cuajimalpa de Morelos",199224
+"Ciudad de México","Cuauhtémoc",532553
+"Ciudad de México","Gustavo A. Madero",1164477
+"Ciudad de México","Iztacalco",390348
+"Ciudad de México","Iztapalapa",1827868
+"Ciudad de México","La Magdalena Contreras",243886
+"Ciudad de México","Miguel Hidalgo",364439
+"Ciudad de México","Milpa Alta",137927
+"Ciudad de México","Tláhuac",361593
+"Ciudad de México","Tlalpan",677104
+"Ciudad de México","Venustiano Carranza",427263
+"Ciudad de México","Xochimilco",415933
+"Chihuahua","Ahumada",12568
+"Chihuahua","Aldama",24761
+"Chihuahua","Allende",8751
+"Chihuahua","Aquiles Serdán",15516
+"Chihuahua","Ascensión",24966
+"Chihuahua","Bachíniva",6156
+"Chihuahua","Balleza *",16824
+"Chihuahua","Batopilas *",11289
+"Chihuahua","Bocoyna",27909
+"Chihuahua","Buenaventura **",23438
+"Chihuahua","Camargo",51572
+"Chihuahua","Carichí **",9211
+"Chihuahua","Casas Grandes",11432
+"Chihuahua","Chihuahua",878062
+"Chihuahua","Chínipas *",7501
+"Chihuahua","Coronado *",2096
+"Chihuahua","Coyame del Sotol *",1684
+"Chihuahua","Cuauhtémoc",168482
+"Chihuahua","Cusihuiriachi",4594
+"Chihuahua","Delicias",148045
+"Chihuahua","Dr. Belisario Domínguez *",2491
+"Chihuahua","El Tule *",1697
+"Chihuahua","Galeana",6021
+"Chihuahua","Gómez Farías",8905
+"Chihuahua","Gran Morelos *",2466
+"Chihuahua","Guachochi *",45544
+"Chihuahua","Guadalupe",5272
+"Chihuahua","Guadalupe y Calvo *",56130
+"Chihuahua","Guazapares *",7429
+"Chihuahua","Guerrero",39064
+"Chihuahua","Hidalgo del Parral",109510
+"Chihuahua","Huejotitán *",952
+"Chihuahua","Ignacio Zaragoza",6903
+"Chihuahua","Janos",10974
+"Chihuahua","Jiménez",42860
+"Chihuahua","Juárez",1391180
+"Chihuahua","Julimes",4448
+"Chihuahua","La Cruz *",3861
+"Chihuahua","López *",4007
+"Chihuahua","Madera",29233
+"Chihuahua","Maguarichi *",1593
+"Chihuahua","Manuel Benavides *",1403
+"Chihuahua","Matachí *",2961
+"Chihuahua","Matamoros *",4371
+"Chihuahua","Meoqui",44752
+"Chihuahua","Morelos *",7797
+"Chihuahua","Moris",5141
+"Chihuahua","Namiquipa",23255
+"Chihuahua","Nonoava *",2574
+"Chihuahua","Nuevo Casas Grandes",63412
+"Chihuahua","Ocampo",7569
+"Chihuahua","Ojinaga",28040
+"Chihuahua","Praxedis G. Guerrero",5486
+"Chihuahua","Riva Palacio",7969
+"Chihuahua","Rosales",16896
+"Chihuahua","Rosario *",2018
+"Chihuahua","San Francisco de Borja *",2136
+"Chihuahua","San Francisco de Conchos *",2471
+"Chihuahua","San Francisco del Oro",5086
+"Chihuahua","Santa Bárbara",10721
+"Chihuahua","Santa Isabel **",4099
+"Chihuahua","Satevó *",3159
+"Chihuahua","Saucillo",31196
+"Chihuahua","Temósachic **",6425
+"Chihuahua","Urique **",20947
+"Chihuahua","Uruachi *",6094
+"Chihuahua","Valle de Zaragoza",5199
+"Chiapas","Acacoyagua",18082
+"Chiapas","Acala",31424
+"Chiapas","Acapetahua",28380
+"Chiapas","Aldama *",6712
+"Chiapas","Altamirano *",32872
+"Chiapas","Amatán",19348
+"Chiapas","Amatenango de la Frontera",30732
+"Chiapas","Amatenango del Valle *",9913
+"Chiapas","Angel Albino Corzo",28162
+"Chiapas","Arriaga",40114
+"Chiapas","Bejucal de Ocampo",7494
+"Chiapas","Bella Vista",20142
+"Chiapas","Benemérito de las Américas",20193
+"Chiapas","Berriozábal",51722
+"Chiapas","Bochil",34997
+"Chiapas","Cacahoatán",45594
+"Chiapas","Catazajá",17065
+"Chiapas","Chalchihuitán *",16803
+"Chiapas","Chamula *",87332
+"Chiapas","Chanal *",12181
+"Chiapas","Chapultenango",7644
+"Chiapas","Chenalhó *",39648
+"Chiapas","Chiapa de Corzo",100751
+"Chiapas","Chiapilla",5899
+"Chiapas","Chicoasén *",5000
+"Chiapas","Chicomuselo",34744
+"Chiapas","Chilón *",127914
+"Chiapas","Cintalapa",84455
+"Chiapas","Coapilla",9210
+"Chiapas","Comitán de Domínguez",153448
+"Chiapas","Copainalá",21800
+"Chiapas","El Bosque *",22606
+"Chiapas","El Porvenir",14121
+"Chiapas","Escuintla",31822
+"Chiapas","Francisco León",7430
+"Chiapas","Frontera Comalapa",73436
+"Chiapas","Frontera Hidalgo",14416
+"Chiapas","Huehuetán",35017
+"Chiapas","Huitiupán",23172
+"Chiapas","Huixtán",23625
+"Chiapas","Huixtla",54332
+"Chiapas","Ixhuatán",11342
+"Chiapas","Ixtacomitán",10772
+"Chiapas","Ixtapa",27198
+"Chiapas","Ixtapangajoya *",5384
+"Chiapas","Jiquipilas",39109
+"Chiapas","Jitotol *",20606
+"Chiapas","Juárez",21222
+"Chiapas","La Concordia",46405
+"Chiapas","La Grandeza *",7057
+"Chiapas","La Independencia",44891
+"Chiapas","La Libertad",4915
+"Chiapas","La Trinitaria",76917
+"Chiapas","Larráinzar *",23889
+"Chiapas","Las Margaritas",122821
+"Chiapas","Las Rosas",28261
+"Chiapas","Mapastepec",47932
+"Chiapas","Maravilla Tenejapa *",12945
+"Chiapas","Marqués de Comillas",11444
+"Chiapas","Mazapa de Madero",7769
+"Chiapas","Mazatán",29239
+"Chiapas","Metapa *",5743
+"Chiapas","Mitontic *",11906
+"Chiapas","Montecristo de Guerrero",7682
+"Chiapas","Motozintla",72967
+"Chiapas","Nicolás Ruíz *",4262
+"Chiapas","Ocosingo",218893
+"Chiapas","Ocotepec",12508
+"Chiapas","Ocozocoautla de Espinosa",92103
+"Chiapas","Ostuacán",18128
+"Chiapas","Osumacinta *",3682
+"Chiapas","Oxchuc",48126
+"Chiapas","Palenque",119826
+"Chiapas","Pantelhó *",22011
+"Chiapas","Pantepec",12136
+"Chiapas","Pichucalco",31107
+"Chiapas","Pijijiapan",53525
+"Chiapas","Pueblo Nuevo Solistahuacán",31942
+"Chiapas","Rayón",9578
+"Chiapas","Reforma",45104
+"Chiapas","Sabanilla *",26921
+"Chiapas","Salto de Agua",63446
+"Chiapas","San Andrés Duraznal *",5163
+"Chiapas","San Cristóbal de las Casas",209591
+"Chiapas","San Fernando",39204
+"Chiapas","San Juan Cancuc *",34829
+"Chiapas","San Lucas",7202
+"Chiapas","Santiago el Pinar *",3684
+"Chiapas","Siltepec",35192
+"Chiapas","Simojovel *",44295
+"Chiapas","Sitalá *",13844
+"Chiapas","Socoltenango",18539
+"Chiapas","Solosuchiapa",8082
+"Chiapas","Soyaló",10707
+"Chiapas","Suchiapa",24049
+"Chiapas","Suchiate",38797
+"Chiapas","Sunuapa *",2283
+"Chiapas","Tapachula",348156
+"Chiapas","Tapalapa *",3839
+"Chiapas","Tapilula",12887
+"Chiapas","Tecpatán",41305
+"Chiapas","Tenejapa *",43593
+"Chiapas","Teopisca",43175
+"Chiapas","Tila *",77554
+"Chiapas","Tonalá",89178
+"Chiapas","Totolapa",7284
+"Chiapas","Tumbalá *",34305
+"Chiapas","Tuxtla Chico",41823
+"Chiapas","Tuxtla Gutiérrez",598710
+"Chiapas","Tuzantán",31755
+"Chiapas","Tzimol",15316
+"Chiapas","Unión Juárez",15350
+"Chiapas","Venustiano Carranza",65009
+"Chiapas","Villa Comaltitlán",28961
+"Chiapas","Villa Corzo",79003
+"Chiapas","Villaflores",104833
+"Chiapas","Yajalón",37833
+"Chiapas","Zinacantán *",41112
+"Coahuila de Zaragoza","Abasolo *",1015
+"Coahuila de Zaragoza","Acuña",147809
+"Coahuila de Zaragoza","Allende",22654
+"Coahuila de Zaragoza","Arteaga",23271
+"Coahuila de Zaragoza","Candela *",1720
+"Coahuila de Zaragoza","Castaños",28068
+"Coahuila de Zaragoza","Cuatro Ciénegas",13546
+"Coahuila de Zaragoza","Escobedo *",3077
+"Coahuila de Zaragoza","Francisco I. Madero",58360
+"Coahuila de Zaragoza","Frontera",80991
+"Coahuila de Zaragoza","General Cepeda",12471
+"Coahuila de Zaragoza","Guerrero *",1697
+"Coahuila de Zaragoza","Hidalgo *",1565
+"Coahuila de Zaragoza","Jiménez",10243
+"Coahuila de Zaragoza","Juárez *",1574
+"Coahuila de Zaragoza","Lamadrid *",1773
+"Coahuila de Zaragoza","Matamoros",108950
+"Coahuila de Zaragoza","Monclova",231107
+"Coahuila de Zaragoza","Morelos",8599
+"Coahuila de Zaragoza","Múzquiz",69102
+"Coahuila de Zaragoza","Nadadores",6614
+"Coahuila de Zaragoza","Nava",30698
+"Coahuila de Zaragoza","Ocampo",11671
+"Coahuila de Zaragoza","Parras",44799
+"Coahuila de Zaragoza","Piedras Negras",163595
+"Coahuila de Zaragoza","Progreso *",3304
+"Coahuila de Zaragoza","Ramos Arizpe",92828
+"Coahuila de Zaragoza","Sabinas",63522
+"Coahuila de Zaragoza","Sacramento *",2360
+"Coahuila de Zaragoza","Saltillo",807537
+"Coahuila de Zaragoza","San Buenaventura",23587
+"Coahuila de Zaragoza","San Juan de Sabinas",43232
+"Coahuila de Zaragoza","San Pedro",106142
+"Coahuila de Zaragoza","Sierra Mojada",6988
+"Coahuila de Zaragoza","Torreón",679288
+"Coahuila de Zaragoza","Viesca",21549
+"Coahuila de Zaragoza","Villa Unión",6352
+"Coahuila de Zaragoza","Zaragoza",13257
+"Colima","Armería",29599
+"Colima","Colima",150673
+"Colima","Comala",21544
+"Colima","Coquimatlán",20198
+"Colima","Cuauhtémoc",30198
+"Colima","Ixtlahuacán",5527
+"Colima","Manzanillo",184541
+"Colima","Minatitlán",8985
+"Colima","Tecomán",123191
+"Colima","Villa de Álvarez",136779
+"Durango","Canatlán",32852
+"Durango","Canelas *",4683
+"Durango","Coneto de Comonfort *",4390
+"Durango","Cuencamé",35415
+"Durango","Durango",654876
+"Durango","El Oro",11496
+"Durango","General Simón Bolívar",10110
+"Durango","Gómez Palacio",342286
+"Durango","Guadalupe Victoria",35380
+"Durango","Guanaceví",9851
+"Durango","Hidalgo *",3838
+"Durango","Indé",4927
+"Durango","Lerdo",153311
+"Durango","Mapimí",26502
+"Durango","Mezquital *",39288
+"Durango","Nazas",12957
+"Durango","Nombre de Dios",19694
+"Durango","Nuevo Ideal",27278
+"Durango","Ocampo",9567
+"Durango","Otáez *",5385
+"Durango","Pánuco de Coronado",12290
+"Durango","Peñón Blanco",10922
+"Durango","Poanas",25241
+"Durango","Pueblo Nuevo",50417
+"Durango","Rodeo",13554
+"Durango","San Bernardo *",3205
+"Durango","San Dimas",19383
+"Durango","San Juan de Guadalupe",5564
+"Durango","San Juan del Río",12747
+"Durango","San Luis del Cordero *",2077
+"Durango","San Pedro del Gallo *",1478
+"Durango","Santa Clara",7089
+"Durango","Santiago Papasquiaro",48482
+"Durango","Súchil",6343
+"Durango","Tamazula",26709
+"Durango","Tepehuanes",11060
+"Durango","Tlahualilo",22895
+"Durango","Topia",9351
+"Durango","Vicente Guerrero",21861
+"Guerrero","Acapulco de Juárez",810669
+"Guerrero","Acatepec *",36449
+"Guerrero","Ahuacuotzingo",26858
+"Guerrero","Ajuchitlán del Progreso",38134
+"Guerrero","Alcozauca de Guerrero *",19368
+"Guerrero","Alpoyeca",6657
+"Guerrero","Apaxtla",11159
+"Guerrero","Arcelia",31406
+"Guerrero","Atenango del Río",8731
+"Guerrero","Atlamajalcingo del Monte *",5476
+"Guerrero","Atlixtac *",27212
+"Guerrero","Atoyac de Álvarez",60382
+"Guerrero","Ayutla de los Libres",69716
+"Guerrero","Azoyú *",14865
+"Guerrero","Benito Juárez",15318
+"Guerrero","Buenavista de Cuéllar",13286
+"Guerrero","Chilapa de Álvarez",129867
+"Guerrero","Chilpancingo de los Bravo",273106
+"Guerrero","Coahuayutla de José María Izazaga *",12725
+"Guerrero","Cochoapa el Grande *",18458
+"Guerrero","Cocula",13457
+"Guerrero","Copala *",14304
+"Guerrero","Copalillo *",14866
+"Guerrero","Copanatoyac *",20192
+"Guerrero","Coyuca de Benítez",76306
+"Guerrero","Coyuca de Catalán",39002
+"Guerrero","Cuajinicuilapa *",27266
+"Guerrero","Cualác",7649
+"Guerrero","Cuautepec *",16415
+"Guerrero","Cuetzala del Progreso",8559
+"Guerrero","Cutzamala de Pinzón",19746
+"Guerrero","Eduardo Neri",51316
+"Guerrero","Florencio Villarreal *",20855
+"Guerrero","General Canuto A. Neri",5780
+"Guerrero","General Heliodoro Castillo",37340
+"Guerrero","Huamuxtitlán",15287
+"Guerrero","Huitzuco de los Figueroa",37094
+"Guerrero","Iguala de la Independencia",151660
+"Guerrero","Igualapa *",11383
+"Guerrero","Iliatenco",11114
+"Guerrero","Ixcateopan de Cuauhtémoc",6179
+"Guerrero","José Joaquín de Herrera *",17661
+"Guerrero","Juan R. Escudero",24890
+"Guerrero","Juchitán *",7576
+"Guerrero","La Unión de Isidoro Montes de Oca",26432
+"Guerrero","Leonardo Bravo",26342
+"Guerrero","Malinaltepec *",25584
+"Guerrero","Marquelia *",13730
+"Guerrero","Mártir de Cuilapan",18526
+"Guerrero","Metlatónoc *",19456
+"Guerrero","Mochitlán",12752
+"Guerrero","Olinalá",25483
+"Guerrero","Ometepec",67641
+"Guerrero","Pedro Ascencio Alquisiras *",6883
+"Guerrero","Petatlán",44263
+"Guerrero","Pilcaya",12900
+"Guerrero","Pungarabato",37494
+"Guerrero","Quechultenango",35926
+"Guerrero","San Luis Acatlán",43671
+"Guerrero","San Marcos",49449
+"Guerrero","San Miguel Totolapan *",27853
+"Guerrero","Taxco de Alarcón",108416
+"Guerrero","Tecoanapa",46812
+"Guerrero","Técpan de Galeana",64577
+"Guerrero","Teloloapan",57377
+"Guerrero","Tepecoacuilco de Trujano",31599
+"Guerrero","Tetipac",14658
+"Guerrero","Tixtla de Guerrero",42653
+"Guerrero","Tlacoachistlahuaca *",22771
+"Guerrero","Tlacoapa *",9753
+"Guerrero","Tlalchapa",12404
+"Guerrero","Tlalixtaquilla de Maldonado",7407
+"Guerrero","Tlapa de Comonfort",87967
+"Guerrero","Tlapehuala",21995
+"Guerrero","Xalpatláhuac *",11726
+"Guerrero","Xochihuehuetlán",7201
+"Guerrero","Xochistlahuaca *",28839
+"Guerrero","Zapotitlán Tablas *",11221
+"Guerrero","Zihuatanejo de Azueta",124824
+"Guerrero","Zirándaro",18206
+"Guerrero","Zitlala",22721
+"Guanajuato","Abasolo",90990
+"Guanajuato","Acámbaro",112125
+"Guanajuato","Apaseo el Alto",68455
+"Guanajuato","Apaseo el Grande",92605
+"Guanajuato","Atarjea",5128
+"Guanajuato","Celaya",494304
+"Guanajuato","Comonfort",82572
+"Guanajuato","Coroneo",12068
+"Guanajuato","Cortazar",95961
+"Guanajuato","Cuerámaro",28320
+"Guanajuato","Doctor Mora",24219
+"Guanajuato","Dolores Hidalgo Cuna de la Independencia Nacional",152113
+"Guanajuato","Guanajuato",184239
+"Guanajuato","Huanímaro",21638
+"Guanajuato","Irapuato",574344
+"Guanajuato","Jaral del Progreso",38412
+"Guanajuato","Jerécuaro",49053
+"Guanajuato","León",1578626
+"Guanajuato","Manuel Doblado",38832
+"Guanajuato","Moroleón",50377
+"Guanajuato","Ocampo",23528
+"Guanajuato","Pénjamo",150570
+"Guanajuato","Pueblo Nuevo",11872
+"Guanajuato","Purísima del Rincón",79798
+"Guanajuato","Romita",59879
+"Guanajuato","Salamanca",273271
+"Guanajuato","Salvatierra",100391
+"Guanajuato","San Diego de la Unión",39668
+"Guanajuato","San Felipe",113109
+"Guanajuato","San Francisco del Rincón",119510
+"Guanajuato","San José Iturbide",78794
+"Guanajuato","San Luis de la Paz",121027
+"Guanajuato","San Miguel de Allende",171857
+"Guanajuato","Santa Catarina *",5261
+"Guanajuato","Santa Cruz de Juventino Rosas",83060
+"Guanajuato","Santiago Maravatío",6824
+"Guanajuato","Silao de la Victoria",189567
+"Guanajuato","Tarandacuao",12256
+"Guanajuato","Tarimoro",34263
+"Guanajuato","Tierra Blanca",18960
+"Guanajuato","Uriangato",62761
+"Guanajuato","Valle de Santiago",142672
+"Guanajuato","Victoria",20166
+"Guanajuato","Villagrán",58830
+"Guanajuato","Xichú",11639
+"Guanajuato","Yuriria",69763
+"Hidalgo","Acatlán",21044
+"Hidalgo","Acaxochitlán",43774
+"Hidalgo","Actopan",56429
+"Hidalgo","Agua Blanca de Iturbide",9116
+"Hidalgo","Ajacuba",18320
+"Hidalgo","Alfajayucan",20332
+"Hidalgo","Almoloya",12410
+"Hidalgo","Apan",44576
+"Hidalgo","Atitalaquia",29683
+"Hidalgo","Atlapexco",19902
+"Hidalgo","Atotonilco de Tula",38564
+"Hidalgo","Atotonilco el Grande",27433
+"Hidalgo","Calnali",17163
+"Hidalgo","Cardonal",18347
+"Hidalgo","Chapantongo",13789
+"Hidalgo","Chapulhuacán",23961
+"Hidalgo","Chilcuautla",18169
+"Hidalgo","Cuautepec de Hinojosa",58301
+"Hidalgo","El Arenal",18807
+"Hidalgo","Eloxochitlán *",2667
+"Hidalgo","Emiliano Zapata",14825
+"Hidalgo","Epazoyucan",14693
+"Hidalgo","Francisco I. Madero",35872
+"Hidalgo","Huasca de Ocampo",17728
+"Hidalgo","Huautla",21244
+"Hidalgo","Huazalingo",13986
+"Hidalgo","Huehuetla",25989
+"Hidalgo","Huejutla de Reyes",129919
+"Hidalgo","Huichapan",45959
+"Hidalgo","Ixmiquilpan",93502
+"Hidalgo","Jacala de Ledezma",13399
+"Hidalgo","Jaltocán",11818
+"Hidalgo","Juárez Hidalgo *",3108
+"Hidalgo","La Misión",10139
+"Hidalgo","Lolotla",9461
+"Hidalgo","Metepec",11801
+"Hidalgo","Metztitlán",20111
+"Hidalgo","Mineral de la Reforma",150176
+"Hidalgo","Mineral del Chico",9028
+"Hidalgo","Mineral del Monte",14640
+"Hidalgo","Mixquiahuala de Juárez",46224
+"Hidalgo","Molango de Escamilla",11587
+"Hidalgo","Nicolás Flores",7031
+"Hidalgo","Nopala de Villagrán",16896
+"Hidalgo","Omitlán de Juárez",9636
+"Hidalgo","Pachuca de Soto",277375
+"Hidalgo","Pacula",5139
+"Hidalgo","Pisaflores",17379
+"Hidalgo","Progreso de Obregón",23451
+"Hidalgo","San Agustín Metzquititlán",9437
+"Hidalgo","San Agustín Tlaxiaca",36079
+"Hidalgo","San Bartolo Tutotepec",18986
+"Hidalgo","San Felipe Orizatlán",38952
+"Hidalgo","San Salvador",35547
+"Hidalgo","Santiago de Anaya",17032
+"Hidalgo","Santiago Tulantepec de Lugo Guerrero",37292
+"Hidalgo","Singuilucan",16235
+"Hidalgo","Tasquillo",16403
+"Hidalgo","Tecozautla",37674
+"Hidalgo","Tenango de Doria",18766
+"Hidalgo","Tepeapulco",54373
+"Hidalgo","Tepehuacán de Guerrero",30750
+"Hidalgo","Tepeji del Río de Ocampo",87442
+"Hidalgo","Tepetitlán",10932
+"Hidalgo","Tetepango",11624
+"Hidalgo","Tezontepec de Aldama",53009
+"Hidalgo","Tianguistengo",15122
+"Hidalgo","Tizayuca",119442
+"Hidalgo","Tlahuelilpan",19389
+"Hidalgo","Tlahuiltepa",10376
+"Hidalgo","Tlanalapa",10342
+"Hidalgo","Tlanchinol",39772
+"Hidalgo","Tlaxcoapan",28490
+"Hidalgo","Tolcayuca",16733
+"Hidalgo","Tula de Allende",109093
+"Hidalgo","Tulancingo de Bravo",161069
+"Hidalgo","Villa de Tezontepec",12413
+"Hidalgo","Xochiatipan *",19752
+"Hidalgo","Xochicoatlán",7706
+"Hidalgo","Yahualica",24173
+"Hidalgo","Zacualtipán de Ángeles",34720
+"Hidalgo","Zapotlán de Juárez",18748
+"Hidalgo","Zempoala",45382
+"Hidalgo","Zimapán",40201
+"Jalisco","Acatic",21530
+"Jalisco","Acatlán de Juárez",22261
+"Jalisco","Ahualulco de Mercado",23362
+"Jalisco","Amacueca",5385
+"Jalisco","Amatitán",15344
+"Jalisco","Ameca",60951
+"Jalisco","Arandas",77116
+"Jalisco","Atemajac de Brizuela",6717
+"Jalisco","Atengo",5475
+"Jalisco","Atenguillo *",3899
+"Jalisco","Atotonilco el Alto",60480
+"Jalisco","Atoyac",8264
+"Jalisco","Autlán de Navarro",60572
+"Jalisco","Ayotlán",37963
+"Jalisco","Ayutla",12453
+"Jalisco","Bolaños",7341
+"Jalisco","Cabo Corrientes",10303
+"Jalisco","Cañadas de Obregón *",4110
+"Jalisco","Casimiro Castillo",21584
+"Jalisco","Chapala",50738
+"Jalisco","Chimaltitán *",3383
+"Jalisco","Chiquilistlán",6102
+"Jalisco","Cihuatlán",41300
+"Jalisco","Cocula",26687
+"Jalisco","Colotlán",17865
+"Jalisco","Concepción de Buenos Aires",6088
+"Jalisco","Cuautitlán de García Barragán",18138
+"Jalisco","Cuautla *",2120
+"Jalisco","Cuquío",17980
+"Jalisco","Degollado",21479
+"Jalisco","Ejutla *",1862
+"Jalisco","El Arenal",19900
+"Jalisco","El Grullo",24312
+"Jalisco","El Limón",5379
+"Jalisco","El Salto",183437
+"Jalisco","Encarnación de Díaz",53555
+"Jalisco","Etzatlán",19847
+"Jalisco","Gómez Farías",14278
+"Jalisco","Guachinango *",4184
+"Jalisco","Guadalajara",1460148
+"Jalisco","Hostotipaquillo",9761
+"Jalisco","Huejúcar",5633
+"Jalisco","Huejuquilla el Alto",8787
+"Jalisco","Ixtlahuacán de los Membrillos",53045
+"Jalisco","Ixtlahuacán del Río",19070
+"Jalisco","Jalostotitlán",33777
+"Jalisco","Jamay",24753
+"Jalisco","Jesús María",19469
+"Jalisco","Jilotlán de los Dolores",9917
+"Jalisco","Jocotepec",46521
+"Jalisco","Juanacatlán",17955
+"Jalisco","Juchitlán",5638
+"Jalisco","La Barca",65055
+"Jalisco","La Huerta",24563
+"Jalisco","La Manzanilla de la Paz *",3688
+"Jalisco","Lagos de Moreno",164981
+"Jalisco","Magdalena",22643
+"Jalisco","Mascota",14477
+"Jalisco","Mazamitla",13799
+"Jalisco","Mexticacán",5088
+"Jalisco","Mezquitic *",19452
+"Jalisco","Mixtlán *",3526
+"Jalisco","Ocotlán",99461
+"Jalisco","Ojuelos de Jalisco",32357
+"Jalisco","Pihuamo",11192
+"Jalisco","Poncitlán",51944
+"Jalisco","Puerto Vallarta",275640
+"Jalisco","Quitupan",8379
+"Jalisco","San Cristóbal de la Barranca *",3117
+"Jalisco","San Diego de Alejandría",7349
+"Jalisco","San Gabriel",16105
+"Jalisco","San Ignacio Cerro Gordo",18952
+"Jalisco","San Juan de los Lagos",69725
+"Jalisco","San Juanito de Escobedo",9420
+"Jalisco","San Julián",15890
+"Jalisco","San Marcos *",3783
+"Jalisco","San Martín de Bolaños *",3122
+"Jalisco","San Martín Hidalgo",27777
+"Jalisco","San Miguel el Alto",32960
+"Jalisco","San Pedro Tlaquepaque",664193
+"Jalisco","San Sebastián del Oeste",5643
+"Jalisco","Santa María de los Ángeles *",3033
+"Jalisco","Santa María del Oro *",2028
+"Jalisco","Sayula",36778
+"Jalisco","Tala",80365
+"Jalisco","Talpa de Allende",15126
+"Jalisco","Tamazula de Gordiano",38396
+"Jalisco","Tapalpa",19506
+"Jalisco","Tecalitlán",16579
+"Jalisco","Techaluta de Montenegro *",3703
+"Jalisco","Tecolotlán",17257
+"Jalisco","Tenamaxtlán",7005
+"Jalisco","Teocaltiche",41278
+"Jalisco","Teocuitatlán de Corona",10317
+"Jalisco","Tepatitlán de Morelos",141322
+"Jalisco","Tequila",42009
+"Jalisco","Teuchitlán",9608
+"Jalisco","Tizapán el Alto",20961
+"Jalisco","Tlajomulco de Zúñiga",549442
+"Jalisco","Tolimán",10310
+"Jalisco","Tomatlán",35824
+"Jalisco","Tonalá",536111
+"Jalisco","Tonaya",5960
+"Jalisco","Tonila",7919
+"Jalisco","Totatiche",4412
+"Jalisco","Tototlán",23171
+"Jalisco","Tuxcacuesco *",4229
+"Jalisco","Tuxcueca",6156
+"Jalisco","Tuxpan",34535
+"Jalisco","Unión de San Antonio",17915
+"Jalisco","Unión de Tula",13446
+"Jalisco","Valle de Guadalupe",6924
+"Jalisco","Valle de Juárez",5389
+"Jalisco","Villa Corona",17824
+"Jalisco","Villa Guerrero",5417
+"Jalisco","Villa Hidalgo",20257
+"Jalisco","Villa Purificación",10704
+"Jalisco","Yahualica de González Gallo",22586
+"Jalisco","Zacoalco de Torres",28205
+"Jalisco","Zapopan",1332272
+"Jalisco","Zapotiltic",29190
+"Jalisco","Zapotitlán de Vadillo",7027
+"Jalisco","Zapotlán del Rey",17893
+"Jalisco","Zapotlán el Grande",105423
+"Jalisco","Zapotlanejo",68519
+"México","Acambay de Ruíz Castañeda",66034
+"México","Acolman",152506
+"México","Aculco",49026
+"México","Almoloya de Alquisiras",14846
+"México","Almoloya de Juárez",176237
+"México","Almoloya del Río",11126
+"México","Amanalco",24669
+"México","Amatepec",26610
+"México","Amecameca",50904
+"México","Apaxco",29347
+"México","Atenco",62392
+"México","Atizapán",11875
+"México","Atizapán de Zaragoza",523296
+"México","Atlacomulco",100675
+"México","Atlautla",30945
+"México","Axapusco",27709
+"México","Ayapango",9863
+"México","Calimaya",56574
+"México","Capulhuac",35495
+"México","Chalco",343701
+"México","Chapa de Mota",28289
+"México","Chapultepec",11764
+"México","Chiautla",29159
+"México","Chicoloapan",204107
+"México","Chiconcuac",25543
+"México","Chimalhuacán",679811
+"México","Coacalco de Berriozábal",284462
+"México","Coatepec Harinas",39897
+"México","Cocotitlán",14414
+"México","Coyotepec",41810
+"México","Cuautitlán",149550
+"México","Cuautitlán Izcalli",531041
+"México","Donato Guerra",34000
+"México","Ecatepec de Morelos",1677678
+"México","Ecatzingo",9414
+"México","El Oro",37343
+"México","Huehuetoca",128486
+"México","Hueypoxtla",43784
+"México","Huixquilucan",267858
+"México","Isidro Fabela",11726
+"México","Ixtapaluca",495563
+"México","Ixtapan de la Sal",35552
+"México","Ixtapan del Oro",6791
+"México","Ixtlahuaca",153184
+"México","Jaltenco",27825
+"México","Jilotepec",87927
+"México","Jilotzingo",19013
+"México","Jiquipilco",74314
+"México","Jocotitlán",65291
+"México","Joquicingo",13857
+"México","Juchitepec",25436
+"México","La Paz",293725
+"México","Lerma",146654
+"México","Luvianos",27860
+"México","Malinalco",27482
+"México","Melchor Ocampo",57152
+"México","Metepec",227827
+"México","Mexicaltzingo",12796
+"México","Morelos",29862
+"México","Naucalpan de Juárez",844219
+"México","Nextlalpan",39666
+"México","Nezahualcóyotl",1039867
+"México","Nicolás Romero",410118
+"México","Nopaltepec",8960
+"México","Ocoyoacac",66190
+"México","Ocuilan",34485
+"México","Otumba",35274
+"México","Otzoloapan *",3872
+"México","Otzolotepec",84519
+"México","Ozumba",29114
+"México","Papalotla *",3963
+"México","Polotitlán",13851
+"México","Rayón",13261
+"México","San Antonio la Isla",27230
+"México","San Felipe del Progreso",134143
+"México","San José del Rincón",93878
+"México","San Martín de las Pirámides",26960
+"México","San Mateo Atenco",75511
+"México","San Simón de Guerrero",6010
+"México","Santo Tomás",9682
+"México","Soyaniquilpan de Juárez",13290
+"México","Sultepec",26832
+"México","Tecámac",446008
+"México","Tejupilco",77799
+"México","Temamatla",12984
+"México","Temascalapa",38622
+"México","Temascalcingo",63721
+"México","Temascaltepec",31631
+"México","Temoaya",103834
+"México","Tenancingo",97891
+"México","Tenango del Aire",12470
+"México","Tenango del Valle",86380
+"México","Teoloyucan",66518
+"México","Teotihuacán",56993
+"México","Tepetlaoxtoc",30680
+"México","Tepetlixpa",19843
+"México","Tepotzotlán",94198
+"México","Tequixquiac",36902
+"México","Texcaltitlán",19206
+"México","Texcalyacac *",5246
+"México","Texcoco",240749
+"México","Tezoyuca",41333
+"México","Tianguistenco",77147
+"México","Timilpan",15664
+"México","Tlalmanalco",47390
+"México","Tlalnepantla de Baz",700734
+"México","Tlatlaya",34937
+"México","Toluca",873536
+"México","Tonanitla",9728
+"México","Tonatico",12324
+"México","Tultepec",150182
+"México","Tultitlán",520557
+"México","Valle de Bravo",65703
+"México","Valle de Chalco Solidaridad",396157
+"México","Villa de Allende",52641
+"México","Villa del Carbón",47151
+"México","Villa Guerrero",67929
+"México","Villa Victoria",104612
+"México","Xalatlaco",29572
+"México","Xonacatlán",51646
+"México","Zacazonapan *",4137
+"México","Zacualpan",14958
+"México","Zinacantepec",188927
+"México","Zumpahuacán *",16927
+"México","Zumpango",199069
+"Michoacán de Ocampo","Acuitzio",11425
+"Michoacán de Ocampo","Aguililla",15241
+"Michoacán de Ocampo","Álvaro Obregón",21651
+"Michoacán de Ocampo","Angamacutiro",15193
+"Michoacán de Ocampo","Angangueo",11120
+"Michoacán de Ocampo","Apatzingán",128250
+"Michoacán de Ocampo","Aporo *",3218
+"Michoacán de Ocampo","Aquila",24864
+"Michoacán de Ocampo","Ario",36549
+"Michoacán de Ocampo","Arteaga",22138
+"Michoacán de Ocampo","Briseñas",11328
+"Michoacán de Ocampo","Buenavista",47498
+"Michoacán de Ocampo","Carácuaro",9485
+"Michoacán de Ocampo","Charapan",12373
+"Michoacán de Ocampo","Charo",21784
+"Michoacán de Ocampo","Chavinda",10258
+"Michoacán de Ocampo","Cherán",19081
+"Michoacán de Ocampo","Chilchota",39035
+"Michoacán de Ocampo","Chinicuila *",5032
+"Michoacán de Ocampo","Chucándiro",4559
+"Michoacán de Ocampo","Churintzio",5016
+"Michoacán de Ocampo","Churumuco",15455
+"Michoacán de Ocampo","Coahuayana",14392
+"Michoacán de Ocampo","Coalcomán de Vázquez Pallares",18444
+"Michoacán de Ocampo","Coeneo",20749
+"Michoacán de Ocampo","Cojumatlán de Régules",10450
+"Michoacán de Ocampo","Contepec",34193
+"Michoacán de Ocampo","Copándaro",9151
+"Michoacán de Ocampo","Cotija",19018
+"Michoacán de Ocampo","Cuitzeo",29681
+"Michoacán de Ocampo","Ecuandureo",12788
+"Michoacán de Ocampo","Epitacio Huerta",16622
+"Michoacán de Ocampo","Erongarícuaro",15291
+"Michoacán de Ocampo","Gabriel Zamora",22707
+"Michoacán de Ocampo","Hidalgo",122619
+"Michoacán de Ocampo","Huandacareo",11723
+"Michoacán de Ocampo","Huaniqueo",8093
+"Michoacán de Ocampo","Huetamo",40818
+"Michoacán de Ocampo","Huiramba",8838
+"Michoacán de Ocampo","Indaparapeo",16990
+"Michoacán de Ocampo","Irimbo",15215
+"Michoacán de Ocampo","Ixtlán",12720
+"Michoacán de Ocampo","Jacona",69744
+"Michoacán de Ocampo","Jiménez",12426
+"Michoacán de Ocampo","Jiquilpan",32950
+"Michoacán de Ocampo","José Sixto Verduzco",26214
+"Michoacán de Ocampo","Juárez",14387
+"Michoacán de Ocampo","Jungapeo",21548
+"Michoacán de Ocampo","La Huacana",34243
+"Michoacán de Ocampo","La Piedad",103702
+"Michoacán de Ocampo","Lagunillas",5571
+"Michoacán de Ocampo","Lázaro Cárdenas",183185
+"Michoacán de Ocampo","Los Reyes",69723
+"Michoacán de Ocampo","Madero",18030
+"Michoacán de Ocampo","Maravatío",88535
+"Michoacán de Ocampo","Marcos Castellanos",13750
+"Michoacán de Ocampo","Morelia",784776
+"Michoacán de Ocampo","Morelos",7806
+"Michoacán de Ocampo","Múgica",45484
+"Michoacán de Ocampo","Nahuatzen",28074
+"Michoacán de Ocampo","Nocupétaro",8195
+"Michoacán de Ocampo","Nuevo Parangaricutiro",19595
+"Michoacán de Ocampo","Nuevo Urecho",7988
+"Michoacán de Ocampo","Numarán",9794
+"Michoacán de Ocampo","Ocampo",24424
+"Michoacán de Ocampo","Pajacuarán",19440
+"Michoacán de Ocampo","Panindícuaro",15705
+"Michoacán de Ocampo","Paracho",37464
+"Michoacán de Ocampo","Parácuaro",26789
+"Michoacán de Ocampo","Pátzcuaro",93265
+"Michoacán de Ocampo","Penjamillo",16920
+"Michoacán de Ocampo","Peribán",27832
+"Michoacán de Ocampo","Purépero",15255
+"Michoacán de Ocampo","Puruándiro",67644
+"Michoacán de Ocampo","Queréndaro",13836
+"Michoacán de Ocampo","Quiroga",27862
+"Michoacán de Ocampo","Sahuayo",76587
+"Michoacán de Ocampo","Salvador Escalante",49588
+"Michoacán de Ocampo","San Lucas",17845
+"Michoacán de Ocampo","Santa Ana Maya",12466
+"Michoacán de Ocampo","Senguio",19146
+"Michoacán de Ocampo","Susupuato",8804
+"Michoacán de Ocampo","Tacámbaro",76661
+"Michoacán de Ocampo","Tancítaro",31100
+"Michoacán de Ocampo","Tangamandapio",29268
+"Michoacán de Ocampo","Tangancícuaro",33621
+"Michoacán de Ocampo","Tanhuato",15352
+"Michoacán de Ocampo","Taretan",14819
+"Michoacán de Ocampo","Tarímbaro",105400
+"Michoacán de Ocampo","Tepalcatepec",23842
+"Michoacán de Ocampo","Tingambato",15010
+"Michoacán de Ocampo","Tingüindín",14532
+"Michoacán de Ocampo","Tiquicheo de Nicolás Romero",13731
+"Michoacán de Ocampo","Tlalpujahua",27788
+"Michoacán de Ocampo","Tlazazalca",6202
+"Michoacán de Ocampo","Tocumbo",11994
+"Michoacán de Ocampo","Tumbiscatío",6947
+"Michoacán de Ocampo","Turicato",31849
+"Michoacán de Ocampo","Tuxpan",27371
+"Michoacán de Ocampo","Tuzantla",15383
+"Michoacán de Ocampo","Tzintzuntzan",14432
+"Michoacán de Ocampo","Tzitzio",8966
+"Michoacán de Ocampo","Uruapan",334749
+"Michoacán de Ocampo","Venustiano Carranza",24708
+"Michoacán de Ocampo","Villamar",17166
+"Michoacán de Ocampo","Vista Hermosa",20624
+"Michoacán de Ocampo","Yurécuaro",31404
+"Michoacán de Ocampo","Zacapu",75632
+"Michoacán de Ocampo","Zamora",196208
+"Michoacán de Ocampo","Zináparo *",3200
+"Michoacán de Ocampo","Zinapécuaro",47327
+"Michoacán de Ocampo","Ziracuaretiro",17394
+"Michoacán de Ocampo","Zitácuaro",164144
