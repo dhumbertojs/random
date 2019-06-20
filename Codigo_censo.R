@@ -7,8 +7,8 @@ setwd("~")
 #Supuesto: se calcula la tasa exponencial y suponemos que cada año crece a ese ritmo
 
 #Directorios
-inp = "/Users/Emmanuel RB/Documents/tesis/input"
-out = "/Users/Emmanuel RB/Documents/tesis/Datos"
+inp <- "/home/dhjs/Documentos/R_projects/tesis/input"
+out <- "/home/dhjs/Documentos/R_projects/tesis/Datos"
 
 library(readxl)
 library(dplyr)
@@ -43,7 +43,7 @@ censo90 <- censo90 %>%
                                 ifelse(substr(Clave, 3, 5) == "998" , 1, 
                                        ifelse(substr(Clave, 3, 5) == "999", 1, 0)))))) %>%
   filter(edos == 0 & quit == 0) %>%
-  select(Clave, muniYear, Total)#, Hombres, Mujeres)
+  select(Clave, muniYear, Total...3)#, Hombres, Mujeres)
 colnames(censo90) <- c("Clave", "muniYear_90", "Total_90")#, "Hombres_90", "Mujeres_90")
 
 censo95 <- read_excel(paste(inp, "Conteo_1995.xlsx", sep = "/"), range = "a5:ab2675")
@@ -58,7 +58,7 @@ censo95 <- censo95  %>%
                                        ifelse(substr(Clave, 3, 5) == "999", 1, 0))))),
     muniYear = factor(paste(Clave, year, sep = "_"))) %>% 
   filter(edos == 0 & quit == 0) %>% 
-  select(Clave, muniYear, Total)#, Hombres, Mujeres)
+  select(Clave, muniYear, Total...3)#, Hombres, Mujeres)
 colnames(censo95) <- c("Clave", "muniYear_95", "Total_95")#, "Hombres_95", "Mujeres_95")
 
 censo00 <- read_excel(paste(inp, "Censo_2000.xlsx", sep = "/"), range = "a5:x2676")
@@ -74,7 +74,7 @@ censo00 <- censo00 %>%
     muniYear = factor(paste(Clave, year, sep = "_"))
   ) %>% 
   filter(edos == 0 & quit == 0) %>%
-  select(Clave, muniYear, Total)#, Hombres, Mujeres)
+  select(Clave, muniYear, Total...3)#, Hombres, Mujeres)
 colnames(censo00) <- c("Clave", "muniYear_00", "Total_00")#, "Hombres_00", "Mujeres_00" )
 
 censo05 <- read_excel(paste(inp, "Conteo_2005.xlsx", sep = "/"), range = "a5:y2677")
@@ -90,7 +90,7 @@ censo05 <- censo05 %>%
     muniYear = factor(paste(Clave, year, sep = "_"))
   ) %>%
   filter(edos == 0 & quit == 0) %>%
-  select(Clave, muniYear, Total)#, Hombre, Mujer)
+  select(Clave, muniYear, Total...3)#, Hombre, Mujer)
 colnames(censo05) <- c("Clave", "muniYear_05", "Total_05")#, "Hombres_05", "Mujeres_05")
 
 censo10 <- read_excel(paste(inp, "Censo_2010.xlsx", sep = "/"), range = "a5:z2677")
@@ -106,10 +106,10 @@ censo10 <- censo10 %>%
     muniYear = factor(paste(Clave, year, sep = "_"))
   ) %>%
   filter(edos == 0 & quit == 0) %>%
-  select(Clave, muniYear, Total)#, Hombre, Mujer)
+  select(Clave, muniYear, Total...3)#, Hombre, Mujer)
 colnames(censo10) <- c("Clave", "muniYear_10", "Total_10")#, "Hombres_10", "Mujeres_10")
 
-int15 <- "/Users/Emmanuel RB/Documents/ICA/Tesis/input/Intercensal 2015"
+int15 <- "/home/dhjs/Documentos/R_projects/tesis/input/Intercensal 2015"
 
 ags15 <- read_excel(paste(int15, "01_poblacion_ags.xls", sep = "/"), sheet = 3, range = "a8:g1305")
 colnames(ags15) <- c("estado", "municipio", "edad", "estimador", "Total_15", "Hombres_15", "Mujeres_15")
@@ -525,8 +525,8 @@ pob <- pob %>%
     
     muniYear_89 = factor(paste(Clave, "1989", sep = "_")),
     Total_89 = round(Total_80 * (exp(tasa80_90 * 9))),
-    
-    tasa90_95 = ((log(Total_95 / Total_90)) / 10),
+    #tasa 90 95####
+    tasa90_95 = ((log(Total_95 / Total_90)) / 5),
     muniYear_91 = factor(paste(Clave, "1991", sep = "_")),
     Total_91 = round(Total_90 * (exp(tasa90_95 * 1))),
     
@@ -538,21 +538,21 @@ pob <- pob %>%
     
     muniYear_94 = factor(paste(Clave, "1994", sep = "_")),
     Total_94 = round(Total_90 * (exp(tasa90_95 * 4))),
-    
-    tasa95_00 = ((log(Total_00 / Total_95)) / 10),
+    #tasa 95 00####
+    tasa95_00 = ((log(Total_00 / Total_95)) / 5),
     muniYear_96 = factor(paste(Clave, "1996", sep = "_")),
-    Total_96 = round(Total_90 * (exp(tasa95_00 * 1))),
+    Total_96 = round(Total_95 * (exp(tasa95_00 * 1))),
     
     muniYear_97 = factor(paste(Clave, "1997", sep = "_")),
-    Total_97 = round(Total_90 * (exp(tasa95_00 * 2))),
+    Total_97 = round(Total_95 * (exp(tasa95_00 * 2))),
     
     muniYear_98 = factor(paste(Clave, "1998", sep = "_")),
-    Total_98 = round(Total_90 * (exp(tasa95_00 * 3))),
+    Total_98 = round(Total_95 * (exp(tasa95_00 * 3))),
     
     muniYear_99 = factor(paste(Clave, "1999", sep = "_")),
-    Total_99 = round(Total_90 * (exp(tasa95_00 * 4))),
-    
-    tasa00_05 = ((log(Total_05 / Total_00)) / 10),
+    Total_99 = round(Total_95 * (exp(tasa95_00 * 4))),
+    #tasa 00 05####
+    tasa00_05 = ((log(Total_05 / Total_00)) / 5),
     muniYear_01 = factor(paste(Clave, "2001", sep = "_")),
     Total_01 = round(Total_00 * (exp(tasa00_05 * 1))),
     
@@ -564,8 +564,8 @@ pob <- pob %>%
     
     muniYear_04 = factor(paste(Clave, "2004", sep = "_")),
     Total_04 = round(Total_00 * (exp(tasa00_05 * 4))),
-    
-    tasa05_10 = ((log(Total_10 / Total_05)) / 10),
+    #tasa 05 10####
+    tasa05_10 = ((log(Total_10 / Total_05)) / 5),
     muniYear_06 = factor(paste(Clave, "2006", sep = "_")),
     Total_06 = round(Total_05 * (exp(tasa05_10 * 1))),
     
@@ -577,8 +577,8 @@ pob <- pob %>%
     
     muniYear_09 = factor(paste(Clave, "2009", sep = "_")),
     Total_09 = round(Total_05 * (exp(tasa05_10 * 4))),
-    
-    tasa10_15 = ((log(Total_15 / Total_10)) / 10),
+    #tasa 10 15####
+    tasa10_15 = ((log(Total_15 / Total_10)) / 5),
     muniYear_11 = factor(paste(Clave, "2011", sep = "_")),
     Total_11 = round(Total_10 * (exp(tasa10_15 * 1))),
     
@@ -730,7 +730,6 @@ rm(censo80, censo81, censo82, censo83, censo84, censo85, censo86, censo87,
    censo12, censo13, censo14, censo15, pob, censo2015)
 
 summary(censo)
-View(censo[is.na(censo$Pob_Total),])
 
 as.data.frame(censo, row.names = NULL)
 write.csv(censo, paste(out, "censo.csv", sep = "/"), row.names = F, fileEncoding ="UTF-8")
