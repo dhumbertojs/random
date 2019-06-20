@@ -1,17 +1,17 @@
 rm(list=ls())
 setwd("~")
 
-library(plyr)
+#library(plyr)
 library(dplyr)
 library(readxl)
 library(stringr)
 
-inp = "/Users/Emmanuel RB/Documents/tesis/input"
-out = "/Users/Emmanuel RB/Documents/tesis/Datos"
+inp = "/home/dhjs/Documentos/R_projects/tesis/input"
+out = "/home/dhjs/Documentos/R_projects/tesis/Datos"
 
 ####Elecciones 2014####
 ##Nayarit
-nay <- read.csv(paste(inp, 'tabula-nay14pdf.csv', sep = '/'), header = F, stringsAsFactors = F)
+nay <- read.csv(paste(inp, 'tabula-Nay14pdf.csv', sep = '/'), header = F, stringsAsFactors = F)
 colnames(nay) <- c("Municipio", "PAN", "PRI_PVEM_PNA", "PRD", "PT", "PRS", "MC", "INDEP", "noreg", "nulos")
 
 nay <- nay %>%
@@ -60,16 +60,16 @@ rm(nay, Winner2)
 la_paz <- read_excel(paste(inp, "LA_PAZ.xlsx", sep = "/"), range = "c374:k375")
 colnames(la_paz) <- (c("TOTAL", "PAN", "PRI_PVEM_PNA", "PRD_MC_PT", "Morena", "Humanista", "PES", "noreg", "nulos"))
 
-loreto <- read_excel(paste(inp, "loreto.xlsx", sep = "/"), range = "c29:k30")
+loreto <- read_excel(paste(inp, "LORETO.xlsx", sep = "/"), range = "c29:k30")
 colnames(loreto) <- (c("TOTAL", "PAN", "PRI_PVEM_PNA", "PRD_MC_PT", "Morena", "Humanista", "PES", "noreg", "nulos"))
 
-mulege <- read_excel(paste(inp, "mulege.xlsx", sep = "/"), range = "c86:k87")
+mulege <- read_excel(paste(inp, "MULEGE.xlsx", sep = "/"), range = "c86:k87")
 colnames(mulege) <- (c("TOTAL", "PAN", "PRI_PVEM_PNA", "PRD_MC_PT", "Morena", "Humanista", "PES", "noreg", "nulos"))
 
-comondu <- read_excel(paste(inp, "comondu.xlsx", sep = "/"), range = "c111:k112")
+comondu <- read_excel(paste(inp, "COMONDU.xlsx", sep = "/"), range = "c111:k112")
 colnames(comondu) <- (c("TOTAL", "PAN", "PRI_PVEM_PNA", "PRD_MC_PT", "Morena", "Humanista", "PES", "noreg", "nulos"))
 
-los_cabos <- read_excel(paste(inp, "los_cabos.xlsx", sep = "/"), range = "c324:k325")
+los_cabos <- read_excel(paste(inp, "LOS_CABOS.xlsx", sep = "/"), range = "c324:k325")
 colnames(los_cabos) <- (c("TOTAL", "PAN", "PRI_PVEM_PNA", "PRD_MC_PT", "Morena", "Humanista", "PES", "noreg", "nulos"))
 
 bcs15 <- bind_rows(list(la_paz, loreto, comondu, los_cabos, mulege))
@@ -88,47 +88,47 @@ rm(la_paz, loreto, comondu, los_cabos, mulege)
 
 ####Campeche####
 camp <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 1, range = "e362:y363")
-camp <- select(camp, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+camp <- select(camp, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(camp) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 calkini <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 2, range = "e89:y90")
-calkini <- select(calkini, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+calkini <- select(calkini, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(calkini) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 carmen <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 3, range = "e299:y300")
-carmen <- select(carmen, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+carmen <- select(carmen, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(carmen) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 champo <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 4, range = "e125:y126")
-champo <- select(champo, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+champo <- select(champo, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(champo) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 hecel <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 5, range = "e49:y50")
-hecel <- select(hecel, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+hecel <- select(hecel, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(hecel) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 hopel <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 6, range = "e64:y65")
-hopel <- select(hopel, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+hopel <- select(hopel, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(hopel) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 pali <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 7, range = "e26:y27")
-pali <- select(pali, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+pali <- select(pali, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(pali) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 tena <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 8, range = "e27:y28")
-tena <- select(tena, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+tena <- select(tena, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(tena) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 escar <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 9, range = "e83:y84")
-escar <- select(escar, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+escar <- select(escar, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(escar) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 cande <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 10, range = "e69:y70")
-cande <- select(cande, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+cande <- select(cande, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(cande) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 calak <- read_excel(paste(inp, "RESULTADOS POR CASILLA - AYUNTAMIENTOS - CANDIDATO.xlsx", sep = "/"), sheet = 11, range = "e50:y51")
-calak <- select(calak, X__1, X__3, X__5, X__7, X__9, X__11, X__13, X__15, X__17, X__21)
+calak <- select(calak, ...1, ...3, ...5, ...7, ...9, ...11, ...13, ...15, ...17, ...21)
 colnames(calak) <- c("PAN", "PRD", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM", "nulos")
 
 camp15 <- bind_rows(list(calak, calkini, camp, cande, carmen, champo, escar, hecel, hopel, pali, tena))
@@ -284,8 +284,8 @@ cdmx <- cdmx %>%
     PRD_PT = as.numeric(PRD_PT),
     noreg = as.numeric(noreg),
     nulos = as.numeric(nulos)
-    )
-  
+  )
+
 cdmx15 <- cdmx %>%
   mutate(
     S_PRI_PVEM = ifelse(PRI_PVEM != 0, rowSums(cdmx[c("PRI", "PVEM", "PRI_PVEM")]), PRI_PVEM),
@@ -429,8 +429,8 @@ rm(mex, add, clave, gana, Winner2)
 
 ####Michoacan####
 mich <- read_excel(paste(inp, "computos_municipales_2015.xlsx", sep = "/"), range = "d3:bv115")
-mich <- select(mich, -c("X__13", "X__14", "X__15", "X__16", "X__17", "X__18", "X__19", "X__20", "X__21", "X__22", "X__23", "X__24", "X__25", "X__26", "X__27", "X__28", "X__29", "X__30", "X__31", "X__32", "X__33", "X__34", "X__35", "X__36", "X__37", "X__38", "X__39", "X__40", "X__41", "X__42", "X__43", "X__44", "X__45"))
-colnames(mich) <- c("MUNICIPIO" ,"PAN", "PRI", "PRD", "PT", "PVEM", "MC", "PNA", "Morena", "Humanista", "PES", "INDEP", "PAN_PRI_PRD_PNA_Humanista_PES", "PRD_PT_PAN_PNA_Humanista", "PRD_PTPAN_PNA_PES", "PRD_PT_PNA_Humanista", "PRD_PT_PNA_PES", "PAN_PRI_PVEM", "PAN_PRD_PT", "PRD_PT_PNA", "PRD_PT_Humanista", "PRD_PT_PES", "PRD_PNA_PES", "PT_PNA_Humanista", "PT_Humanista_PES", "PAN_PRD", "PAN_PT", "PAN_MC", "PAN_Humanista", "PRI_PVEM", "PRD_PT", "PRD_PNA", "PRD_PES", "PT_MC", "PT_Humanista", "PT_PES", "noreg", "nulos")
+mich <- select(mich, -c("...13", "...14", "...15", "...16", "...17", "...18", "...19", "...20", "...21", "...22", "...23", "...24", "...25", "...26", "...27", "...28", "...29", "...30", "...31", "...32", "...33", "...34", "...35", "...36", "...37", "...38", "...39", "...40", "...41", "...42", "...43", "...44", "...45"))
+colnames(mich) <- c("MUNICIPIO" ,"PAN", "PRI", "PRD", "PT", "PVEM", "MC", "PNA", "Morena", "Humanista", "PES", "INDEP", "PAN_PRI_PRD_PNA_Humanista_PES", "PRD_PT_PAN_PNA_Humanista", "PRD_PT_PAN_PNA_PES", "PRD_PT_PNA_Humanista", "PRD_PT_PNA_PES", "PAN_PRI_PVEM", "PAN_PRD_PT", "PRD_PT_PNA", "PRD_PT_Humanista", "PRD_PT_PES", "PRD_PNA_PES", "PT_PNA_Humanista", "PT_Humanista_PES", "PAN_PRD", "PAN_PT", "PAN_MC", "PAN_Humanista", "PRI_PVEM", "PRD_PT", "PRD_PNA", "PRD_PES", "PT_MC", "PT_Humanista", "PT_PES", "noreg", "nulos")
 clave <- read.csv(paste(inp, "tabula-mich.csv", sep = "/"), fileEncoding = "UTF-8", header = F, col.names = c("muni", "MUNICIPIO"), colClasses = "factor")
 clave$MUNICIPIO <- toupper(clave$MUNICIPIO)
 add <- data.frame("muni" = as.factor(c("007", "074", "037", "056", "092", "015", "096")), "MUNICIPIO" = c("ÁPORO", "RÉGULES", "HUANÍQUEO", "NAHUÁTZEN", "TIQUICHEO", "COALCOMÁN", "TUMBISCATIO"))
@@ -444,7 +444,7 @@ mich15 <- mich %>%
     muniYear = paste(mpo, year, sep = "_"),
     PAN_PRI_PRD_PNA_Humanista_PES = as.numeric(PAN_PRI_PRD_PNA_Humanista_PES), 
     PRD_PT_PAN_PNA_Humanista = as.numeric(PRD_PT_PAN_PNA_Humanista), 
-    PRD_PTPAN_PNA_PES = as.numeric(PRD_PTPAN_PNA_PES), 
+    PRD_PT_PAN_PNA_PES = as.numeric(PRD_PT_PAN_PNA_PES), 
     PRD_PT_PNA_Humanista = as.numeric(PRD_PT_PNA_Humanista), 
     PRD_PT_PNA_PES = as.numeric(PRD_PT_PNA_PES), 
     PAN_PRI_PVEM = as.numeric(PAN_PRI_PVEM), 
@@ -467,9 +467,9 @@ mich15 <- mich %>%
     PT_Humanista = as.numeric(PT_Humanista), 
     PT_PES = as.numeric(PT_PES)
   ) %>%
-  select(muniYear, state, year, muni, PAN, PRI, PRD, PT, PVEM, MC, PNA, Morena, Humanista, PES, INDEP, PAN_PRI_PRD_PNA_Humanista_PES, PRD_PT_PAN_PNA_Humanista, PRD_PTPAN_PNA_PES, PRD_PT_PNA_Humanista, PRD_PT_PNA_PES, PAN_PRI_PVEM, PAN_PRD_PT, PRD_PT_PNA, PRD_PT_Humanista, PRD_PT_PES, PRD_PNA_PES, PT_PNA_Humanista, PT_Humanista_PES, PAN_PRD, PAN_PT, PAN_MC, PAN_Humanista, PRI_PVEM, PRD_PT, PRD_PNA, PRD_PES, PT_MC, PT_Humanista, PT_PES, noreg, nulos)
+  select(muniYear, state, year, muni, PAN, PRI, PRD, PT, PVEM, MC, PNA, Morena, Humanista, PES, INDEP, PAN_PRI_PRD_PNA_Humanista_PES, PRD_PT_PAN_PNA_Humanista, PRD_PT_PAN_PNA_PES, PRD_PT_PNA_Humanista, PRD_PT_PNA_PES, PAN_PRI_PVEM, PAN_PRD_PT, PRD_PT_PNA, PRD_PT_Humanista, PRD_PT_PES, PRD_PNA_PES, PT_PNA_Humanista, PT_Humanista_PES, PAN_PRD, PAN_PT, PAN_MC, PAN_Humanista, PRI_PVEM, PRD_PT, PRD_PNA, PRD_PES, PT_MC, PT_Humanista, PT_PES, noreg, nulos)
 
-gana <- select(mich15, PAN, PRI, PRD, PT, PVEM, MC, PNA, Morena, Humanista, PES, INDEP, PAN_PRI_PRD_PNA_Humanista_PES, PRD_PT_PAN_PNA_Humanista, PRD_PTPAN_PNA_PES, PRD_PT_PNA_Humanista, PRD_PT_PNA_PES, PAN_PRI_PVEM, PAN_PRD_PT, PRD_PT_PNA, PRD_PT_Humanista, PRD_PT_PES, PRD_PNA_PES, PT_PNA_Humanista, PT_Humanista_PES, PAN_PRD, PAN_PT, PAN_MC, PAN_Humanista, PRI_PVEM, PRD_PT, PRD_PNA, PRD_PES, PT_MC, PT_Humanista, PT_PES, noreg, nulos)
+gana <- select(mich15, PAN, PRI, PRD, PT, PVEM, MC, PNA, Morena, Humanista, PES, INDEP, PAN_PRI_PRD_PNA_Humanista_PES, PRD_PT_PAN_PNA_Humanista, PRD_PT_PAN_PNA_PES, PRD_PT_PNA_Humanista, PRD_PT_PNA_PES, PAN_PRI_PVEM, PAN_PRD_PT, PRD_PT_PNA, PRD_PT_Humanista, PRD_PT_PES, PRD_PNA_PES, PT_PNA_Humanista, PT_Humanista_PES, PAN_PRD, PAN_PT, PAN_MC, PAN_Humanista, PRI_PVEM, PRD_PT, PRD_PNA, PRD_PES, PT_MC, PT_Humanista, PT_PES, noreg, nulos)
 Winner2 <- colnames(gana)[apply(gana, 1, which.max)]
 
 Winner2 <- as.data.frame(Winner2)
@@ -503,7 +503,7 @@ mor15 <- bind_cols(mor15, Winner2)
 rm(clave, add, mor)
 
 ####Nuevo León####
-nl <- read.csv(paste(inp, "ayuntamientos_nl_2015.csv", sep = "/"))
+nl <- read_excel(paste(inp, 'ayuntamientos_nl_2015.xlsx', sep = '/'))
 colnames(nl) <- c("Seccion", "Casilla", "Elección" ,"MUNICIPIO", "Distrito", "Estatus", "LN", "Total", "PAN", "PRI", "PRD", "PT", "PVEM", "MC", "PNA", "PD", "PCC", "Morena", "Humanista", "PES", "INDEP1", "PRI_PVEM_PNA_PD", "PRI_PVEM_PNA", "PRI_PVEM_PD", "PRI_PNA_PD", "PVEM_PNA_PD", "PRI_PVEM", "PRI_PNA", "PRI_PD", "PVEM_PNA", "PVEM_PD", "PNA_PD", "PRD_PT", "nulos" )
 clave <- read.csv(paste(inp, "tabula-NL.csv", sep = "/"), header = F, colClasses = "factor", col.names = c("muni", "MUNICIPIO"), fileEncoding = "UTF-8")
 add <- data.frame("muni" = as.factor("010"), "MUNICIPIO" = "El Carmen")
@@ -533,8 +533,6 @@ rm(nl, clave, add)
 
 ####Queretaro####
 qro <- read_excel(paste(inp, "Aytos_2015.xlsx", sep = "/"))
-colnames(qro)[12] <- "noreg"
-colnames(qro)[13] <- "nulos"
 qro <- qro %>%
   mutate(
     PAN = as.numeric(PAN),
@@ -547,16 +545,16 @@ qro <- qro %>%
     Morena = as.numeric(Morena), 
     PT = as.numeric(PT), 
     PRI_PT = as.numeric(PRI_PT), 
-    noreg = as.numeric(noreg), 
-    nulos = as.numeric(nulos), 
-    X__1 = as.numeric(X__1), 
-    X__2 = as.numeric(X__2), 
-    X__3 = as.numeric(X__3), 
-    X__4 = as.numeric(X__4), 
-    X__5 = as.numeric(X__5), 
-    X__6 = as.numeric(X__6), 
-    X__7 = as.numeric(X__7), 
-    X__8 = as.numeric(X__8)
+    NOREG = as.numeric(NOREG), 
+    NULOS = as.numeric(NULOS), 
+    ...14 = as.numeric(...14), 
+    ...15 = as.numeric(...15), 
+    ...16 = as.numeric(...16), 
+    ...17 = as.numeric(...17), 
+    ...18 = as.numeric(...18), 
+    ...19 = as.numeric(...19), 
+    ...20 = as.numeric(...20), 
+    ...21 = as.numeric(...21)
   )
 clave <- read.csv(paste(inp, "tabula-queretaro.csv", sep = "/"), fileEncoding = "UTF-8", header = F, colClasses = "factor", col.names = c("muni", "MUNICIPIO"))
 clave$MUNICIPIO <- toupper(clave$MUNICIPIO)
@@ -737,160 +735,241 @@ Winner2 <- as.data.frame(Winner2)
 qro15 <- bind_cols(qro15, Winner2)
 
 ####San Luis Potosi####
-ayto_slp = "/Users/Emmanuel RB/Documents/tesis/input/slp_15"
+ayto_slp = "/home/dhjs/Documentos/R_projects/tesis/input/slp_15"
 
 ay1 <- read_excel(paste(ayto_slp, "1_cme_ ciudad fernandez(1).xls", sep = "/"), range = "a3:v63")
-ay1 <- ay1[-1,]
+ay1 <- ay1[-1, -(10:12)]
+colnames(ay1)[19] <- "PRD_PMC"
 
 ay2 <- read_excel(paste(ayto_slp, "1_cme_ ebano(1).xls", sep = "/"), range = "a3:y59")
-ay2 <- ay2[-1,]
+ay2 <- ay2[-1,-(9:15)]
+colnames(ay2)[17] <- "PRI_PVEM_PNA"
+colnames(ay2)[18] <- "PRD_PCP"
 
 ay3 <- read_excel(paste(ayto_slp, "1_cme_ guadalcazar(1).xls", sep = "/"), range = "a3:w45")
-ay3 <- ay3[-1,]
+ay3 <- ay3[-1,-(8:14)]
+colnames(ay3)[15] <- "PAN_PT_PMC"
+colnames(ay3)[16] <- "PRI_PNA"
 
 ay4 <- read_excel(paste(ayto_slp, "1_cme_ san ciro(1).xls", sep = "/"), range = "a3:p23")
-ay4 <- ay4[-1,]
+ay4 <- ay4[-1,-(9:11)]
+colnames(ay4)[13] <- "PRI_PNA"
 
 ay5 <- read_excel(paste(ayto_slp, "1_cme_ santo domingo(1).xls", sep = "/"), range = "a3:v28")
-ay5 <- ay5[-1,]
+ay5 <- ay5[-1,-(8:15)]
+colnames(ay5)[13] <- "PAN_PT"
+colnames(ay5)[14] <- "PRD_PVEM_PCP"
 
 ay6 <- read_excel(paste(ayto_slp, "1_cme_ tampamolon corona(1).xls", sep = "/"), range = "a3:t24")
 ay6 <- ay6[-1,]
 
 ay7 <- read_excel(paste(ayto_slp, "1_cme_ tanquian de escobedo(1).xls", sep = "/"), range = "a3:r23")
-ay7 <- ay7[-1,]
+ay7 <- ay7[-1,-(8:11)]
+colnames(ay7)[14] <- "PAN_PRD_PT"
 
 ay8 <- read_excel(paste(ayto_slp, "1_cme_ villa hidalgo(1).xls", sep = "/"), range = "a3:w31")
-ay8 <- ay8[-1,]
+ay8 <- ay8[-1,-(8:14)]
+colnames(ay8)[15] <- "PAN_PT_PMC"
+colnames(ay8)[16] <- "PRI_PVEM"
 
 ay9 <- read_excel(paste(ayto_slp, "1_cme_ villa juarez(1).xls", sep = "/"), range = "a3:t24")
-ay9 <- ay9[-1,]
+ay9 <- ay9[-1,-(10:13)]
+colnames(ay9)[16] <- "PRD_PT_PMC"
 
 ay10 <- read_excel(paste(ayto_slp, "1_cme_ahualulco(1).xls", sep = "/"), range = "a3:z31")
-ay10 <- ay10[-1,]
+ay10 <- ay10[-1,-(8:17)]
+colnames(ay10)[14] <- "PAN_PMC"
+colnames(ay10)[15] <- "PRI_PVEM"
+colnames(ay10)[16] <- "PRD_PT_PNA"
 
 ay11 <- read_excel(paste(ayto_slp, "1_cme_alaquines(1).xls", sep = "/"), range = "a3:t23")
-ay11 <- ay11[-1,]
+ay11 <- ay11[-1,-(8:13)]
+colnames(ay11)[13] <- "PAN_PT"
+colnames(ay11)[14] <- "PRI_PNA"
 
 ay12 <- read_excel(paste(ayto_slp, "1_cme_aquismon(1).xls", sep = "/"), range = "a3:v62")
-ay12 <- ay12[-1,]
+ay12 <- ay12[-1,-(8:15)]
+colnames(ay12)[13] <- "PAN_PRD_PT"
+colnames(ay12)[14] <- "PRI_PVEM_PNA"
 
 ay13 <- read_excel(paste(ayto_slp, "1_cme_armadillo(1).xls", sep = "/"), range = "a3:r15")
-ay13 <- ay13[-1,]
+ay13 <- ay13[-1,-(9:12)]
+colnames(ay13)[14] <- "PRI_PVEM_PNA"
 
 ay14 <- read_excel(paste(ayto_slp, "1_cme_arriaga(1).xls", sep = "/"), range = "a3:x30")
-ay14 <- ay14[-1,]
+ay14 <- ay14[-1,-(8:14)]
+colnames(ay14)[17] <- "PAN_PRD_PT_PVEM_PMC_PNA"
 
 ay15 <- read_excel(paste(ayto_slp, "1_cme_axt(1).xls", sep = "/"), range = "a3:y45")
-ay15 <- ay15[-1,]
+ay15 <- ay15[-1,-(7:13)]
+colnames(ay15)[17] <- "PAN_PT_PMC"
+colnames(ay15)[18] <- "PRI_PVEM"
 
 ay16 <- read_excel(paste(ayto_slp, "1_cme_cardenas(1).xls", sep = "/"), range = "a3:aa33")
-ay16 <- ay16[-1,]
+ay16 <- ay16[-1,-(8:18)]
+colnames(ay16)[14] <- "PAN_PT_PMC"
+colnames(ay16)[15] <- "PRI_PVEM_PNA"
+colnames(ay16)[16] <- "PRD_PCP"
 
 ay17 <- read_excel(paste(ayto_slp, "1_cme_catorce(1).xls", sep = "/"), range = "a3:s24")
-ay17 <- ay17[-1,]
+ay17 <- ay17[-1,-(8:10)]
+colnames(ay17)[16] <- "PAN_PT"
 
 ay18 <- read_excel(paste(ayto_slp, "1_cme_cedral(1).xls", sep = "/"), range = "a3:s32")
-ay18 <- ay18[-1,]
+ay18 <- ay18[-1,-(9:11)]
+colnames(ay18)[16] <- "PRI_PVEM"
 
 ay19 <- read_excel(paste(ayto_slp, "1_cme_cerritos(1).xls", sep = "/"), range = "a3:v43")
-ay19 <- ay19[-1,]
+ay19 <- ay19[-1,-(9:11)]
+colnames(ay19)[19] <- "PRI_PNA"
 
 ay20 <- read_excel(paste(ayto_slp, "1_cme_charcas(1).xls", sep = "/"), range = "a3:u37")
-ay20 <- ay20[-1,]
+ay20 <- ay20[-1,-(9:12)]
+colnames(ay20)[17] <- "PRI_PVEM_PNA"
 
 ay21 <- read_excel(paste(ayto_slp, "1_cme_ciudad del maiz(1).xls", sep = "/"), range = "a3:x53")
-ay21 <- ay21[-1,]
+ay21 <- ay21[-1,-(8:16)]
+colnames(ay21)[14] <- "PRI_PVEM_PNA"
+colnames(ay21)[15] <- "PRD_PT_PCP"
 
 ay22 <- read_excel(paste(ayto_slp, "1_cme_coxcatlan(1).xls", sep = "/"), range = "a3:v27")
-ay22 <- ay22[-1,]
+ay22 <- ay22[-1,-(8:15)]
+colnames(ay22)[13] <- "PAN_PRD_PT"
+colnames(ay22)[14] <- "PRI_PVEM_PNA"
 
 ay23 <- read_excel(paste(ayto_slp, "1_cme_el naranjo(1).xls", sep = "/"), range = "a3:x32")
-ay23 <- ay23[-1,]
+ay23 <- ay23[-1,-c(9:11,13:15)]
+colnames(ay23)[17] <- "PRI_PVEM"
+colnames(ay23)[18] <- "PT_PMC"
 
 ay24 <- read_excel(paste(ayto_slp, "1_cme_huehuetlan(1).xls", sep = "/"), range = "a3:v26")
-ay24 <- ay24[-1,]
+ay24 <- ay24[-1,-(8:11)]
+colnames(ay24)[18] <- "PAN_PT_PMC"
 
 ay25 <- read_excel(paste(ayto_slp, "1_cme_lagunillas(1).xls", sep = "/"), range = "a3:r17")
-ay25 <- ay25[-1,]
+ay25 <- ay25[-1,-(9:11)]
+colnames(ay25)[15] <- "PRI_PNA"
 
 ay26 <- read_excel(paste(ayto_slp, "1_cme_matehuala(1).xls", sep = "/"), range = "a3:v131")
-ay26 <- ay26[-1,]
+ay26 <- ay26[-1,-(9:12)]
+colnames(ay26)[18] <- "PRI_PVEM_PNA"
 
 ay27 <- read_excel(paste(ayto_slp, "1_cme_matlapa(1).xls", sep = "/"), range = "a3:v41")
-ay27 <- ay27[-1,]
+ay27 <- ay27[-1,-(10:12)]
+colnames(ay27)[19] <- "PRD_PT"
 
 ay28 <- read_excel(paste(ayto_slp, "1_cme_mexquitic.xls", sep = "/"), range = "a3:y79")
-ay28 <- ay28[-1,]
+ay28 <- ay28[-1,-(7:16)]
+colnames(ay28)[13] <- "PAN_PT"
+colnames(ay28)[14] <- "PRI_PVEM_PNA"
+colnames(ay28)[15] <- "PRD_PMC"
 
 ay29 <- read_excel(paste(ayto_slp, "1_cme_moctezuma(1).xls", sep = "/"), range = "a3:u34")
 ay29 <- ay29[-1,]
 
 ay30 <- read_excel(paste(ayto_slp, "1_cme_rayon(1).xls", sep = "/"), range = "a3:q31")
-ay30 <- ay30[-1,]
+ay30 <- ay30[-1,-(9:12)]
+colnames(ay30)[13] <- "PRI_PVEM_PNA"
 
 ay31 <- read_excel(paste(ayto_slp, "1_cme_rioverde(1).xls", sep = "/"), range = "a3:y149")
-ay31 <- ay31[-1,]
+ay31 <- ay31[-1,-(9:15)]
+colnames(ay31)[17] <- "PRI_PNA"
+colnames(ay31)[18] <- "PRD_PT_PCP"
 
 ay32 <- read_excel(paste(ayto_slp, "1_cme_salinas(1).xls", sep = "/"), range = "a3:y44")
-ay32 <- ay32[-1,]
+ay32 <- ay32[-1,-(9:15)]
+colnames(ay32)[17] <- "PRI_PNA"
+colnames(ay32)[18] <- "PRD_PT_PMC"
 
 ay33 <- read_excel(paste(ayto_slp, "1_cme_san antonio(1).xls", sep = "/"), range = "a3:s17")
-ay33 <- ay33[-1,]
+ay33 <- ay33[-1,-(9:12)]
+colnames(ay33)[15] <- "PRI_PVEM_PNA"
 
 ay34 <- read_excel(paste(ayto_slp, "1_cme_san martin chalchicuautla(1).xls", sep = "/"), range = "a3:x35")
-ay34 <- ay34[-1,]
+ay34 <- ay34[-1,-(9:16)]
+colnames(ay34)[15] <- "PRI_PNA"
+colnames(ay34)[16] <- "PRD_PT_PCP_PMC"
 
 ay35 <- read_excel(paste(ayto_slp, "1_cme_san nicolas tolentino(1).xls", sep = "/"), range = "a3:x16")
-ay35 <- ay35[-1,]
+ay35 <- ay35[-1,-(9:11)]
+colnames(ay35)[21] <- "PRI_PNA"
 
 ay36 <- read_excel(paste(ayto_slp, "1_cme_san vicente(1).xls", sep = "/"), range = "a3:r30")
-ay36 <- ay36[-1,]
+ay36 <- ay36[-1,-(9:12)]
+colnames(ay36)[14] <- "PRI_PVEM_PNA"
 
 ay37 <- read_excel(paste(ayto_slp, "1_cme_sanpedro(1).xls", sep = "/"), range = "a3:y13")
-ay37 <- ay37[-1,]
+ay37 <- ay37[-1,-(8:16)]
+colnames(ay37)[14] <- "PAN_PCP"
+colnames(ay37)[15] <- "PRI_PNA"
+colnames(ay37)[16] <- "PRD_PMC"
 
 ay38 <- read_excel(paste(ayto_slp, "1_cme_santa catarina(1).xls", sep = "/"), range = "a3:s23")
-ay38 <- ay38[-1,]
+ay38 <- ay38[-1,-(10:14)]
+colnames(ay38)[14] <- "PRD_PT_PMC_PNA"
 
 ay39 <- read_excel(paste(ayto_slp, "1_cme_santa maria del rio(1).xls", sep = "/"), range = "a3:v61")
-ay39 <- ay39[-1,]
+ay39 <- ay39[-1,-(8:11)]
+colnames(ay39)[18] <- "PAN_PVEM_PNA"
 
 ay40 <- read_excel(paste(ayto_slp, "1_cme_slp(1).xls", sep = "/"), range = "a3:z958")
-ay40 <- ay40[-1,]
+ay40 <- ay40[-1,-(9:14)]
+colnames(ay40)[19] <- "PRI_PVEM"
+colnames(ay40)[20] <- "PRD_PT"
 
 ay41 <- read_excel(paste(ayto_slp, "1_cme_sol(1).xls", sep = "/"), range = "a3:ab305")
-ay41 <- ay41[-1,]
+ay41 <- ay41[-1,-(9:18)]
+colnames(ay41)[16] <- "PRI_PVEM"
+colnames(ay41)[17] <- "PRD_PT"
+colnames(ay41)[18] <- "PCP_PMC_PNA"
 
 ay42 <- read_excel(paste(ayto_slp, "1_cme_tamasopo(1).xls", sep = "/"), range = "a3:w44")
-ay42 <- ay42[-1,]
+ay42 <- ay42[-1,-(8:16)]
+colnames(ay42)[13] <- "PAN_PRD_PT_PMC"
+colnames(ay42)[14] <- "PRI_PVEM_PNA"
 
 ay43 <- read_excel(paste(ayto_slp, "1_cme_tamazunchale(1).xls", sep = "/"), range = "a3:w124")
-ay43 <- ay43[-1,]
+ay43 <- ay43[-1,-(9:14)]
+colnames(ay43)[16] <- "PRI_PNA"
+colnames(ay43)[17] <- "PRD_PT"
 
 ay44 <- read_excel(paste(ayto_slp, "1_cme_tampacan(1).xls", sep = "/"), range = "a3:x28")
-ay44 <- ay44[-1,]
+ay44 <- ay44[-1,-(8:14)]
+colnames(ay44)[16] <- "PAN_PT"
+colnames(ay44)[17] <- "PRI_PVEM_PNA"
 
 ay45 <- read_excel(paste(ayto_slp, "1_cme_tamuin(1).xls", sep = "/"), range = "a3:ae57")
-ay45 <- ay45[-1,]
+ay45 <- ay45[-1,-(8:18)]
+colnames(ay45)[18] <- "PAN_PT"
+colnames(ay45)[19] <- "PRI_PVEM_PNA"
+colnames(ay45)[20] <- "PRD_PCP_PMC"
 
 ay46 <- read_excel(paste(ayto_slp, "1_cme_tancanhuitz(1).xls", sep = "/"), range = "a3:s30")
-ay46 <- ay46[-1,]
+ay46 <- ay46[-1,-(9:12)]
+colnames(ay46)[15] <- "PRI_PVEM_PNA"
 
 ay47 <- read_excel(paste(ayto_slp, "1_cme_tanlajas(1).xls", sep = "/"), range = "a3:z29")
-ay47 <- ay47[-1,]
+ay47 <- ay47[-1,-(8:16)]
+colnames(ay47)[15] <- "PAN_PT"
+colnames(ay47)[16] <- "PRI_PVEM"
+colnames(ay47)[17] <- "PRD_PCP"
 
 ay48 <- read_excel(paste(ayto_slp, "1_cme_tierra nueva(1).xls", sep = "/"), range = "a3:v18")
-ay48 <- ay48[-1,]
+ay48 <- ay48[-1,-(10:15)]
+colnames(ay48)[15] <- "PVEM_PMC"
+colnames(ay48)[16] <- "PCP_PNA"
 
 ay49 <- read_excel(paste(ayto_slp, "1_cme_val(1).xls", sep = "/"), range = "a3:z223")
-ay49 <- ay49[-1,]
+ay49 <- ay49[-1,-(8:14)]
+colnames(ay49)[18] <- "PAN_PMC"
+colnames(ay49)[19] <- "PRI_PVEM_PNA"
 
 ay50 <- read_excel(paste(ayto_slp, "1_cme_vanegas(1).xls", sep = "/"), range = "a3:p18")
 ay50 <- ay50[-1,]
 
 ay51 <- read_excel(paste(ayto_slp, "1_cme_venado(1).xls", sep = "/"), range = "a3:v29")
-ay51 <- ay51[-1,]
+ay51 <- ay51[-1,-(9:11)]
+colnames(ay51)[19] <- "PRI_PNA"
 
 ay52 <- read_excel(paste(ayto_slp, "1_cme_villa de arista(1).xls", sep = "/"), range = "a3:s26")
 ay52 <- ay52[-1,]
@@ -899,30 +978,40 @@ ay53 <- read_excel(paste(ayto_slp, "1_cme_villa de la paz(1).xls", sep = "/"), r
 ay53 <- ay53[-1,]
 
 ay54 <- read_excel(paste(ayto_slp, "1_cme_villa de reyes(1).xls", sep = "/"), range = "a3:w64")
-ay54 <- ay54[-1,]
+ay54 <- ay54[-1,-c(9:11, 14:16)]
+colnames(ay54)[16] <- "PRI_PVEM"
+colnames(ay54)[17] <- "PMC_PNA"
 
 ay55 <- read_excel(paste(ayto_slp, "1_cme_villa guadalupe(1).xls", sep = "/"), range = "a3:r22")
 ay55 <- ay55[-1,]
 
 ay56 <- read_excel(paste(ayto_slp, "1_cme_xilitla(1).xls", sep = "/"), range = "a3:w74")
-ay56 <- ay56[-1,]
+ay56 <- ay56[-1,-(10:12)]
+colnames(ay56)[20] <- "PVEM_PNA"
 
 ay57 <- read_excel(paste(ayto_slp, "1_cme_zaragoza(1).xls", sep = "/"), range = "a3:aa40")
-ay57 <- ay57[-1,]
+ay57 <- ay57[-1,-(11:13)]
+colnames(ay57)[24] <- "PT_PMC"
 
 ay58 <- read_excel(paste(ayto_slp, "1_cme_villa de ramos PAW.xls", sep = "/"), range = "a3:w55")
-ay58 <- ay58[-1,]
+ay58 <- ay58[-1,-(10:13)]
+colnames(ay58)[19] <- "PRD_PT_PNA"
 
 slp <- list(ay1, ay2, ay3, ay4, ay5, ay6, ay7, ay8, ay9, ay10, ay11, ay12, ay13, ay14, ay15, ay16, ay17, ay18, ay19, ay20, ay21, ay22, ay23, ay24, ay25, ay26, ay27, ay28, ay29, ay30, ay31, ay32, ay33, ay34, ay35, ay36, ay37, ay38, ay39, ay40, ay41, ay42, ay43, ay44, ay45, ay46, ay47, ay49 , ay50, ay51, ay52, ay53, ay54, ay55, ay56, ay57, ay58)
 slp <- rbind.fill(slp)
 names(slp) <- str_replace_all(names(slp), c(" " = "." , "," = "" ))  
 slp <- slp %>%
-  select(-c("Dto.Local", "codigo", "Municipio", "Seccion", "Tipo", "Lista.Nominal", "VOTACION.VALIDA.EMITIDA", "VOTACION.EMITIDA")) %>%
+  select(-c("Dto.Local", "codigo", "Municipio", "Seccion", "Tipo", "Lista.Nominal", "VOTACION.VALIDA.EMITIDA", "VOTACION.EMITIDA", "EXCEDE.NO.DE.BOLETAS","Porcentaje.de.Votacion.Emitida", "Porcentaje.de.Votos.Nulos", "VOTACION.NULA.MAYOR.AL.5%", "CAPTURADA" )) %>%
   mutate_all(funs(as.numeric)) %>%
   group_by(No.Mpio) %>%
-  summarise_all(sum, na.rm = T)	%>%
-  select(-c(6, 15, 16, 22, 23, 26, 27, 30, 32, 34, 36, 37, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 61, 62, 63, 65, 67, 68, 69))
-colnames(slp) <- c("muni", "PAN", "PRI", "PRD", "PMC", "PVEM", "PCP", "PNA", "Morena", "Humanista", "noreg", "nulos", "PRD_PMC", "PT", "PES", "INDEP", "PRI_PVEM_PNA", "PRD_PCP", "PAN_PT_PMC", "PRI_PNA", "PAN_PT", "PRD_PVEM_PCP", "PAN_PRD_PT", "PRI_PVEM", "PRD_PT_PMC", "PAN_PMC", "PRD_PT_PNA", "PAN_PRD_PT_PVEM_PMC_PNA", "PRD_PT_PCP", "PT_PMC", "PRD_PT", "PRD_PT_PCP_PMC", "PAN_PCP", "PRD_PT_PMC_PNA", "PAN_PVEM_PNA", "PCP_PMC_PNA", "PAN_PRD_PT_PMC", "PRD_PCP_PMC", "PMC_PNA", "PVEM_PNA")
+  summarise_all(sum, na.rm = T)
+
+colnames(slp)[1] <- "muni"
+colnames(slp)[7] <- "Morena"
+colnames(slp)[8] <- "Humanista"
+colnames(slp)[9] <- "noreg"
+colnames(slp)[10] <- "nulos"
+colnames(slp)[14] <- "INDEP"
 
 slp15 <- slp %>%
   mutate(
@@ -931,7 +1020,7 @@ slp15 <- slp %>%
     state = as.character("24"),
     mpo = paste(state, muni, sep = ""), 
     muniYear = paste(mpo, year, sep = "_")
-      ) %>%
+  ) %>%
   select(muniYear, state, year, muni, PAN, PRI, PRD, PMC, PVEM, PCP, PNA, Morena, Humanista, PRD_PMC, PT, PES, INDEP, PRI_PVEM_PNA, PRD_PCP, PAN_PT_PMC, PRI_PNA, PAN_PT, PRD_PVEM_PCP, PAN_PRD_PT, PRI_PVEM, PRD_PT_PMC, PAN_PMC, PRD_PT_PNA, PAN_PRD_PT_PVEM_PMC_PNA, PRD_PT_PCP, PT_PMC, PRD_PT, PRD_PT_PCP_PMC, PAN_PCP, PRD_PT_PMC_PNA, PAN_PVEM_PNA, PCP_PMC_PNA, PAN_PRD_PT_PMC, PRD_PCP_PMC, PMC_PNA, PVEM_PNA, noreg, nulos)
 
 rm(ay1, ay2, ay3, ay4, ay5, ay6, ay7, ay8, ay9, ay10, ay11, ay12, ay13, ay14, ay15, ay16, ay17, ay18, ay19, ay20, ay21, ay22, ay23, ay24, ay25, ay26, ay27, ay28, ay29, ay30, ay31, ay32, ay33, ay34, ay35, ay36, ay37, ay38, ay39, ay40, ay41, ay42, ay43, ay44, ay45, ay46, ay47, ay48, ay49 , ay50, ay51, ay52, ay53, ay54, ay55, ay56, ay57, ay58, slp)
@@ -956,7 +1045,7 @@ son15 <- son %>%
     state = as.character("26"),
     mpo = as.factor(paste(state, muni, sep = "")),
     muniYear = paste(mpo, year, sep = "_")
-    ) %>%
+  ) %>%
   select(muniYear, state, year, muni, PAN, PRI, PRD, PVEM, PT, MC, PNA, Morena, Humanista, PES, S_PRI_PVEM_PNA, PRI_PVEM, PRI_PNA, PVEM_PNA, UXE, UF, INDEP1, INDEP2, noreg, nulos)
 colnames(son15) <- c("muniYear", "state", "year", "muni", "PAN", "PRI", "PRD", "PVEM", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "PRI_PVEM_PNA", "PRI_PVEM", "PRI_PNA", "PVEM_PNA", "UXE", "UF", "INDEP1", "INDEP2", "noreg", "nulos")
 
@@ -1013,6 +1102,7 @@ rm(yuc, clave, gana, Winner2)
 
 ####Juntando la actualizacion####
 act <- bind_rows(list(nay14, bcs15, camp15, cdmx15, chis15, col15, gro15, gto15, jal15, mex15, mich15, mor15, nl15, qro15, slp15, son15, tab15, yuc15)) 
+rm(nay14, bcs15, camp15, cdmx15, chis15, col15, gro15, gto15, jal15, mex15, mich15, mor15, nl15, qro15, slp15, son15, tab15, yuc15)
 suma <- act %>% select(-c("state", "year", "muni", "Winner2")) 
 suma <- suma %>% 
   mutate(total = rowSums(suma[2:105], na.rm = T)) 
@@ -1033,8 +1123,28 @@ sum_pri <- sum_pri %>%
   select(muniYear, s_PRI)
 colnames(sum_pri)[2] <- "PRI"
 
+sum_prd <- suma %>% select(muniYear, starts_with("PRD")) 
+sum_prd <- sum_prd %>% 
+  mutate(
+    s_PAN_PRD = rowSums(sum_prd[c("PRD_PT_PAN_PNA_Humanista", "PRD_PT_PAN_PNA_PES")], na.rm = T),
+    s_PRD = rowSums(sum_prd[c("PRD", "PRD_MC_PT", "PRD_PT_PNA", "PRD_PT", "PRD_PT_PNA_Humanista", "PRD_PT_PNA_PES", "PRD_PT_Humanista", "PRD_PT_PES", "PRD_PNA_PES", "PRD_PNA", "PRD_PES", "PRD_PMC", "PRD_PCP", "PRD_PVEM_PCP", "PRD_PT_PMC", "PRD_PT_PCP", "PRD_PT_PCP_PMC", "PRD_PT_PMC_PNA", "PRD_PCP_PMC", "PRD_PVEM")], na.rm = T)
+  ) %>% 
+  select(muniYear, s_PAN_PRD, s_PRD)
+colnames(sum_prd)[2] <- "PAN_PRD"
+colnames(sum_prd)[3] <- "PRD"
+
 sums <- full_join(sum_pan, sum_pri, by = "muniYear")
-#rm(sum_pan, sum_pri)
+sums <- sums %>% full_join(sum_prd, by = "muniYear")
+
+sums <- sums %>% 
+  mutate(
+    s_PAN_PRD = rowSums(sums[c("PAN_PRD.x", "PAN_PRD.y")], na.rm = T)
+  ) %>% 
+  select(-c("PAN_PRD.x", "PAN_PRD.y"))
+colnames(sums)[5] <- "PAN_PRD"
+
+rm(sum_pan, sum_pri, sum_prd)
+
 suma <- suma %>% 
   select(muniYear, total) %>% full_join(sums)
 
@@ -1046,107 +1156,14 @@ act <- act %>%
   mutate(
     s_PAN = rowSums(act[c("PAN", "PAN1")], na.rm= T),
     s_PRI = rowSums(act[c("PRI", "PRI1")], na.rm = T),
+    s_PRD = rowSums(act[c("PRD", "PRD1")], na.rm = T),
     muni = paste(state, muni, sep = "")
   ) %>% 
-  select(-c("PAN", "PAN1", "PRI", "PRI1", "muniYear1"))
-colnames(act)[11] <- "PAN"
-colnames(act)[12] <- "PRI"
-####Data Lucardi####
-data <- read.csv(paste(inp, "Municipal elections Mexico 1980-2013.csv", sep="/"))
-names(data) <- str_replace_all(names(data), "[.]", "_")
+  select(-c("PAN", "PAN1", "PRI", "PRI1", "muniYear1", "PRD", "PRD1"))
+colnames(act)[10] <- "PAN"
+colnames(act)[11] <- "PRI"
+colnames(act)[12] <- "PRD"
 
-data <- data %>% 
-  mutate(
-    muniYear = factor(substr(muniYear, 2, 11)),
-    muni = factor(substr(muni, 2, 6)),
-    state = ifelse(state=="AGS", "01", ifelse( state=="BC", "02", ifelse(state== "BCS", "03", ifelse(state=="CAM", "04", ifelse(state=="CHUA", "08", ifelse(state== "CHIA","07", ifelse(state=="CLA", "05", ifelse(state=="CMA", "06", ifelse(state=="DF", "09", ifelse(state=="DGO", "10", ifelse(state=="EDOMEX", "15", ifelse(state=="GTO", "11", ifelse(state== "GRO", "12", ifelse(state== "HID", "13", ifelse(state=="JAL", "14", ifelse(state== "MICH","16", ifelse(state=="MOR","17", ifelse(state=="NAY", "18", ifelse(state=="OAX", "20", ifelse(state=="NL", "19", ifelse(state== "PUE", "21", ifelse(state=="QUER", "22", ifelse(state=="QROO", "23", ifelse(state=="SLP", "24", ifelse(state== "SIN", "25", ifelse(state=="SON", "26", ifelse(state=="TAB", "27", ifelse(state=="TAM", "28", ifelse(state=="TLAX", "29", ifelse(state=="VER", "30", ifelse(state=="YUC", "31", "32" )))))))))))))))))))))))))))))))
-  ) %>% select(muniYear, state, muni, year, Winner2, PAN, PRI, PRD, PAN_PRD, nulos, noreg, total)
-data <- bind_rows(data, act)
-
-data = arrange(data,muni)
-
-data$Winner2 = str_replace_all(data$Winner2, "Nval" , "PNA")
-data$Winner2 = str_replace_all(data$Winner2, "[.]", "_")
-data$Winner2 = str_replace_all(data$Winner2, 'Conv' , "MC")
-data$Winner2 = ifelse(data$Winner2 == "Independiente1", "INDEP1", data$Winner2)
-data$Winner2 = ifelse(data$Winner2 == "INDEP1", "INDEP", data$Winner2)
-
-####Gubernaturas####
-gobs <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTAJ22OR9JCNfRdQFeHUO1szhw-tje4sjtMCMf3m9DA5mKjoWMNCWi4Pr3SPeO1TEb5wvvVZArw6ecq/pub?gid=1686758032&single=true&output=csv"
-gob <- read.csv(gobs, stringsAsFactors = F)
-gob$INEGI <- formatC(gob$INEGI, width = 2, format = "d", flag = "0")
-
-elec <- 1973:2019
-gober <- data.frame()
-pb = txtProgressBar(min=1, max=length(elec), style=3)
-for (x in 1:length(elec)) {
-  tempo <- gob %>% select(INEGI, ends_with(as.character(elec[x]))) %>% mutate(year = elec[x])
-  names(tempo) <- c("INEGI", "win", "year")
-  gober <- bind_rows(gober, tempo)
-  setTxtProgressBar(pb, x)
-  rm(tempo)
-}
-colnames(gober)[2] <- "win_state"
-gober <- gober %>% mutate(
-  gub = paste(INEGI, year, sep = "_"),
-  wintop_state = sapply(strsplit(win_state, "_"), "[", 1)
-  )
-
-data <- data %>% 
-  mutate(gub = paste(state, year, sep = "_")
-  ) %>% inner_join(gober, by = "gub") %>% select(-c(gub, INEGI, year.y))
-colnames(data)[4] <- "year"
-
-####Subset de partidos####
-levels(as.factor(data$Winner2))     
-
-data <- data %>%
-  mutate(
-    win = sapply(strsplit(Winner2, "_"), "[", 1),
-    win_top = #ifelse(win == "PVEM", "PVEM",
-                     #ifelse(win == "PT", "PT",
-                            ifelse(win == "PRI", "PRI",
-                                   #ifelse(win == "PNA", "PNA",
-                                          ifelse(win == "PAN", "PAN",
-                                                 #ifelse(win == "MC", "MC", 
-                                                        ifelse(win =="PRD", "PRD","Otros")))#))))    
-    ) %>%
-  group_by(muni) %>%
-  mutate(
-    prevyear = lag(year, n = 1),
-    difY = ( year - prevyear),
-    inc = lag(win, n = 1),
-    cont = ifelse(inc == win, 1, 0),
-    alt = ifelse(inc != win, 1, 0),
-    inc_top = #ifelse(inc == "PVEM", "PVEM",
-                     #ifelse(inc == "PT", "PT",
-                            ifelse(inc == "PRI", "PRI",
-                                   #ifelse(inc == "PNA", "PNA",
-                                          ifelse(inc == "PAN", "PAN",
-                                                 #ifelse(inc == "MC", "MC", 
-                                                        ifelse(inc == "PRD", "PRD", "Otros")))#))))
-    #firstPRIdefeat = ifelse(win_top != "PRI", year, NA)
-    #firstPRIdefeat = ifelse(win_top != "PRI", year, NA)
-  ) %>% 
-  ungroup(muni)
-####Concordancia y otras variables####
-data <- data %>% 
-  mutate(
-    conco = ifelse(win_top == wintop_state, 1, 0),
-    PRI_ofi = ifelse(win == "PRI" & wintop_state == "PRI", 1, 0),
-    PAN_ofi = ifelse(win == "PAN" & wintop_state == "PAN", 1, 0),
-    PRD_ofi = ifelse(win == "PRD" & wintop_state == "PRD", 1, 0),
-    PAN_PRD_ofi = ifelse(substr(Winner2, 1, 7) == "PAN_PRD" & substr(win_state, 1, 7) == "PAN_PRD", 1, 0),
-    PRI_opo = ifelse(win == "PRI" & wintop_state != "PRI", 1, 0),
-    PAN_opo = ifelse(win == "PAN" & wintop_state != "PAN", 1, 0),
-    PRD_opo= ifelse(win == "PRD" & wintop_state != "PRD", 1, 0),
-    PAN_PRD_opo = ifelse(substr(Winner2, 1, 7) == "PAN_PRD" & substr(win_state, 1, 7) != "PAN_PRD", 1, 0),
-    edo_year = paste(state, year, sep = "")
-  )
-
-levels(as.factor(data$Winner2))
-levels(as.factor(data$win))
-summary(data)
-####Exportando a csv####
-as.data.frame(data, row.names = NULL)
-write.csv(data, paste(out, "data.csv", sep = "/"), row.names = F, fileEncoding ="UTF-8")
+rm(sums, suma)
+as.data.frame(act, row.names = NULL)
+write.csv(act, paste(out, "actualización 2014-2015.csv", sep = "/"))

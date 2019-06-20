@@ -1,20 +1,30 @@
-rm(llist = ls())
+rm(list = ls())
 setwd("~")
 
 library(dplyr)
+library(stringr)
 
 inp <- "/home/dhjs/Documentos/R_projects/tesis/Datos"
 
 ####Data Lucardi####
-data <- read.csv(paste(inp, "Municipal elections Mexico 1980-2013.csv", sep="/"))
-names(data) <- str_replace_all(names(data), "[.]", "_")
+elec <- read.csv(paste(inp, "Municipal elections Mexico 1980-2013.csv", sep="/"), stringsAsFactors = F)
+names(elec) <- str_replace_all(names(elec), "[.]", "_")
+elec <- elec %>% 
+  mutate(
+    muniYear = gsub("m", "", muniYear), 
+    muni = gsub("m", "", muni)
+  )
+data <- elec %>% select("muniYear", "state", "muni", "year", "Winner2", "PAN_PRD", "PAN", "PRI", "PRD", "nulos", "noreg", "total")
+
+act <- read.csv(paste(inp, "actualización 2014-2015.csv", sep = "/"), stringsAsFactors = F)
+act <- act[,-1]
+act$state <- as.character(act$state)
 
 data <- data %>% 
   mutate(
-    muniYear = factor(substr(muniYear, 2, 11)),
-    muni = factor(substr(muni, 2, 6)),
     state = ifelse(state=="AGS", "01", ifelse( state=="BC", "02", ifelse(state== "BCS", "03", ifelse(state=="CAM", "04", ifelse(state=="CHUA", "08", ifelse(state== "CHIA","07", ifelse(state=="CLA", "05", ifelse(state=="CMA", "06", ifelse(state=="DF", "09", ifelse(state=="DGO", "10", ifelse(state=="EDOMEX", "15", ifelse(state=="GTO", "11", ifelse(state== "GRO", "12", ifelse(state== "HID", "13", ifelse(state=="JAL", "14", ifelse(state== "MICH","16", ifelse(state=="MOR","17", ifelse(state=="NAY", "18", ifelse(state=="OAX", "20", ifelse(state=="NL", "19", ifelse(state== "PUE", "21", ifelse(state=="QUER", "22", ifelse(state=="QROO", "23", ifelse(state=="SLP", "24", ifelse(state== "SIN", "25", ifelse(state=="SON", "26", ifelse(state=="TAB", "27", ifelse(state=="TAM", "28", ifelse(state=="TLAX", "29", ifelse(state=="VER", "30", ifelse(state=="YUC", "31", "32" )))))))))))))))))))))))))))))))
   ) %>% select(muniYear, state, muni, year, Winner2, PAN, PRI, PRD, PAN_PRD, nulos, noreg, total)
+
 data <- bind_rows(data, act)
 
 data = arrange(data,muni)
@@ -102,5 +112,5 @@ levels(as.factor(data$Winner2))
 levels(as.factor(data$win))
 summary(data)
 ####Exportando a csv####
-#as.data.frame(data, row.names = NULL)
-#write.csv(data, paste(out, "data.csv", sep = "/"), row.names = F, fileEncoding ="UTF-8")
+as.data.frame(data, row.names = NULL)
+write.csv(data, paste(inp, "data.csv", sep = "/"), row.names = F, fileEncoding ="UTF-8")
