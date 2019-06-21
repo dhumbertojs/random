@@ -29,3 +29,35 @@ bp <- bp %>%
     tasa_elec = (tomas_elec/Pob_Total) * 100000, 
     tasa_dren = (sist_dren/Pob_Total) * 100000
   )
+
+bp <- bp %>% 
+  group_by(muni) %>% 
+  mutate(
+    lag_del_1 = lag(tasa_tot_del, n = 1),
+    lag_hom_1 = lag(tasa_hom, n = 1),
+    lag_agua_1 = lag(tasa_agua, n = 1),
+    lag_elec_1 = lag(tasa_elec, n = 1),
+    lag_dren_1 = lag(tasa_dren, n = 1),
+    
+    lag_del_2 = lag(tasa_tot_del, n = 2),
+    lag_hom_2 = lag(tasa_hom, n = 2),
+    lag_agua_2 = lag(tasa_agua, n = 2),
+    lag_elec_2 = lag(tasa_elec, n = 2),
+    lag_dren_2 = lag(tasa_dren, n = 2),
+    
+    lag_del_3 = lag(tasa_tot_del, n = 3),
+    lag_hom_3 = lag(tasa_hom, n = 3),
+    lag_agua_3 = lag(tasa_agua, n = 3),
+    lag_elec_3 = lag(tasa_elec, n = 3),
+    lag_dren_3 = lag(tasa_dren, n = 3),
+    
+    lag_del_4 = lag(tasa_tot_del, n = 4),
+    lag_hom_4 = lag(tasa_hom, n = 4),
+    lag_agua_4 = lag(tasa_agua, n = 4),
+    lag_elec_4 = lag(tasa_elec, n = 4),
+    lag_dren_4 = lag(tasa_dren, n = 4)
+  ) %>% 
+  ungroup()
+
+as.data.frame(bp, row.names = NULL)
+write.csv(bp, paste(inp, "Bienes_publicos.csv", sep = "/"), row.names = F)

@@ -105,7 +105,7 @@ data <- data %>%
     PAN_opo = ifelse(win == "PAN" & wintop_state != "PAN", 1, 0),
     PRD_opo= ifelse(win == "PRD" & wintop_state != "PRD", 1, 0),
     PAN_PRD_opo = ifelse(substr(Winner2, 1, 7) == "PAN_PRD" & substr(win_state, 1, 7) != "PAN_PRD", 1, 0),
-    edo_year = paste(state, year, sep = "")
+    edo_year = paste(state, year, sep = "_")
   )
 
 levels(as.factor(data$Winner2))
@@ -113,4 +113,4 @@ levels(as.factor(data$win))
 summary(data)
 ####Exportando a csv####
 as.data.frame(data, row.names = NULL)
-write.csv(data, paste(inp, "data.csv", sep = "/"), row.names = F, fileEncoding ="UTF-8")
+write.csv(data, paste(inp, "data.csv", sep = "/"), row.names = F)

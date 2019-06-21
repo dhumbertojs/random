@@ -6,7 +6,7 @@ out = "/Users/Emmanuel RB/Documents/tesis/out"
 ####Paquetes####
 library(dplyr)
 library(ggplot2)
-library(ggpubr)
+#library(ggpubr)
 #library (stargazer)
 #library (lfe)
 #library (lme4)
