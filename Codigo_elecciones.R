@@ -2,6 +2,7 @@ rm(list=ls())
 setwd("~")
 
 #library(plyr)
+library(plyr)#esta nada mas es para rbind.fill
 library(dplyr)
 library(readxl)
 library(stringr)
@@ -53,6 +54,8 @@ Winner2 <- colnames(gana)[apply(gana, 1, which.max)]
 Winner2 <- as.data.frame(Winner2)
 nay14 <- bind_cols(nay, Winner2)
 
+#nay14$total <- rowSums(nay14[c("PAN", "PRI_PVEM_PNA", "PRD", "PT", "PRS", "MC", "INDEP", "noreg", "nulos")], na.rm = T)
+
 rm(nay, Winner2)
 
 ####Elecciones 2015####
@@ -84,6 +87,8 @@ bcs15 <- bcs15 %>%
   ) %>%
   arrange(muniYear) %>%
   select(muniYear, state, year, muni, PAN, PRI_PVEM_PNA, PRD_MC_PT, Morena, Humanista, PES, noreg, nulos, Winner2)
+
+#bcs15$total <- rowSums(bcs15[c("PAN", "PRI_PVEM_PNA", "PRD_MC_PT", "Morena", "Humanista", "PES", "noreg", "nulos")], na.rm = T)
 rm(la_paz, loreto, comondu, los_cabos, mulege)
 
 ####Campeche####
@@ -998,6 +1003,7 @@ ay58 <- ay58[-1,-(10:13)]
 colnames(ay58)[19] <- "PRD_PT_PNA"
 
 slp <- list(ay1, ay2, ay3, ay4, ay5, ay6, ay7, ay8, ay9, ay10, ay11, ay12, ay13, ay14, ay15, ay16, ay17, ay18, ay19, ay20, ay21, ay22, ay23, ay24, ay25, ay26, ay27, ay28, ay29, ay30, ay31, ay32, ay33, ay34, ay35, ay36, ay37, ay38, ay39, ay40, ay41, ay42, ay43, ay44, ay45, ay46, ay47, ay49 , ay50, ay51, ay52, ay53, ay54, ay55, ay56, ay57, ay58)
+
 slp <- rbind.fill(slp)
 names(slp) <- str_replace_all(names(slp), c(" " = "." , "," = "" ))  
 slp <- slp %>%
@@ -1103,9 +1109,12 @@ rm(yuc, clave, gana, Winner2)
 ####Juntando la actualizacion####
 act <- bind_rows(list(nay14, bcs15, camp15, cdmx15, chis15, col15, gro15, gto15, jal15, mex15, mich15, mor15, nl15, qro15, slp15, son15, tab15, yuc15)) 
 rm(nay14, bcs15, camp15, cdmx15, chis15, col15, gro15, gto15, jal15, mex15, mich15, mor15, nl15, qro15, slp15, son15, tab15, yuc15)
-suma <- act %>% select(-c("state", "year", "muni", "Winner2")) 
+
+suma <- act %>% select(-c("state", "year", "muni", "Winner2", "noreg", "nulos")) 
 suma <- suma %>% 
-  mutate(total = rowSums(suma[2:105], na.rm = T)) 
+  mutate(
+    total = rowSums(suma[2:103], na.rm = T)
+    ) 
 
 sum_pan <- suma %>% select(muniYear, starts_with("PAN")) 
 sum_pan <- sum_pan %>% 
@@ -1149,21 +1158,28 @@ suma <- suma %>%
   select(muniYear, total) %>% full_join(sums)
 
 act <- act %>% 
-  select(muniYear, state, muni, year, Winner2, PAN, PRI, PRD, nulos, noreg)
+  select(muniYear, state, muni, year, Winner2, #PAN, PRI, PRD, 
+         nulos, noreg)
 
 act <- bind_cols(act, suma)
-act <- act %>% 
-  mutate(
-    s_PAN = rowSums(act[c("PAN", "PAN1")], na.rm= T),
-    s_PRI = rowSums(act[c("PRI", "PRI1")], na.rm = T),
-    s_PRD = rowSums(act[c("PRD", "PRD1")], na.rm = T),
-    muni = paste(state, muni, sep = "")
-  ) %>% 
-  select(-c("PAN", "PAN1", "PRI", "PRI1", "muniYear1", "PRD", "PRD1"))
-colnames(act)[10] <- "PAN"
-colnames(act)[11] <- "PRI"
-colnames(act)[12] <- "PRD"
+
+#try <- act %>% 
+#  select(muniYear, state, muni, year, Winner2, nulos, noreg)
+
+#try <- bind_cols(try, suma)
+
+#act <- act %>% 
+#  mutate(
+#    s_PAN = ifelse(PAN != PAN1 & PAN1 < total, rowSums(act[c("PAN", "PAN1")], na.rm= T), PAN1),
+#    s_PRI = ifelse(PRI != PRI1 & PRI1 < total, rowSums(act[c("PRI", "PRI1")], na.rm = T), PRI1),
+#    s_PRD = ifelse(PRD != PRD1 & PRD1 < total, rowSums(act[c("PRD", "PRD1")], na.rm = T), PRD1),
+#    muni = paste(state, muni, sep = "")
+#  ) %>% 
+#  select(-c("PAN", "PAN1", "PRI", "PRI1", "muniYear1", "PRD", "PRD1"))
+#colnames(act)[10] <- "PAN"
+#colnames(act)[11] <- "PRI"
+#colnames(act)[12] <- "PRD"
 
 rm(sums, suma)
 as.data.frame(act, row.names = NULL)
-write.csv(act, paste(out, "actualización 2014-2015.csv", sep = "/"))
+write.csv(act, paste(out, "actualización 2014-2015.csv", sep = "/"), row.names = F)
