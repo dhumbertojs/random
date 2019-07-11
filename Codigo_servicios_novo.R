@@ -9,7 +9,7 @@ del <- read.csv(paste(inp, "delitos.csv", sep = "/"), stringsAsFactors = F)
 del <- select(del, -c(muni, year))
 ser <- read.csv(paste(inp, "viv.csv", sep = "/"), stringsAsFactors = F)
 
-bp <- inner_join(del, ser, by = "muniYear")
+bp <- full_join(del, ser, by = "muniYear")
 bp <- bp %>% 
   select("muniYear", "muni", "year", "total",  "hom", "tomas_dom_agua", "tomas_elec", "sist_dren") %>% 
   mutate(
@@ -55,7 +55,13 @@ bp <- bp %>%
     lag_hom_4 = lag(tasa_hom, n = 4),
     lag_agua_4 = lag(tasa_agua, n = 4),
     lag_elec_4 = lag(tasa_elec, n = 4),
-    lag_dren_4 = lag(tasa_dren, n = 4)
+    lag_dren_4 = lag(tasa_dren, n = 4),
+    
+    lag_del_5 = lag(tasa_tot_del, n = 5),
+    lag_hom_5 = lag(tasa_hom, n = 5),
+    lag_agua_5 = lag(tasa_agua, n = 5),
+    lag_elec_5 = lag(tasa_elec, n = 5),
+    lag_dren_5 = lag(tasa_dren, n = 5)
   ) %>% 
   ungroup()
 

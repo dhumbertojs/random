@@ -307,7 +307,7 @@ gto <- read_excel(paste(inp, "2015-ayuntamiento_municipio_20171006.xlsx", sep = 
 colnames(gto) <- c("muni", "UBICACIÓN", "PAN", "PRI", "PRD", "PVEM", "PT", "MC", "MORENA", "Humanista", "PES", "INDEP1", "PRI_PVEM_PNA", "PRI_PVEM", "PRI_PNA", "PVEM_PNA", "PNA", "noreg", "NULO", "NOMINAL", "VALIDA", "TOTAL", "% PARTICIPACIÓN")
 gto15 <- gto %>%
   mutate(
-    muni = as.factor(muni),
+    #muni = as.factor(muni),
     muni = formatC(muni, width = 3, format = "d", flag = "0"),
     state = as.character("11"),
     mpo = paste(state, muni, sep = ""),
@@ -317,9 +317,9 @@ gto15 <- gto %>%
   ) %>% 
   select(muniYear, state, year, muni, PRI, PVEM, PNA, PAN, PRD, PT, MC, MORENA, Humanista, PES, INDEP1, coal, noreg, NULO)
 rm(gto)
-colnames(gto15) <- c("muniYear", "state", "year", "muni", "PRI", "PVEM", "PNA", "PAN", "PRD", "PT", "MC", "MORENA", "Humanista", "PES", "INDEP1", "PRI_PVEM_PNA", "noreg", "NULO")
+colnames(gto15) <- c("muniYear", "state", "year", "muni", "PRI", "PVEM", "PNA", "PAN", "PRD", "PT", "MC", "MORENA", "Humanista", "PES", "INDEP1", "PRI_PVEM_PNA", "noreg", "nulos")
 
-gana <- select(gto15, PRI, PVEM, PNA, PAN, PRD, PT, MC, MORENA, Humanista, PES, INDEP1, PRI_PVEM_PNA, noreg, NULO)
+gana <- select(gto15, PRI, PVEM, PNA, PAN, PRD, PT, MC, MORENA, Humanista, PES, INDEP1, PRI_PVEM_PNA, noreg, nulos)
 Winner2 <- colnames(gana)[apply(gana, 1, which.max)]
 
 Winner2 <- as.data.frame(Winner2)
@@ -1085,18 +1085,30 @@ rm(tab, clave)
 yuc <- read_excel(paste(inp, "RESULTADOS-POR-CASILLAS-DE-REGIDORES-2015.xlsx", sep = "/"), range = "a2:t2531")
 clave <- read.csv(paste(inp, "tabula-yuc.csv", sep = "/"), fileEncoding = "UTF-8", header = F, colClasses = "factor", col.names = c("muni", "Municipio"))
 clave$Municipio <- toupper(clave$Municipio)
+add <- data.frame("muni" = as.factor(c("028", "049", "050", "055", "068", "072", "094")), "Municipio" = c("DZILAM BRAVO", "MAYAPAN", "MERIDA", "OPICHEN", "SINANCHE", "SUMA DE HIDALGO", "TIXMÉHUAC"))
+clave <- bind_rows(clave, add)
+
 yuc15 <- yuc %>%
   left_join(clave, yuc, by = "Municipio") %>%
-  select(-c("Municipio", "Distrito Electoral Local", "Sección", "Tipo de casilla", "TOTAL")) %>%
-  group_by(muni) %>%
+  select(-c("Distrito Electoral Local", "Sección", "Tipo de casilla", "TOTAL", "muni")) %>%
+  group_by(Municipio) %>%
   summarise_all(sum, na.rm = T) %>%
   mutate(
     year = 2015, 
-    state = as.character("31"),
+    state = as.character("31")
+  ) %>%
+  select(Municipio, state, year, PAN, PRI, PRD, PVEM, PT, MC, PANAL, MORENA, PH, PES, CC1, CC2, IND, CNR, VN) %>% 
+  left_join(clave, yuc, by = "Municipio")
+
+yuc15 <- yuc15 %>% 
+  mutate(
     mpo = paste(state, muni, sep = ""), 
     muniYear = paste(mpo, year, sep = "_")
-  ) %>%
+    ) %>% 
   select(muniYear, state, year, muni, PAN, PRI, PRD, PVEM, PT, MC, PANAL, MORENA, PH, PES, CC1, CC2, IND, CNR, VN)
+
+
+
 colnames(yuc15) <- c("muniYear", "state", "year", "muni", "PAN", "PRI", "PRD", "PVEM", "PT", "MC", "PNA", "Morena", "Humanista", "PES", "CC1", "CC2", "INDEP", "noreg", "nulos")
 
 gana <- select(yuc15, PAN, PRI, PRD, PVEM, PT, MC, PNA, Morena, Humanista, PES, CC1, CC2, INDEP, noreg, nulos)
@@ -1113,7 +1125,7 @@ rm(nay14, bcs15, camp15, cdmx15, chis15, col15, gro15, gto15, jal15, mex15, mich
 suma <- act %>% select(-c("state", "year", "muni", "Winner2", "noreg", "nulos")) 
 suma <- suma %>% 
   mutate(
-    total = rowSums(suma[2:103], na.rm = T)
+    total = rowSums(suma[2:102], na.rm = T)
     ) 
 
 sum_pan <- suma %>% select(muniYear, starts_with("PAN")) 
