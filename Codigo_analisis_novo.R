@@ -25,6 +25,7 @@ bp <- read.csv(paste(inp, "Bienes_publicos.csv", sep = "/"))
 colnames(bp)[4] <- "tot_del"
 bp <- select(bp, -c(year, muni))
 bp <- bp %>% select(-(13:32))
+##Si se utilizan las lag variables hay que agrupar por año y hacer un ifelse para calcular el promedio, será conveniente agrupar por año y estado ??
 
 data <- data %>% 
   inner_join(bp, by = "muniYear")
@@ -84,6 +85,8 @@ d1 <- ggplot(data %>% filter(!is.na(alt)) , aes(x = as.factor(year), y = inc.sha
   geom_boxplot()
 d1
 
+#Graficas de bienes públicos####
+#Boxplot####
 d2 <- ggplot(data %>% filter(!is.na(alt)), aes(x = as.factor(year), y = ch.agua, col = as.factor(alt))) +
   geom_boxplot()
 d2
@@ -103,8 +106,9 @@ d5
 d6 <- ggplot(data %>% filter(!is.na(alt)), aes(x = as.factor(year), y = ch.hom, col = as.factor(alt))) +
   geom_boxplot()
 d6
-
-d7 <- ggplot(data %>% filter(!is.na(alt) & #ch.agua <= 100 & 
+#Scatterplot####
+#agua
+a7 <- ggplot(data %>% filter(!is.na(alt) & #ch.agua <= 100 & 
                               #ch.agua < quantile(ch.agua, .6, na.rm = T)  & 
                               #ch.agua < mean(ch.agua, na.rm = T) & 
                                #ch.agua < quantile(ch.agua, .25, na.rm = T) & 
@@ -112,41 +116,183 @@ d7 <- ggplot(data %>% filter(!is.na(alt) & #ch.agua <= 100 &
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) +
   facet_grid(. ~ win_top)
-d7 #pue que funcione
+a7 #pue que funcione
 
-d7a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= -25 & ch.agua <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+a7a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= -25 & ch.agua <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+a7a
+
+a71 <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+a71
+
+a71a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+a71a
+
+a72 <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+a72 ## estás tienen muucho mayor pendiente
+#puede ser por menor dispersión entre los datos
+
+a72a <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+a72a
+
+#Elec
+e7 <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= -25 & ch.elec <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+e7 
+
+e7a <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= -25 & ch.elec <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+e7a
+
+e71 <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+e71
+
+e71a <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+e71a
+
+e72 <- ggplot(data %>% filter(!is.na(alt) & ch.elec <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+e72 
+
+e72a <- ggplot(data %>% filter(!is.na(alt) & ch.elec <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+e72a
+
+#dren
+d7 <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= -25 & ch.dren <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+d7 
+
+d7a <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= -25 & ch.dren <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) +
   facet_grid(. ~ alt)
 d7a
 
-d71 <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
+d71 <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) +
   facet_grid(. ~ win_top)
 d71
 
-d71a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+d71a <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) +
   facet_grid(. ~ alt)
 d71a
 
-d72 <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
+d72 <- ggplot(data %>% filter(!is.na(alt) & ch.dren <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) +
   facet_grid(. ~ win_top)
-d72 ## estás tienen muucho mayor pendiente
-#puede ser por menor dispersión entre los datos
+d72 
 
-d72a <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+d72a <- ggplot(data %>% filter(!is.na(alt) & ch.dren <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) +
   facet_grid(. ~ alt)
 d72a
 
-d8 <- ggplot(data %>% filter(!is.na(alt) & ch.elec <= 100), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
+#del
+t7 <- ggplot(data %>% filter(!is.na(alt) & ch.del >= -25 & ch.del <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+t7 
 
-d8
+t7a <- ggplot(data %>% filter(!is.na(alt) & ch.del >= -25 & ch.del <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+t7a
+
+t71 <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+t71
+
+t71a <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+t71a
+
+t72 <- ggplot(data %>% filter(!is.na(alt) & ch.del <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+t72 
+
+t72a <- ggplot(data %>% filter(!is.na(alt) & ch.del <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+t72a
+
+#hom
+h7 <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= -25 & ch.hom <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+h7 
+
+h7a <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= -25 & ch.hom <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+h7a
+
+h71 <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+h71
+
+h71a <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+h71a
+
+h72 <- ggplot(data %>% filter(!is.na(alt) & ch.hom <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ win_top)
+h72 
+
+h72a <- ggplot(data %>% filter(!is.na(alt) & ch.hom <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(. ~ alt)
+h72a
