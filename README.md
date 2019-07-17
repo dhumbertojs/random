@@ -7,7 +7,7 @@ Tesis de Ciencia Política. Elecciones a nivel municipal y provisión de bienes 
 
 
 ### Colores de partidos políticos en México
-- Tweet de @JulioTellez
+Tweet de @JulioTellez
 
 - PAN "#153588"
 - PRI "#E13A27"
