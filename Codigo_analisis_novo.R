@@ -276,7 +276,7 @@ d71 <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & ch.dren <= 100 & win
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 d71
-ggsave("s_dren_may_100.png", path = out, dpi = 300)
+ggsave("s_dren_mayor.png", path = out, dpi = 300)
 
 d71a <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & ch.dren <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
@@ -285,14 +285,14 @@ d71a <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & ch.dren <= 100 & wi
   facet_grid(. ~ alt) +
   theme_dark()
 d71a
-ggsave("s_dren_may_100_alt.png", path = out, dpi = 300)
+ggsave("s_dren_mayor_alt.png", path = out, dpi = 300)
 
 d72 <- ggplot(data %>% filter(!is.na(alt) & ch.dren > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 d72
-ggsave("s_dren_mayor.png", path = out, dpi = 300)
+ggsave("s_dren_may_100.png", path = out, dpi = 300)
 
 d72a <- ggplot(data %>% filter(!is.na(alt) & ch.dren > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
@@ -301,7 +301,7 @@ d72a <- ggplot(data %>% filter(!is.na(alt) & ch.dren > 100 & win_top != "Otros")
   facet_grid(. ~ alt) +
   theme_dark()
 d72a
-ggsave("s_dren_mayor_alt.png", path = out, dpi = 300)
+ggsave("s_dren_may_100_alt.png", path = out, dpi = 300)
 
 d73 <- ggplot(data %>% filter(!is.na(alt) & ch.dren <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
@@ -340,7 +340,7 @@ t71 <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & ch.del <= 100 & win_t
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 t71
-ggsave("s_delitos_may_100.png", path = out, dpi = 300)
+ggsave("s_delitos_mayor.png", path = out, dpi = 300)
 
 t71a <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & ch.del <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
@@ -349,14 +349,14 @@ t71a <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & ch.del <= 100 & win_
   facet_grid(. ~ alt) +
   theme_dark()
 t71a
-ggsave("s_delitos_may_100_alt.png", path = out, dpi = 300)
+ggsave("s_delitos_mayor_alt.png", path = out, dpi = 300)
 
 t72 <- ggplot(data %>% filter(!is.na(alt) & ch.del > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 t72
-ggsave("s_delitos_mayor.png", path = out, dpi = 300)
+ggsave("s_delitos_may_100.png", path = out, dpi = 300)
 
 t72a <- ggplot(data %>% filter(!is.na(alt) & ch.del > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
@@ -365,7 +365,7 @@ t72a <- ggplot(data %>% filter(!is.na(alt) & ch.del > 100 & win_top != "Otros"),
   facet_grid(. ~ alt) +
   theme_dark()
 t72a
-ggsave("s_delitos_mayor_alt.png", path = out, dpi = 300)
+ggsave("s_delitos_may_100_alt.png", path = out, dpi = 300)
 
 t73 <- ggplot(data %>% filter(!is.na(alt) & ch.del <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
@@ -405,7 +405,7 @@ h71 <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & ch.hom <= 100 & win_t
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 h71
-ggsave("s_hom_may_100.png", path = out, dpi = 300)
+ggsave("s_hom_mayor.png", path = out, dpi = 300)
 
 h71a <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & ch.hom <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
@@ -414,14 +414,14 @@ h71a <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & ch.hom <= 100 & win_
   facet_grid(. ~ alt) +
   theme_dark()
 h71a
-ggsave("s_hom_may_100_alt.png", path = out, dpi = 300)
+ggsave("s_hom_mayor_alt.png", path = out, dpi = 300)
 
 h72 <- ggplot(data %>% filter(!is.na(alt) & ch.hom > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 h72
-ggsave("s_hom_mayor.png", path = out, dpi = 300)
+ggsave("s_hom_may_100.png", path = out, dpi = 300)
 
 h72a <- ggplot(data %>% filter(!is.na(alt) & ch.hom > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
@@ -430,7 +430,7 @@ h72a <- ggplot(data %>% filter(!is.na(alt) & ch.hom > 100 & win_top != "Otros"),
   facet_grid(. ~ alt) +
   theme_dark()
 h72a
-ggsave("s_hom_mayor_alt.png", path = out, dpi = 300)
+ggsave("s_hom_may_100_alt.png", path = out, dpi = 300)
 
 h73 <- ggplot(data %>% filter(!is.na(alt) & ch.hom <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
