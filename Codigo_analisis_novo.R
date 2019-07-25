@@ -140,14 +140,14 @@ a7a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= -25 & ch.agua <= 25 & win
 a7a
 ggsave("s_agua_alt.png", path = out, dpi = 300)
 
-a71 <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
+a71 <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & ch.agua <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 a71
 ggsave("s_agua_mayor.png", path = out, dpi = 300)
 
-a71a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+a71a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & ch.agua <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_colour_manual(values = party, name = "Partido") +
@@ -156,22 +156,39 @@ a71a <- ggplot(data %>% filter(!is.na(alt) & ch.agua >= 25 & win_top != "Otros")
 a71a
 ggsave("s_agua_mayor_alt.png", path = out, dpi = 300)
 
-a72 <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
+a72 <- ggplot(data %>% filter(!is.na(alt) & ch.agua > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
-a72 ## estás tienen muucho mayor pendiente
+a72
+ggsave("s_agua_may_100.png", path = out, dpi = 300)
+
+a72a <- ggplot(data %>% filter(!is.na(alt) & ch.agua > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  scale_colour_manual(values = party, name = "Partido") +
+  facet_grid(. ~ alt) +
+  theme_dark()
+a72a
+ggsave("s_agua_may_100_alt.png", path = out, dpi = 300)
+
+a73 <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  facet_grid(. ~ win_top)
+a73 ## estás tienen muucho mayor pendiente
 #puede ser por menor dispersión entre los datos
 ggsave("s_agua_menor.png", path = out, dpi = 300)
 
-a72a <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
+a73a <- ggplot(data %>% filter(!is.na(alt) & ch.agua <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.agua, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) + 
   theme_dark()
-a72a
+a73a
 ggsave("s_agua_menor_alt.png", path = out, dpi = 300)
+
 #Elec
 e7 <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= -25 & ch.elec <= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
@@ -189,14 +206,14 @@ e7a <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= -25 & ch.elec <= 25 & win
 e7a
 ggsave("s_elec_alt.png", path = out, dpi = 300)
 
-e71 <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
+e71 <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= 25 & ch.elec <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 e71
 ggsave("s_elec_mayor.png", path = out, dpi = 300)
 
-e71a <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
+e71a <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= 25 & ch.elec <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
@@ -205,20 +222,36 @@ e71a <- ggplot(data %>% filter(!is.na(alt) & ch.elec >= 25 & win_top != "Otros")
 e71a
 ggsave("s_elec_mayor_alt.png", path = out, dpi = 300)
 
-e72 <- ggplot(data %>% filter(!is.na(alt) & ch.elec <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
+e72 <- ggplot(data %>% filter(!is.na(alt) & ch.elec > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
-e72 
-ggsave("s_elec_menor.png", path = out, dpi = 300)
+e72
+ggsave("s_elec_may_100.png", path = out, dpi = 300)
 
-e72a <- ggplot(data %>% filter(!is.na(alt) & ch.elec <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
+e72a <- ggplot(data %>% filter(!is.na(alt) & ch.elec > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) +
   theme_dark()
 e72a
+ggsave("s_elec_may_100_alt.png", path = out, dpi = 300)
+
+e73 <- ggplot(data %>% filter(!is.na(alt) & ch.elec <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  facet_grid(. ~ win_top)
+e73 
+ggsave("s_elec_menor.png", path = out, dpi = 300)
+
+e73a <- ggplot(data %>% filter(!is.na(alt) & ch.elec <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.elec, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  scale_fill_manual(values = party, name = "Partido") +
+  facet_grid(. ~ alt) +
+  theme_dark()
+e73a
 ggsave("s_elec_menor_alt.png", path = out, dpi = 300)
 
 #dren
@@ -238,36 +271,52 @@ d7a <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= -25 & ch.dren <= 25 & win
 d7a
 ggsave("s_dren_alt.png", path = out, dpi = 300)
 
-d71 <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
+d71 <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & ch.dren <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 d71
-ggsave("s_dren_mayor.png", path = out, dpi = 300)
+ggsave("s_dren_may_100.png", path = out, dpi = 300)
 
-d71a <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
+d71a <- ggplot(data %>% filter(!is.na(alt) & ch.dren >= 25 & ch.dren <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) +
   theme_dark()
 d71a
-ggsave("s_dren_mayor_alt.png", path = out, dpi = 300)
+ggsave("s_dren_may_100_alt.png", path = out, dpi = 300)
 
-d72 <- ggplot(data %>% filter(!is.na(alt) & ch.dren <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
+d72 <- ggplot(data %>% filter(!is.na(alt) & ch.dren > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
-d72 
-ggsave("s_dren_menor.png", path = out, dpi = 300)
+d72
+ggsave("s_dren_mayor.png", path = out, dpi = 300)
 
-d72a <- ggplot(data %>% filter(!is.na(alt) & ch.dren <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
+d72a <- ggplot(data %>% filter(!is.na(alt) & ch.dren > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) +
   theme_dark()
 d72a
+ggsave("s_dren_mayor_alt.png", path = out, dpi = 300)
+
+d73 <- ggplot(data %>% filter(!is.na(alt) & ch.dren <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  facet_grid(. ~ win_top)
+d73 
+ggsave("s_dren_menor.png", path = out, dpi = 300)
+
+d73a <- ggplot(data %>% filter(!is.na(alt) & ch.dren <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.dren, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  scale_fill_manual(values = party, name = "Partido") +
+  facet_grid(. ~ alt) +
+  theme_dark()
+d73a
 ggsave("s_dren_menor_alt.png", path = out, dpi = 300)
 
 #del
@@ -286,36 +335,52 @@ t7a <- ggplot(data %>% filter(!is.na(alt) & ch.del >= -25 & ch.del <= 25 & win_t
 t7a
 ggsave("s_delitos_alt.png", path = out, dpi = 300)
 
-t71 <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
+t71 <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & ch.del <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 t71
-ggsave("s_delitos_mayor.png", path = out, dpi = 300)
+ggsave("s_delitos_may_100.png", path = out, dpi = 300)
 
-t71a <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
+t71a <- ggplot(data %>% filter(!is.na(alt) & ch.del >= 25 & ch.del <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) +
   theme_dark()
 t71a
-ggsave("s_delitos_mayor_alt.png", path = out, dpi = 300)
+ggsave("s_delitos_may_100_alt.png", path = out, dpi = 300)
 
-t72 <- ggplot(data %>% filter(!is.na(alt) & ch.del <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
+t72 <- ggplot(data %>% filter(!is.na(alt) & ch.del > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
-t72 
-ggsave("s_delitos_menor.png", path = out, dpi = 300)
+t72
+ggsave("s_delitos_mayor.png", path = out, dpi = 300)
 
-t72a <- ggplot(data %>% filter(!is.na(alt) & ch.del <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
+t72a <- ggplot(data %>% filter(!is.na(alt) & ch.del > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) +
   theme_dark()
 t72a
+ggsave("s_delitos_mayor_alt.png", path = out, dpi = 300)
+
+t73 <- ggplot(data %>% filter(!is.na(alt) & ch.del <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  facet_grid(. ~ win_top)
+t73 
+ggsave("s_delitos_menor.png", path = out, dpi = 300)
+
+t73a <- ggplot(data %>% filter(!is.na(alt) & ch.del <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.del, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  scale_fill_manual(values = party, name = "Partido") +
+  facet_grid(. ~ alt) +
+  theme_dark()
+t73a
 ggsave("s_delitos_menor_alt.png", path = out, dpi = 300)
 
 #hom
@@ -335,37 +400,50 @@ h7a <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= -25 & ch.hom <= 25 & win_t
 h7a
 ggsave("s_hom_alt.png", path = out, dpi = 300)
 
-h71 <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
+h71 <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & ch.hom <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
 h71
-ggsave("s_hom_mayor.png", path = out, dpi = 300)
+ggsave("s_hom_may_100.png", path = out, dpi = 300)
 
-h71a <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
+h71a <- ggplot(data %>% filter(!is.na(alt) & ch.hom >= 25 & ch.hom <= 100 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) +
   theme_dark()
 h71a
-ggsave("s_hom_mayor_alt.png", path = out, dpi = 300)
+ggsave("s_hom_may_100_alt.png", path = out, dpi = 300)
 
-h72 <- ggplot(data %>% filter(!is.na(alt) & ch.hom <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
+h72 <- ggplot(data %>% filter(!is.na(alt) & ch.hom > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   facet_grid(. ~ win_top)
-h72 
-ggsave("s_hom_menor.png", path = out, dpi = 300)
+h72
+ggsave("s_hom_mayor.png", path = out, dpi = 300)
 
-h72a <- ggplot(data %>% filter(!is.na(alt) & ch.hom <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
+h72a <- ggplot(data %>% filter(!is.na(alt) & ch.hom > 100 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
   scale_fill_manual(values = party, name = "Partido") +
   facet_grid(. ~ alt) +
   theme_dark()
 h72a
+ggsave("s_hom_mayor_alt.png", path = out, dpi = 300)
+
+h73 <- ggplot(data %>% filter(!is.na(alt) & ch.hom <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(alt))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  facet_grid(. ~ win_top)
+h73 
+ggsave("s_hom_menor.png", path = out, dpi = 300)
+
+h73a <- ggplot(data %>% filter(!is.na(alt) & ch.hom <= -25 & win_top != "Otros"), aes(x = inc.share, y = ch.hom, col = as.factor(win_top))) +
+  geom_point(aes(alpha = 0.2)) +
+  geom_smooth(method = "lm", se = F) + 
+  scale_fill_manual(values = party, name = "Partido") +
+  facet_grid(. ~ alt) +
+  theme_dark()
+h73a
 ggsave("s_hom_menor_alt.png", path = out, dpi = 300)
-
-#Pensar en dos loops, uno para el facet de alternancia y el otro para partidos
-
