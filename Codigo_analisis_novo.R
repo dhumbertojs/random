@@ -4,6 +4,7 @@
   library(dplyr)
   library(ggplot2)
   library(stargazer)
+  library(lfe)
   
   inp <- "/home/dhjs/Documentos/R_projects/tesis/Datos"
   out <- "/home/dhjs/Documentos/R_projects/tesis/out"
@@ -99,7 +100,9 @@
       ch.hom = ifelse(!is.na(tasa_hom) & !is.na(l.hom), ((tasa_hom - l.hom)/l.hom) * 100, NA),
       ch.agua = ifelse(!is.na(tasa_agua) & !is.na(l.agua), ((tasa_agua - l.agua)/l.agua) * 100, NA),
       ch.elec = ifelse(!is.na(tasa_elec) & !is.na(l.elec), ((tasa_elec - l.elec)/l.elec) * 100, NA),
-      ch.dren = ifelse(!is.na(tasa_dren) & !is.na(l.dren), ((tasa_dren - l.dren)/l.dren) * 100, NA)
+      ch.dren = ifelse(!is.na(tasa_dren) & !is.na(l.dren), ((tasa_dren - l.dren)/l.dren) * 100, NA),
+      
+      conco = ifelse(as.character(win_top) == as.character(wintop_state), 1, 0)
     )
   
   summary(data)
@@ -1068,38 +1071,68 @@ stargazer(t1, t2, t3, t4, t5, type = "text", out = paste(out, "try.txt", sep = "
 m1 <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del, datos)
 m2 <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt, datos)
 m3 <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi, datos)
-m4 <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt, datos)
-stargazer(m1, m2, m3, m4, type = "text", out = paste(out, "table.txt", sep = "/"), flip = T)
+m4 <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco, datos)
+m5 <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco, datos)
+stargazer(m1, m2, m3, m4, m5, type = "text", out = paste(out, "table.txt", sep = "/"), flip = T)
 
 m1a <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
 m2a <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
 m3a <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
-m4a <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
-stargazer(m1a, m2a, m3a, m4a, type = "text", out = paste(out, "table I.txt", sep = "/"), flip = T)
+m4a <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
+m5a <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
+stargazer(m1a, m2a, m3a, m4a, m5a, type = "text", out = paste(out, "table I.txt", sep = "/"), flip = T)
 
 m1b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
-m2b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
-m3b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
-m4b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
-stargazer(m1b, m2b, m3b, m4b, type = "text", out = paste(out, "table II.txt", sep = "/"), flip = T)
+m2b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m3b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m4b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m5b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+stargazer(m1b, m2b, m3b, m4b, m5b, type = "text", out = paste(out, "table II.txt", sep = "/"), flip = T)
+
+ # m1c <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del, subset(datos, ch.agua >= -100 & ch.agua <= 0 & ch.elec >= -100 & ch.elec <= 0 & ch.dren >= -100 & ch.dren <= 0 & ch.hom >= -100 & ch.hom <= 0 & ch.del >= -100 & ch.del <= 0))
+ # m2c <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt, subset(datos, ch.agua >= -100 & ch.agua <= 0 & ch.elec >= -100 & ch.elec <= 0 & ch.dren >= -100 & ch.dren <= 0 & ch.hom >= -100 & ch.hom <= 0 & ch.del >= -100 & ch.del <= 0))
+ # m3c <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= -100 & ch.agua <= 0 & ch.elec >= -100 & ch.elec <= 0 & ch.dren >= -100 & ch.dren <= 0 & ch.hom >= -100 & ch.hom <= 0 & ch.del >= -100 & ch.del <= 0))
+ # m4c <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= -100 & ch.agua <= 0 & ch.elec >= -100 & ch.elec <= 0 & ch.dren >= -100 & ch.dren <= 0 & ch.hom >= -100 & ch.hom <= 0 & ch.del >= -100 & ch.del <= 0))
+ # stargazer(m1c, m2c, m3c, m4c, type = "text", out = paste(out, "table IV.txt", sep = "/"), flip = T)
 
 #Modelos solo agua y homicidios####
-n1 <- lm(inc.share ~ ch.agua + ch.hom, datos)
-n2 <- lm(inc.share ~ ch.agua + ch.hom + alt, datos)
-n3 <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, datos)
-n4 <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, datos)
-stargazer(n1, n2, n3, n4, type = "text", out = paste(out, "table_AH.txt", sep = "/"), flip = T)
+# n1 <- lm(inc.share ~ ch.agua + ch.hom, datos)
+# n2 <- lm(inc.share ~ ch.agua + ch.hom + alt, datos)
+# n3 <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, datos)
+# n4 <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, datos)
+# stargazer(n1, n2, n3, n4, type = "text", out = paste(out, "table_AH.txt", sep = "/"), flip = T)
+# 
+# n1a <- lm(inc.share ~ ch.agua + ch.hom, subset(datos, ch.agua >= 0 & ch.hom >= 0))
+# n2a <- lm(inc.share ~ ch.agua + ch.hom + alt, subset(datos, ch.agua >= 0 & ch.hom >= 0))
+# n3a <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.hom >= 0))
+# n4a <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.hom >= 0))
+# stargazer(n1a, n2a, n3a, n4a, type = "text", out = paste(out, "table_AH I.txt", sep = "/"), flip = T)
+# 
+# n1b <- lm(inc.share ~ ch.agua + ch.hom, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
+# n2b <- lm(inc.share ~ ch.agua + ch.hom + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
+# n3b <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
+# n4b <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
+# stargazer(n1b, n2b, n3b, n4b, type = "text", out = paste(out, "table_AH II.txt", sep = "/"), flip = T)
 
-n1a <- lm(inc.share ~ ch.agua + ch.hom, subset(datos, ch.agua >= 0 & ch.hom >= 0))
-n2a <- lm(inc.share ~ ch.agua + ch.hom + alt, subset(datos, ch.agua >= 0 & ch.hom >= 0))
-n3a <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.hom >= 0))
-n4a <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.hom >= 0))
-stargazer(n1a, n2a, n3a, n4a, type = "text", out = paste(out, "table_AH I.txt", sep = "/"), flip = T)
+#Modelos con efectos fijos####
 
-n1b <- lm(inc.share ~ ch.agua + ch.hom, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
-n2b <- lm(inc.share ~ ch.agua + ch.hom + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
-n3b <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
-n4b <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
-stargazer(n1b, n2b, n3b, n4b, type = "text", out = paste(out, "table_AH II.txt", sep = "/"), flip = T)
+f1 <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del | 0 | 0 | edo_year, datos)
+f2 <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt | 0 | 0 | edo_year, datos)
+f3 <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi | 0 | 0 | edo_year, datos)
+f4 <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco | 0 | 0 | edo_year, datos)
+f5 <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco | 0 | 0 | edo_year, datos)
+stargazer(f1, f2, f3, f4, f5, type = "text", out = paste(out, "table FE.txt", sep = "/"), flip = T)
 
-#Modelos 
+f1a <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
+f2a <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
+f3a <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
+f4a <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
+f5a <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
+stargazer(f1a, f2a, f3a, f4a, f5a, type = "text", out = paste(out, "table I FE.txt", sep = "/"), flip = T)
+
+f1b <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f2b <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f3b <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f4b <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f5b <- felm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+stargazer(f1b, f2b, f3b, f4b, f5b, type = "text", out = paste(out, "table II FE.txt", sep = "/"), flip = T)
