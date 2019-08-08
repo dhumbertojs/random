@@ -1083,7 +1083,7 @@ m3b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + 
 m4b <- lm(inc.share ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.elec >= 0 & ch.dren >= 0 & ch.hom >= 0 & ch.del >= 0))
 stargazer(m1b, m2b, m3b, m4b, type = "text", out = paste(out, "table II.txt", sep = "/"), flip = T)
 
-#Modelos solo agua y homicidios
+#Modelos solo agua y homicidios####
 n1 <- lm(inc.share ~ ch.agua + ch.hom, datos)
 n2 <- lm(inc.share ~ ch.agua + ch.hom + alt, datos)
 n3 <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, datos)
@@ -1101,3 +1101,5 @@ n2b <- lm(inc.share ~ ch.agua + ch.hom + alt, subset(datos, ch.agua >= 0 & ch.ag
 n3b <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
 n4b <- lm(inc.share ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
 stargazer(n1b, n2b, n3b, n4b, type = "text", out = paste(out, "table_AH II.txt", sep = "/"), flip = T)
+
+#Modelos 
