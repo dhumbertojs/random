@@ -350,20 +350,20 @@ ap <- "/home/dhjs/Documentos/R_projects/tesis/out/alt+party"
   
   beep(2)
   #Partidos por alternancia####
-partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
+party <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
     #Agua
   a7a <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= -25 & ch.agua <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
     facet_grid(. ~ alt) +
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
   ggsave("s_agua_alt.png", path = ap, dpi = 300)
   
   a71a <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= 25 & ch.agua <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_agua_mayor_alt.png", path = ap, dpi = 300)
@@ -371,7 +371,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   a72a <- ggplot(datos %>% filter(!is.na(alt) & ch.agua > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_agua_may_100_alt.png", path = ap, dpi = 300)
@@ -379,7 +379,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   a73a <- ggplot(datos %>% filter(!is.na(alt) & ch.agua <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) + 
     theme_dark()
   ggsave("s_agua_menor_alt.png", path = ap, dpi = 300)
@@ -387,7 +387,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   a74a <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= 0 & ch.agua <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_agua_mayor_alt_pos.png", path = ap, dpi = 300)
@@ -395,7 +395,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   a75a <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= -100 & ch.agua <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_agua_mayor_alt_neg.png", path = ap, dpi = 300)
@@ -403,7 +403,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   a76a <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= -100 & ch.agua <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_agua_mayor_alt_int.png", path = ap, dpi = 300)
@@ -412,7 +412,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   e7a <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= -25 & ch.elec <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_elec_alt.png", path = ap, dpi = 300)
@@ -420,7 +420,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   e71a <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= 25 & ch.elec <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_elec_mayor_alt.png", path = ap, dpi = 300)
@@ -428,7 +428,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   e72a <- ggplot(datos %>% filter(!is.na(alt) & ch.elec > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_elec_may_100_alt.png", path = ap, dpi = 300)
@@ -436,7 +436,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   e73a <- ggplot(datos %>% filter(!is.na(alt) & ch.elec <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_elec_menor_alt.png", path = ap, dpi = 300)
@@ -444,7 +444,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   e74a <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= 0 & ch.elec <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_elec_mayor_alt_pos.png", path = ap, dpi = 300)
@@ -452,7 +452,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   e75a <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= -100 & ch.elec <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_elec_mayor_alt.png", path = ap, dpi = 300)
@@ -460,7 +460,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   e76a <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= 25 & ch.elec <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_elec_mayor_alt.png", path = ap, dpi = 300)
@@ -469,7 +469,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   d7a <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= -25 & ch.dren <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_dren_alt.png", path = ap, dpi = 300)
@@ -477,7 +477,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   d71a <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= 25 & ch.dren <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_dren_mayor_alt.png", path = ap, dpi = 300)
@@ -485,7 +485,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   d72a <- ggplot(datos %>% filter(!is.na(alt) & ch.dren > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_dren_may_100_alt.png", path = ap, dpi = 300)
@@ -493,7 +493,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   d73a <- ggplot(datos %>% filter(!is.na(alt) & ch.dren > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) +
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_dren_menor.png", path = ap, dpi = 300)
@@ -501,7 +501,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   d74a <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= 0 & ch.dren <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_dren_mayor_alt_pos.png", path = ap, dpi = 300)
@@ -509,7 +509,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   d75a <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= -100 & ch.dren <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_dren_mayor_alt_neg.png", path = ap, dpi = 300)
@@ -517,7 +517,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   d76a <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= -100 & ch.dren <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_dren_mayor_alt_int.png", path = ap, dpi = 300)
@@ -526,7 +526,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   t7a <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= -25 & ch.del <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) + 
     theme_dark()
   ggsave("s_delitos_alt.png", path = ap, dpi = 300)
@@ -534,7 +534,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   t71a <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= 25 & ch.del <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_delitos_mayor_alt.png", path = ap, dpi = 300)
@@ -542,7 +542,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   t72a <- ggplot(datos %>% filter(!is.na(alt) & ch.del > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_delitos_may_100_alt.png", path = ap, dpi = 300)
@@ -550,7 +550,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   t73a <- ggplot(datos %>% filter(!is.na(alt) & ch.del <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_delitos_menor_alt.png", path = ap, dpi = 300)
@@ -558,7 +558,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   t74a <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= 0 & ch.del <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_delitos_mayor_alt_pos.png", path = ap, dpi = 300)
@@ -566,7 +566,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   t75a <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= -100 & ch.del <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_delitos_mayor_alt_neg.png", path = ap, dpi = 300)
@@ -574,7 +574,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   t76a <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= -100 & ch.del <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_delitos_mayor_alt_int.png", path = ap, dpi = 300)
@@ -583,7 +583,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   h7a <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= -25 & ch.hom <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_hom_alt.png", path = ap, dpi = 300)
@@ -591,7 +591,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   h71a <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= 25 & ch.hom <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_hom_mayor_alt.png", path = ap, dpi = 300)
@@ -599,7 +599,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   h72a <- ggplot(datos %>% filter(!is.na(alt) & ch.hom > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_hom_may_100_alt.png", path = ap, dpi = 300)
@@ -607,7 +607,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   h73a <- ggplot(datos %>% filter(!is.na(alt) & ch.hom <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_hom_menor_alt.png", path = ap, dpi = 300)
@@ -615,7 +615,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   h74a <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= 0 & ch.hom <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_hom_mayor_alt_pos.png", path = ap, dpi = 300)
@@ -623,7 +623,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   h75a <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= -100 & ch.hom <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_hom_mayor_alt_neg.png", path = ap, dpi = 300)
@@ -632,7 +632,7 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   h76a <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= -100 & ch.hom <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     facet_grid(. ~ alt) +
     theme_dark()
   ggsave("s_hom_mayor_alt_int.png", path = ap, dpi = 300)
@@ -642,252 +642,252 @@ partx <- c("PAN" = "#153588", "PRI" = "#E13A27", "PRD" = "#F6D626")
   a7b <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= -25 & ch.agua <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_agua_partx.png", path = partidos, dpi = 300)
+  ggsave("s_agua_party.png", path = partidos, dpi = 300)
   
   a71b <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= 25 & ch.agua <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_agua_mayor_partx.png", path = partidos, dpi = 300)
+  ggsave("s_agua_mayor_party.png", path = partidos, dpi = 300)
   
   a72b <- ggplot(datos %>% filter(!is.na(alt) & ch.agua > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_agua_may_100_partx.png", path = partidos, dpi = 300)
+  ggsave("s_agua_may_100_party.png", path = partidos, dpi = 300)
   
   a73b <- ggplot(datos %>% filter(!is.na(alt) & ch.agua <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_agua_menor_partx.png", path = partidos, dpi = 300)
+  ggsave("s_agua_menor_party.png", path = partidos, dpi = 300)
 
   a74b <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= 0 & ch.agua <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_agua_mayor_partx_pos.png", path = partidos, dpi = 300)
+  ggsave("s_agua_mayor_party_pos.png", path = partidos, dpi = 300)
   
   a75b <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= -100 & ch.agua <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_agua_mayor_partx_neg.png", path = partidos, dpi = 300)
+  ggsave("s_agua_mayor_party_neg.png", path = partidos, dpi = 300)
   
   a76b <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= -100 & ch.agua <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.agua, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_agua_mayor_partx_int.png", path = partidos, dpi = 300)
+  ggsave("s_agua_mayor_party_int.png", path = partidos, dpi = 300)
     
   #Electricidad
   
   e7b <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= -25 & ch.elec <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_elec_partx.png", path = partidos, dpi = 300)
+  ggsave("s_elec_party.png", path = partidos, dpi = 300)
   
   e71b <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= 25 & ch.elec <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_elec_mayor_partx.png", path = partidos, dpi = 300)
+  ggsave("s_elec_mayor_party.png", path = partidos, dpi = 300)
 
   e72b <- ggplot(datos %>% filter(!is.na(alt) & ch.elec > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_elec_may_100_partx.png", path = partidos, dpi = 300)
+  ggsave("s_elec_may_100_party.png", path = partidos, dpi = 300)
   
   e73b <- ggplot(datos %>% filter(!is.na(alt) & ch.elec <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_elec_menor_partx.png", path = partidos, dpi = 300)
+  ggsave("s_elec_menor_party.png", path = partidos, dpi = 300)
   
   e74b <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= 0 & ch.elec <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_elec_mayor_partx_pos.png", path = partidos, dpi = 300)
+  ggsave("s_elec_mayor_party_pos.png", path = partidos, dpi = 300)
   
   e75b <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= -100 & ch.elec <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_elec_mayor_partx_neg.png", path = partidos, dpi = 300)
+  ggsave("s_elec_mayor_party_neg.png", path = partidos, dpi = 300)
   
   e76b <- ggplot(datos %>% filter(!is.na(alt) & ch.elec >= -100 & ch.elec <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.elec, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_elec_mayor_partx_int.png", path = partidos, dpi = 300)
+  ggsave("s_elec_mayor_party_int.png", path = partidos, dpi = 300)
   
   #drenaje
   d7b <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= -25 & ch.dren <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_dren_partx.png", path = partidos, dpi = 300)
+  ggsave("s_dren_party.png", path = partidos, dpi = 300)
   
   d71b <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= 25 & ch.dren <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_dren_mayor_partx.png", path = partidos, dpi = 300)
+  ggsave("s_dren_mayor_party.png", path = partidos, dpi = 300)
   
   d72b <- ggplot(datos %>% filter(!is.na(alt) & ch.dren > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_dren_may_100_partx.png", path = partidos, dpi = 300)
+  ggsave("s_dren_may_100_party.png", path = partidos, dpi = 300)
   
   d73b <- ggplot(datos %>% filter(!is.na(alt) & ch.dren <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_dren_menor_partx.png", path = partidos, dpi = 300)
+  ggsave("s_dren_menor_party.png", path = partidos, dpi = 300)
   
   d74b <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= 0 & ch.dren <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_dren_mayor_partx_pos.png", path = partidos, dpi = 300)
+  ggsave("s_dren_mayor_party_pos.png", path = partidos, dpi = 300)
   
   d75b <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= -100 & ch.dren <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_dren_mayor_partx_neg.png", path = partidos, dpi = 300)
+  ggsave("s_dren_mayor_party_neg.png", path = partidos, dpi = 300)
   
   d76b <- ggplot(datos %>% filter(!is.na(alt) & ch.dren >= -100 & ch.dren <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.dren, col = as.factor(inc_top))) +
     geom_point(aes(alpha = 0.2)) +
     geom_smooth(method = "lm", se = F) + 
-    scale_colour_manual(values = partx, name = "Partido") +
+    scale_colour_manual(values = party, name = "Partido") +
     theme_dark()
-  ggsave("s_dren_mayor_partx_int.png", path = partidos, dpi = 300)
+  ggsave("s_dren_mayor_party_int.png", path = partidos, dpi = 300)
   
   #delitos
 t7b <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= -25 & ch.del <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_delitos_partx.png", path = partidos, dpi = 300)
+ggsave("s_delitos_party.png", path = partidos, dpi = 300)
 
 t71b <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= 25 & ch.del <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_delitos_mayor_partx.png", path = partidos, dpi = 300)
+ggsave("s_delitos_mayor_party.png", path = partidos, dpi = 300)
 
 t72b <- ggplot(datos %>% filter(!is.na(alt) & ch.del > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_delitos_may_100_partx.png", path = partidos, dpi = 300)
+ggsave("s_delitos_may_100_party.png", path = partidos, dpi = 300)
 
 t73b <- ggplot(datos %>% filter(!is.na(alt) & ch.del <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_delitos_menor_partx.png", path = partidos, dpi = 300)
+ggsave("s_delitos_menor_party.png", path = partidos, dpi = 300)
 
 t74b <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= 0 & ch.del <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_delitos_mayor_partx_pos.png", path = partidos, dpi = 300)
+ggsave("s_delitos_mayor_party_pos.png", path = partidos, dpi = 300)
 
 t75b <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= -100 & ch.del <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_delitos_mayor_partx_neg.png", path = partidos, dpi = 300)
+ggsave("s_delitos_mayor_party_neg.png", path = partidos, dpi = 300)
 
 t76b <- ggplot(datos %>% filter(!is.na(alt) & ch.del >= -100 & ch.del <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.del, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_delitos_mayor_partx_int.png", path = partidos, dpi = 300)
+ggsave("s_delitos_mayor_party_int.png", path = partidos, dpi = 300)
 
 #homicidios
 h7b <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= -25 & ch.hom <= 25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_hom_partx.png", path = partidos, dpi = 300)
+ggsave("s_hom_party.png", path = partidos, dpi = 300)
 
 h71b <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= 25 & ch.hom <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_hom_mayor_partx.png", path = partidos, dpi = 300)
+ggsave("s_hom_mayor_party.png", path = partidos, dpi = 300)
 
 h72b <- ggplot(datos %>% filter(!is.na(alt) & ch.hom > 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_hom_may_100_partx.png", path = partidos, dpi = 300)
+ggsave("s_hom_may_100_party.png", path = partidos, dpi = 300)
 
 h73b <- ggplot(datos %>% filter(!is.na(alt) & ch.hom <= -25 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_hom_menor_partx.png", path = partidos, dpi = 300)
+ggsave("s_hom_menor_party.png", path = partidos, dpi = 300)
 
 h74b <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= 0 & ch.hom <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_hom_mayor_partx_pos.png", path = partidos, dpi = 300)
+ggsave("s_hom_mayor_party_pos.png", path = partidos, dpi = 300)
 
 h75b <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= -100 & ch.hom <= 0 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_hom_mayor_partx_neg.png", path = partidos, dpi = 300)
+ggsave("s_hom_mayor_party_neg.png", path = partidos, dpi = 300)
 
 h76b <- ggplot(datos %>% filter(!is.na(alt) & ch.hom >= -100 & ch.hom <= 100 & inc_top != "Otros"), aes(y = inc.ch, x = ch.hom, col = as.factor(inc_top))) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) + 
-  scale_colour_manual(values = partx, name = "Partido") +
+  scale_colour_manual(values = party, name = "Partido") +
   theme_dark()
-ggsave("s_hom_mayor_partx_int.png", path = partidos, dpi = 300)
+ggsave("s_hom_mayor_party_int.png", path = partidos, dpi = 300)
 beep(2)
 
 #Normal####
