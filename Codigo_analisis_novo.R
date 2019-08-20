@@ -1022,7 +1022,7 @@ na76 <- ggplot(datos %>% filter(!is.na(alt) & ch.agua >= -100 & ch.agua <= 100 &
   geom_smooth(method = "lm", se = F) #+ facet_grid(. ~ inc_top)
 ggsave("s_agua_mayor_n_int.png", path = nom, dpi = 300)
 
-na77 <- ggplot(datos, aes(y = inc.ch, x = ch.agua)) +
+na77 <- ggplot(datos, aes(x = ch.agua, y = inc.ch)) +
   geom_point(aes(alpha = 0.2)) +
   geom_smooth(method = "lm", se = F) #+ facet_grid(. ~ inc_top)
 ggsave("s_agua_mayor_n_tot.png", path = nom, dpi = 300)
@@ -1229,6 +1229,16 @@ m7b <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco + PAN_o
 m8b <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
 stargazer(m1b, m2b, m3b, m4b, m5b, m6b, m7b, m8b, type = "html", out = paste(out, "table II.html", sep = "/"), flip = T)
 
+m1c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m2c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m3c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m4c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt + conco, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m5c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m6c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m7c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+m8c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+stargazer(m1c, m2c, m3c, m4c, m5c, m6c, m7c, m8c, type = "html", out = paste(out, "table III.html", sep = "/"), flip = T)
+
  # m1c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del, subset(datos, ch.agua >= -100 & ch.agua <= 0 & ch.elec >= -100 & ch.elec <= 0 & ch.dren >= -100 & ch.dren <= 0 & ch.hom >= -100 & ch.hom <= 0 & ch.del >= -100 & ch.del <= 0))
  # m2c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt, subset(datos, ch.agua >= -100 & ch.agua <= 0 & ch.elec >= -100 & ch.elec <= 0 & ch.dren >= -100 & ch.dren <= 0 & ch.hom >= -100 & ch.hom <= 0 & ch.del >= -100 & ch.del <= 0))
  # m3c <- lm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= -100 & ch.agua <= 0 & ch.elec >= -100 & ch.elec <= 0 & ch.dren >= -100 & ch.dren <= 0 & ch.hom >= -100 & ch.hom <= 0 & ch.del >= -100 & ch.del <= 0))
@@ -1253,7 +1263,6 @@ stargazer(m1b, m2b, m3b, m4b, m5b, m6b, m7b, m8b, type = "html", out = paste(out
 # n3b <- lm(inc.ch ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
 # n4b <- lm(inc.ch ~ ch.agua + ch.hom + PAN_ofi + PRI_ofi + PRD_ofi + alt, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.hom >= 0 & ch.hom <= 100))
 # stargazer(n1b, n2b, n3b, n4b, type = "html", out = paste(out, "table_AH II.html", sep = "/"), flip = T)
-beep(2)
 #Modelos con efectos fijos####
 
 f1 <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del | 0 | 0 | edo_year, datos)
@@ -1285,4 +1294,15 @@ f6b <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt + PAN_o
 f7b <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco + PAN_ofi + PRI_ofi + PRD_ofi | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
 f8b <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
 stargazer(f1b, f2b, f3b, f4b, f5b, f6b, f7b, f8b, type = "html", out = paste(out, "table II FE.html", sep = "/"), flip = T)
+
+f1c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f2c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f3c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f4c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f5c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f6c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + alt + PAN_ofi + PRI_ofi + PRD_ofi | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f7c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + conco + PAN_ofi + PRI_ofi + PRD_ofi | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+f8c <- felm(inc.ch ~ ch.agua + ch.elec + ch.dren + ch.hom + ch.del + PAN_ofi + PRI_ofi + PRD_ofi + alt + conco | 0 | 0 | edo_year, subset(datos, ch.agua >= 0 & ch.agua <= 100 & ch.elec >= 0 & ch.elec <= 100 & ch.dren >= 0 & ch.dren <= 100 & ch.hom >= 0 & ch.hom <= 100 & ch.del >= 0 & ch.del <= 100))
+stargazer(f1c, f2c, f3c, f4c, f5c, f6c, f7c, f8c, type = "html", out = paste(out, "table III FE.html", sep = "/"), flip = T)
+
 beep(8)
