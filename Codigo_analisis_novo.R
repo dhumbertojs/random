@@ -11,6 +11,7 @@
   out <- "/home/dhjs/Documentos/R_projects/tesis/out"
   
   data <- read.csv(paste(inp, "data.csv", sep = "/"))
+  #27,292 observaciones
   
   data <- data %>% 
     group_by(muni) %>% 
@@ -26,6 +27,7 @@
       PRD_ofi = ifelse(lag(inc, n = 1) == "PRD", 1, 0)
     ) %>% 
     ungroup()
+  #Aprox 4,000 NA
   
   data <- data %>% 
     mutate(
@@ -60,9 +62,7 @@
   bp <- bp %>% select(-(13:32))
   ##Si se utilizan las lag variables hay que agrupar por año y hacer un ifelse para calcular el promedio, será conveniente agrupar por año y estado ??
   
-  data <- data %>% 
-    inner_join(bp, by = "muniYear")
-    
+  data <- left_join(data, bp, by = "muniYear")
   
   data <- data %>% 
     group_by(muni) %>% 
