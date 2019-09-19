@@ -3,6 +3,7 @@ setwd("~")
 
 library(dplyr)
 library(ggplot2)
+library(tidyr)
 library(stargazer)
 library(lfe)
 library(lme4)
@@ -60,11 +61,61 @@ data <- data %>%
   ) %>% 
   ungroup()
 
+clave <- data %>% 
+  select(muniYear) %>% 
+  mutate(try = 1:nrow(data))
+
 bp <- read.csv(paste(inp, "Bienes_publicos.csv", sep = "/"))
 colnames(bp)[4] <- "tot_del"
-bp <- select(bp, -c(year, muni))
-bp <- bp %>% select(-(13:32))
-##Si se utilizan las lag variables hay que agrupar por año y hacer un ifelse para calcular el promedio, será conveniente agrupar por año y estado ??
+bp <- select(bp, -year)
+bp <- bp %>% select(-(14:38))
+
+bp <- left_join(bp, clave, by = "muniYear")
+bp <- bp %>% 
+  arrange(muniYear) %>% 
+  fill(try)
+
+#Y si observo cambio porcentual respecto al promedio? 
+bp <- bp %>% 
+  group_by(try) %>% 
+  mutate(
+    mn.agua = mean(tasa_agua, na.rm = T),
+    md.agua = median(tasa_agua, na.rm = T),
+    
+    mn.dren = mean(tasa_dren, na.rm = T),
+    md.dren = meadian(tasa_dren, na.rm = T),
+    
+    mn.elec = mean(tasa_elec, na.rm = T),
+    md.elec = median(tasa_elec, na.rm = T),
+    
+    mn.del = mean(tasa_tot_del, na.rm = T),
+    md.del = median(tasa_tot_del, na.rm = T),
+    
+    mn.hom = mean(tasa_hom, na.rm = T),
+    md.hom = median(tasa_hom, na.rm = T)
+  ) %>% 
+  ungroup()
+
+# bp <- bp %>% 
+#   group_by(muni) %>% 
+#   mutate(
+#     mn.agua = mean(tasa_agua, na.rm = T),
+#     md.agua = median(tasa_agua, na.rm = T),
+#     
+#     mn.dren = mean(tasa_dren, na.rm = T),
+#     md.dren = meadian(tasa_dren, na.rm = T),
+#     
+#     mn.elec = mean(tasa_elec, na.rm = T),
+#     md.elec = median(tasa_elec, na.rm = T),
+#     
+#     mn.del = mean(tasa_tot_del, na.rm = T),
+#     md.del = median(tasa_tot_del, na.rm = T),
+#     
+#     mn.hom = mean(tasa_hom, na.rm = T),
+#     md.hom = median(tasa_hom, na.rm = T)
+#   ) %>% 
+#   ungroup()
+##Aquí trate de sacar promedio por municipio, pero tengo info de 94 a 2015, lo que implicaría sacar un promedio por 19 años
 
 data <- left_join(data, bp, by = "muniYear")
 
