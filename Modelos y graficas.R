@@ -64,6 +64,8 @@ data <- data %>%
 clave <- data %>% 
   select(muniYear) %>% 
   mutate(try = 1:nrow(data))
+##debe haber datos para 17,021 municipios-año electoral
+##Revisar como estoy haciendo los calculos
 
 bp <- read.csv(paste(inp, "Bienes_publicos.csv", sep = "/"))
 colnames(bp)[4] <- "tot_del"
@@ -80,21 +82,22 @@ bp <- bp %>%
   group_by(try) %>% 
   mutate(
     mn.agua = mean(tasa_agua, na.rm = T),
-    md.agua = median(tasa_agua, na.rm = T),
+    #md.agua = median(tasa_agua, na.rm = T),
     
     mn.dren = mean(tasa_dren, na.rm = T),
-    md.dren = meadian(tasa_dren, na.rm = T),
+    #md.dren = median(tasa_dren, na.rm = T),
     
     mn.elec = mean(tasa_elec, na.rm = T),
-    md.elec = median(tasa_elec, na.rm = T),
+    #md.elec = median(tasa_elec, na.rm = T),
     
     mn.del = mean(tasa_tot_del, na.rm = T),
-    md.del = median(tasa_tot_del, na.rm = T),
+    #md.del = median(tasa_tot_del, na.rm = T),
     
     mn.hom = mean(tasa_hom, na.rm = T),
-    md.hom = median(tasa_hom, na.rm = T)
+    #md.hom = median(tasa_hom, na.rm = T)
   ) %>% 
-  ungroup()
+  ungroup() %>% 
+  select(-muni)
 
 # bp <- bp %>% 
 #   group_by(muni) %>% 
@@ -117,32 +120,42 @@ bp <- bp %>%
 #   ungroup()
 ##Aquí trate de sacar promedio por municipio, pero tengo info de 94 a 2015, lo que implicaría sacar un promedio por 19 años
 
-data <- left_join(data, bp, by = "muniYear")
+data <- inner_join(data, bp, by = "muniYear")
+#17,021 observaciones con datos electorales y de bienes
 
 data <- data %>% 
   group_by(muni) %>% 
   mutate(
     prevyear = lag(year, n = 1),
-    difY = year - prevyear
+    difY = year - prevyear,
+    conco = ifelse(as.character(win_top) == as.character(wintop_state), 1, 0)
   ) %>% 
   ungroup()
 
+# data <- data %>% 
+#   group_by(muni) %>% 
+#   mutate(
+#     l.del = lag(tasa_tot_del, n = 1),
+#     l.hom = lag(tasa_hom, n = 1),
+#     l.agua = lag(tasa_agua, n = 1),
+#     l.elec = lag(tasa_elec, n = 1),
+#     l.dren = lag(tasa_dren, n = 1),
+#     
+#     ch.del = ifelse(!is.na(tasa_tot_del) & !is.na(l.del), ((tasa_tot_del - l.del)/l.del) * 100, NA),
+#     ch.hom = ifelse(!is.na(tasa_hom) & !is.na(l.hom), ((tasa_hom - l.hom)/l.hom) * 100, NA),
+#     ch.agua = ifelse(!is.na(tasa_agua) & !is.na(l.agua), ((tasa_agua - l.agua)/l.agua) * 100, NA),
+#     ch.elec = ifelse(!is.na(tasa_elec) & !is.na(l.elec), ((tasa_elec - l.elec)/l.elec) * 100, NA),
+#     ch.dren = ifelse(!is.na(tasa_dren) & !is.na(l.dren), ((tasa_dren - l.dren)/l.dren) * 100, NA)
+#   )
+
+
 data <- data %>% 
-  group_by(muni) %>% 
   mutate(
-    l.del = lag(tasa_tot_del, n = 1),
-    l.hom = lag(tasa_hom, n = 1),
-    l.agua = lag(tasa_agua, n = 1),
-    l.elec = lag(tasa_elec, n = 1),
-    l.dren = lag(tasa_dren, n = 1),
-    
-    ch.del = ifelse(!is.na(tasa_tot_del) & !is.na(l.del), ((tasa_tot_del - l.del)/l.del) * 100, NA),
-    ch.hom = ifelse(!is.na(tasa_hom) & !is.na(l.hom), ((tasa_hom - l.hom)/l.hom) * 100, NA),
-    ch.agua = ifelse(!is.na(tasa_agua) & !is.na(l.agua), ((tasa_agua - l.agua)/l.agua) * 100, NA),
-    ch.elec = ifelse(!is.na(tasa_elec) & !is.na(l.elec), ((tasa_elec - l.elec)/l.elec) * 100, NA),
-    ch.dren = ifelse(!is.na(tasa_dren) & !is.na(l.dren), ((tasa_dren - l.dren)/l.dren) * 100, NA),
-    
-    conco = ifelse(as.character(win_top) == as.character(wintop_state), 1, 0)
+    ch.del = ifelse(!is.na(tasa_tot_del) & !is.na(mn.del), ((tasa_tot_del - mn.del)/mn.del) * 100, NA),
+    ch.hom = ifelse(!is.na(tasa_hom) & !is.na(mn.hom), ((tasa_hom - mn.hom)/mn.hom) * 100, NA),
+    ch.agua = ifelse(!is.na(tasa_agua) & !is.na(mn.agua), ((tasa_agua - mn.agua)/mn.agua) * 100, NA),
+    ch.elec = ifelse(!is.na(tasa_elec) & !is.na(mn.elec), ((tasa_elec - mn.elec)/mn.elec) * 100, NA),
+    ch.dren = ifelse(!is.na(tasa_dren) & !is.na(mn.dren), ((tasa_dren - mn.dren)/mn.dren) * 100, NA)
   )
 
 summary(data)
@@ -164,7 +177,9 @@ beep(2)
 #24712 observations deleted due to missingness
 
 
+
 #Modelo lineal
+#summary(lm(inc.ch ~ ch.agua + log(Pob_Total) + IM + conco, data)) ##Ahora dice que se eliminaron 25,882 observaciones...
 t1 <- lm(inc.ch ~ ch.agua + log(Pob_Total) + IM + conco, data)
 t2 <- lm(inc.ch ~ ch.elec + log(Pob_Total) + IM + conco, data)
 t3 <- lm(inc.ch ~ ch.dren + log(Pob_Total) + IM + conco, data)
@@ -177,7 +192,7 @@ t8 <- glm(alt ~ ch.dren + log(Pob_Total) + IM + conco, data, family = binomial(l
 t9 <- glm(alt ~ ch.del + log(Pob_Total) + IM + conco, data, family = binomial(link = "probit"))
 t10 <- glm(alt ~ ch.hom + log(Pob_Total) + IM + conco, data, family = binomial(link = "probit"))
 
-stargazer(t1, t2, t3, t4, t5, x6, x7, x8, x9, x10, type = "html", out = paste(out, "todos.html", sep = "/"), flip = T)
+stargazer(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, type = "html", out = paste(out, "todos.html", sep = "/"), flip = T)
 
 #Efectos fijos
 

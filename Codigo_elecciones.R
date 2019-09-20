@@ -1174,7 +1174,10 @@ act <- act %>%
          nulos, noreg)
 
 act <- bind_cols(act, suma)
-
+act <- act %>% 
+  mutate(
+    muni = paste0(state, muni)
+  )
 #try <- act %>% 
 #  select(muniYear, state, muni, year, Winner2, nulos, noreg)
 
