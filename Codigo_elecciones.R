@@ -1,7 +1,6 @@
 rm(list=ls())
 setwd("~")
 
-#library(plyr)
 library(plyr)#esta nada mas es para rbind.fill
 library(dplyr)
 library(readxl)
@@ -9,6 +8,39 @@ library(stringr)
 
 inp = "/home/dhjs/Documentos/R_projects/tesis/input"
 out = "/home/dhjs/Documentos/R_projects/tesis/Datos"
+####Elecciones 2013####
+##Aunque, no tengo ni idea de las coaliciones
+coah13 <- read_excel(paste(inp, "Ayuntamientos2013 x casilla.xlsx", sep = "/"))
+coah13 <- coah13 %>% 
+  filter(is.na(NO.)) %>% 
+  select(-c(1, 3:5)) %>% 
+  mutate(MUNICIPIO = str_replace_all(MUNICIPIO, "Total ", "")) %>% 
+  filter(MUNICIPIO != "general")
+
+try <- coah13 %>% 
+  select(1:17)
+Winner2 <- colnames(try)[apply(try, 1, which.max)]
+Winner2 <- as.data.frame(Winner2)
+
+clave <- read.csv(paste(inp, "clave_coah.csv", sep = "/"), stringsAsFactors = F)
+clave$Municipio <- toupper(clave$Municipio)
+colnames(clave) <- c("muni", "MUNICIPIO")
+clave$muni <- as.character(clave$muni)
+
+add <- data.frame("muni" = c("5007", "5009", "5011", "5014", "5015", "5020", "5035", "5037"), "MUNICIPIO" = c("CUATROCIENEGAS", "FRANCISCO I.MADERO", "GRAL. CEPEDA", "JIMENEZ", "JUAREZ", "MUZQUIZ", "TORREON", "VILLA UNION"))
+clave <- bind_rows(clave, add)
+
+coah13 <- coah13 %>% 
+  bind_cols(Winner2) %>% 
+  left_join(clave, by = "MUNICIPIO") %>% 
+  mutate(
+    state = "05",
+    muni = substr(muni, 2, 4),
+    muni = paste0(state, muni),
+    year = 2013,
+    muniYear = paste(muni, year, sep = "_")
+  ) %>% 
+  rename()
 
 ####Elecciones 2014####
 ##Nayarit
