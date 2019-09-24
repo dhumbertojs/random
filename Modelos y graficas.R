@@ -208,7 +208,7 @@ u10 <- glmer(alt ~ ch.hom + log(Pob_Total) + IM + conco + (1 | edo_year), data, 
 stargazer(u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, type = "html", out = paste(out, "todos_FE.html", sep = "/"), flip = T)
 
 #PAN####
-PAN1 <- lm(inc.ch ~ ch.agua + log(Pob_Total) + IM + conco, data, subset = inc_top == "PAN", subset = inc_top == "PAN")
+PAN1 <- lm(inc.ch ~ ch.agua + log(Pob_Total) + IM + conco, data, subset = inc_top == "PAN")
 PAN2 <- lm(inc.ch ~ ch.elec + log(Pob_Total) + IM + conco, data, subset = inc_top == "PAN")
 PAN3 <- lm(inc.ch ~ ch.dren + log(Pob_Total) + IM + conco, data, subset = inc_top == "PAN")
 PAN4 <- lm(inc.ch ~ ch.del + log(Pob_Total) + IM + conco, data, subset = inc_top == "PAN")
