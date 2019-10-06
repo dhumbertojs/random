@@ -51,7 +51,8 @@ data <- data %>%
                                      ifelse(inc_top == "PAN_PRD", PAN_PRD.s, NA)))),
     inc.share = (inc.share * 100)
   ) %>% 
-  select(-muniYear1)
+  select(-muniYear1) %>% 
+  filter(inc_top != "Otros")
 
 data <- data %>% 
   group_by(muni) %>% 
@@ -69,56 +70,35 @@ clave <- data %>%
 
 bp <- read.csv(paste(inp, "Bienes_publicos.csv", sep = "/"))
 colnames(bp)[4] <- "tot_del"
-bp <- select(bp, -year)
-bp <- bp %>% select(-(14:38))
+bp <- select(bp, -year, -muni)
+#bp <- bp %>% select(-(14:38))
 
-bp <- left_join(bp, clave, by = "muniYear")
-bp <- bp %>% 
-  arrange(muniYear) %>% 
-  fill(try)
+# bp <- left_join(bp, clave, by = "muniYear")
+# bp <- bp %>% 
+#   arrange(muniYear) %>% 
+#   fill(try)
 
 #Y si observo cambio porcentual respecto al promedio? 
-bp <- bp %>% 
-  group_by(try) %>% 
-  mutate(
-    mn.agua = mean(tasa_agua, na.rm = T),
-    #md.agua = median(tasa_agua, na.rm = T),
-    
-    mn.dren = mean(tasa_dren, na.rm = T),
-    #md.dren = median(tasa_dren, na.rm = T),
-    
-    mn.elec = mean(tasa_elec, na.rm = T),
-    #md.elec = median(tasa_elec, na.rm = T),
-    
-    mn.del = mean(tasa_tot_del, na.rm = T),
-    #md.del = median(tasa_tot_del, na.rm = T),
-    
-    mn.hom = mean(tasa_hom, na.rm = T),
-    #md.hom = median(tasa_hom, na.rm = T)
-  ) %>% 
-  ungroup() %>% 
-  select(-muni)
-
 # bp <- bp %>% 
-#   group_by(muni) %>% 
+#   group_by(try) %>% 
 #   mutate(
 #     mn.agua = mean(tasa_agua, na.rm = T),
-#     md.agua = median(tasa_agua, na.rm = T),
+#     #md.agua = median(tasa_agua, na.rm = T),
 #     
 #     mn.dren = mean(tasa_dren, na.rm = T),
-#     md.dren = meadian(tasa_dren, na.rm = T),
+#     #md.dren = median(tasa_dren, na.rm = T),
 #     
 #     mn.elec = mean(tasa_elec, na.rm = T),
-#     md.elec = median(tasa_elec, na.rm = T),
+#     #md.elec = median(tasa_elec, na.rm = T),
 #     
 #     mn.del = mean(tasa_tot_del, na.rm = T),
-#     md.del = median(tasa_tot_del, na.rm = T),
+#     #md.del = median(tasa_tot_del, na.rm = T),
 #     
 #     mn.hom = mean(tasa_hom, na.rm = T),
-#     md.hom = median(tasa_hom, na.rm = T)
+#     #md.hom = median(tasa_hom, na.rm = T)
 #   ) %>% 
-#   ungroup()
-##Aquí trate de sacar promedio por municipio, pero tengo info de 94 a 2015, lo que implicaría sacar un promedio por 19 años
+#   ungroup() %>% 
+#   select(-muni)
 
 data <- inner_join(data, bp, by = "muniYear")
 #17,021 observaciones con datos electorales y de bienes
@@ -149,13 +129,29 @@ data <- data %>%
 #   )
 
 
+# data <- data %>% 
+#   mutate(
+#     ch.del = ifelse(!is.na(tasa_tot_del) & !is.na(mn.del), ((tasa_tot_del - mn.del)/mn.del) * 100, NA),
+#     ch.hom = ifelse(!is.na(tasa_hom) & !is.na(mn.hom), ((tasa_hom - mn.hom)/mn.hom) * 100, NA),
+#     ch.agua = ifelse(!is.na(tasa_agua) & !is.na(mn.agua), ((tasa_agua - mn.agua)/mn.agua) * 100, NA),
+#     ch.elec = ifelse(!is.na(tasa_elec) & !is.na(mn.elec), ((tasa_elec - mn.elec)/mn.elec) * 100, NA),
+#     ch.dren = ifelse(!is.na(tasa_dren) & !is.na(mn.dren), ((tasa_dren - mn.dren)/mn.dren) * 100, NA)
+#   )
+
 data <- data %>% 
+  group_by(muni) %>% 
   mutate(
-    ch.del = ifelse(!is.na(tasa_tot_del) & !is.na(mn.del), ((tasa_tot_del - mn.del)/mn.del) * 100, NA),
-    ch.hom = ifelse(!is.na(tasa_hom) & !is.na(mn.hom), ((tasa_hom - mn.hom)/mn.hom) * 100, NA),
-    ch.agua = ifelse(!is.na(tasa_agua) & !is.na(mn.agua), ((tasa_agua - mn.agua)/mn.agua) * 100, NA),
-    ch.elec = ifelse(!is.na(tasa_elec) & !is.na(mn.elec), ((tasa_elec - mn.elec)/mn.elec) * 100, NA),
-    ch.dren = ifelse(!is.na(tasa_dren) & !is.na(mn.dren), ((tasa_dren - mn.dren)/mn.dren) * 100, NA)
+    l.del = lag(tasa_tot_del, n = 1),
+    l.hom = lag(tasa_hom, n = 1),
+    l.agua = lag(tasa_agua, n = 1),
+    l.elec = lag(tasa_elec, n = 1),
+    l.dren = lag(tasa_dren, n = 1),
+    
+    ch.del = ifelse(!is.na(tasa_tot_del) & !is.na(l.del), ((tasa_tot_del - l.del)/l.del) * 100, NA),
+    ch.hom = ifelse(!is.na(tasa_hom) & !is.na(l.hom), ((tasa_hom - l.hom)/l.hom) * 100, NA),
+    ch.agua = ifelse(!is.na(tasa_agua) & !is.na(l.agua), ((tasa_agua - l.agua)/l.agua) * 100, NA),
+    ch.elec = ifelse(!is.na(tasa_elec) & !is.na(l.elec), ((tasa_elec - l.elec)/l.elec) * 100, NA),
+    ch.dren = ifelse(!is.na(tasa_dren) & !is.na(l.dren), ((tasa_dren - l.dren)/l.dren) * 100, NA)
   )
 
 summary(data)
@@ -166,7 +162,7 @@ data <- data %>%
     !is.infinite(ch.del) & !is.infinite(ch.hom) & !is.infinite(ch.agua) & !is.infinite(ch.elec) & !is.infinite(ch.dren)
   )
 
-mar <- read.csv(paste(inp, "Marginación.csv", sep = "/"))
+mar <- read.csv(paste(inp, "Marginación.csv", sep = "/"), stringsAsFactors = F)
 
 data <- left_join(data, mar, by = "muniYear")
 

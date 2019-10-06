@@ -46,7 +46,8 @@
                                        ifelse(inc_top == "PAN_PRD", PAN_PRD.s, NA)))),
       inc.share = (inc.share * 100)
     ) %>% 
-    select(-muniYear1)
+    select(-muniYear1) %>% 
+    filter(inc_top != "Otros")
   
   data <- data %>% 
     group_by(muni) %>% 
